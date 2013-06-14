@@ -1,0 +1,31 @@
+<header>
+  <h1><img src={{{ page.logo }}} /></h1>
+  <p>{{{ page.subtitle }}}</p>
+  <pre><code class='r'>require(devtools)
+install_github('rCharts', 'ramnathv')</code></pre>
+  {{# page.github }}
+  <p class="view">
+    <a href="http://github.com/{{user}}/{{repo}}">
+     View the Project on GitHub <small>{{user}}/{{repo}}</small>
+    </a>
+  </p>
+  <ul class='buttons'>
+    <li><a href="https://github.com/{{user}}/{{repo}}/zipball/{{branch}}">
+      Download <strong>ZIP File</strong>
+    </a></li>
+    <li><a href="https://github.com/{{user}}/{{repo}}/tarball/{{branch}}">
+      Download <strong>TAR Ball</strong>
+    </a></li>
+    <li><a href="http://github.com/{{user}}/{{repo}}">
+      Fork On <strong>GitHub</strong></a>
+    </li>
+  </ul>
+  {{/ page.github }}
+    <ol>
+    {{# page.menu }}
+      <p>{{{ . }}}</p>
+    {{/ page.menu }}
+    </ol>
+</header>
+
+
