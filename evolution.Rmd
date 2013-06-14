@@ -31,8 +31,8 @@ knitr::opts_chunk$set(
   error = F,
   message = F,
   warning = F,
-  fig.width = 6,
-  fig.height = 4)
+  fig.width = 8,
+  fig.height = 5)
 ```
 
 ---
