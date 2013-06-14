@@ -1,5 +1,5 @@
 ---
-title: Evolution of R Charting of Time Series
+title: History of R Charting of Time Series
 subtitle: from plot.default to Interactive rCharts
 author: Timely Portfolio
 github: {user: ramnathv, repo: rCharts, branch: "gh-pages"}
@@ -16,9 +16,9 @@ logo: libraries/frameworks/minimal/images/rCharts.png
 }
 </style>
 
-# Evolution of R Charting of Time Series
+# History of R Charting of Time Series
 
-As with all of R, the ability to easily chart financial time series is a result of an iterative evolution driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the steps in the evolution.  For each step, we will include a link to the source (svn or github) and a minimal example to demo the "out-of-the-box" capability.  Just in case you don't make it to the end,   
+As with all of R, the ability to easily chart financial time series is a result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the steps.  For each step, we will include a link to the source (svn or github) and a minimal example to demo the "out-of-the-box" capability.  Just in case you don't make it to the end,   
 > Thanks to the contributors!  I wouldn't be using R if it weren't for you.
 
 ```{r echo = F, message = F, cache = F}
@@ -63,7 +63,7 @@ sp500.monthly <- sp500[endpoints(sp500, on ="months")]
 ```
 
 ---
-## Steps in the Evolution
+## Steps in Time
 
 ### plot.default (As Old as Time Itself)
 
