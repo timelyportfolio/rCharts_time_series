@@ -93,13 +93,32 @@ graphics::plot.default(
 
 ---
 ### [ts](https://stat.ethz.ch/pipermail/r-announce/1999/000097.html) 1999-08-27
-The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley's ["Time Series in R 1.5.0" from Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).
+The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley's ["Time Series in R 1.5.0" from Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).  plot.ts added some nice features, such as the ability to handle multiple series, specify panels per series, and automatically handle acf, ARIMA, and HoltWinters.
+
+
+```r
+stats::plot.ts(
+  ts(sp500.monthly,
+     start = c(
+       as.numeric(format(index(sp500.monthly)[1],"%Y")),
+       as.numeric(format(index(sp500.monthly)[1],"%m"))
+     ),
+     frequency = 12
+  ), # some backwards conversion to ts from xts
+  xlab = "Date",
+  ylab = "Closing Value",
+  main = "S&P 500 (stats::plot.ts)"
+)
+```
+
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
+
 
 - - -
 
 ---
 ### [lattice](http://r-forge.r-project.org/scm/?group_id=638) and [grid](http://www.stat.auckland.ac.nz/~paul/grid/grid.html) released with R 1.5.0 2002-04-29
-With the release of lattice and grid and also the improvements in ts mentioned above, R 1.5.0 was a very important milestone for both graphing and time series analysis.  All of these are covered in [Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).
+With the release of lattice and grid and also the improvements in ts mentioned above, R 1.5.0 was a very important milestone for both graphing and time series analysis.  All of these are covered in [Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).  lattice began the era of aesthetically pleasing and production-quality graphics straight from R.
 
 - - -
 
@@ -116,7 +135,7 @@ zoo::plot.zoo(
 )
 ```
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
 
 
 - - -
@@ -140,7 +159,7 @@ asTheEconomist(
 )
 ```
 
-![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
 
 
 - - -
@@ -157,7 +176,7 @@ charts.PerformanceSummary(
 )
 ```
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-61.png) ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-62.png) 
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
 
 
 - - -
@@ -175,7 +194,7 @@ ggplot( sp500.df, aes(date) ) +
   labs( title = "S&P 500 (ggplot2::ggplot)")
 ```
 
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
+![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
 
 - - -
@@ -196,7 +215,7 @@ chartSeries(
 )
 ```
 
-![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-81.png) ![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-82.png) 
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
 
 
 Just look how easy it is to zoom.
@@ -207,7 +226,7 @@ Just look how easy it is to zoom.
 zoomChart("1990::")
 ```
 
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-91.png) ![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-92.png) 
+![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10.png) 
 
 
 - - -
@@ -227,14 +246,14 @@ xts::plot.xts(
 )
 ```
 
-![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10.png) 
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
 
 
 - - -
 
 ---
 ### [timeSeries plot](https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&view=log) 2009-05-17
-The timeSeries plot method is basically a port of R's plot.ts().  It does not significantly add any functionality, but I include it for completeness and since the [Rmetrics team](https://www.rmetrics.org) offers robust financial analysis through its many R packages that depend on the timeSeries object.
+The timeSeries plot method is basically a port of R's plot.ts().  It does not significantly add any plotting functionality, but I include it for completeness and since the [Rmetrics team](https://www.rmetrics.org) offers robust financial analysis through its many R packages that depend on the timeSeries object.
 
 
 ```r
@@ -245,7 +264,7 @@ timeSeries::plot(
 )
 ```
 
-![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12.png) 
 
 
 - - -
@@ -281,32 +300,34 @@ returns.annual <- as.xts(
 )
 #name columns something a little more clear
 colnames(returns.annual) <- c("S&P 500","Russell 2000")
-#using barplot.xts create the plot
-#I made some subtle changes to barplot.xts to experiment so plot will be cosmetically different
-barplot.xts(returns.annual,
-            stacked=FALSE,
-            box="transparent",  #get rid of box surrounding the plot
-            ylim=c(-0.5,0.5),
-            ylab=NA,
-            border=c(brewer.pal(n=11,"BrBG")[c(4,9)]),
-            col=c(brewer.pal(n=11,"BrBG")[c(4,9)])) #deliberately trying some new colors                         
+
+barplot.xts(
+  returns.annual,
+  stacked=FALSE,
+  box="transparent",  #get rid of box surrounding the plot
+  ylim=c(-0.5,0.5),
+  ylab=NA,
+  border=c(brewer.pal(n=11,"BrBG")[c(4,9)]),
+  col=c(brewer.pal(n=11,"BrBG")[c(4,9)])
+)
+
+title(
+  main="Annual Returns of S&P 500 and Russell 2000 (xtsExtra::barplot.xts)", 
+  outer = TRUE,
+  adj=0.05,
+  font.main = 1,
+  cex.main = 1.25,
+  line = -2
+)
 ```
 
-![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-121.png) 
-
-```r
-title(main="Annual Returns of S&P 500 and Russell 2000 (xtsExtra::plot.xts)", 
-      outer = TRUE,
-      adj=0.05, font.main = 1, cex.main = 1.25, line = -2)
-```
-
-![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-122.png) 
+![plot of chunk unnamed-chunk-13](assets/fig/unnamed-chunk-13.png) 
 
 
 - - -
 
 ---
-### rCharts
+### [rCharts](http://rcharts.github.io/site) 2013
 
 
 ```r

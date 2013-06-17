@@ -136,12 +136,28 @@ graphics::plot.default(
 <hr>
 
 <h3><a href="https://stat.ethz.ch/pipermail/r-announce/1999/000097.html">ts</a> 1999-08-27</h3>
-<p>The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley&#39;s <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">&quot;Time Series in R 1.5.0&quot; from Volume 2 of R News, June 2002</a>.</p>
+<p>The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley&#39;s <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">&quot;Time Series in R 1.5.0&quot; from Volume 2 of R News, June 2002</a>.  plot.ts added some nice features, such as the ability to handle multiple series, specify panels per series, and automatically handle acf, ARIMA, and HoltWinters.</p>
+
+<pre><code class="r">stats::plot.ts(
+  ts(sp500.monthly,
+     start = c(
+       as.numeric(format(index(sp500.monthly)[1],&quot;%Y&quot;)),
+       as.numeric(format(index(sp500.monthly)[1],&quot;%m&quot;))
+     ),
+     frequency = 12
+  ), # some backwards conversion to ts from xts
+  xlab = &quot;Date&quot;,
+  ylab = &quot;Closing Value&quot;,
+  main = &quot;S&amp;P 500 (stats::plot.ts)&quot;
+)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
 
 <hr>
 
 <h3><a href="http://r-forge.r-project.org/scm/?group_id=638">lattice</a> and <a href="http://www.stat.auckland.ac.nz/%7Epaul/grid/grid.html">grid</a> released with R 1.5.0 2002-04-29</h3>
-<p>With the release of lattice and grid and also the improvements in ts mentioned above, R 1.5.0 was a very important milestone for both graphing and time series analysis.  All of these are covered in <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">Volume 2 of R News, June 2002</a>.</p>
+<p>With the release of lattice and grid and also the improvements in ts mentioned above, R 1.5.0 was a very important milestone for both graphing and time series analysis.  All of these are covered in <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">Volume 2 of R News, June 2002</a>.  lattice began the era of aesthetically pleasing and production-quality graphics straight from R.</p>
 
 <hr>
 
@@ -153,7 +169,7 @@ zoo::plot.zoo(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+<p><img src="assets/fig/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
 
 <hr>
 
@@ -172,7 +188,7 @@ asTheEconomist(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+<p><img src="assets/fig/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
 
 <hr>
 
@@ -184,7 +200,7 @@ charts.PerformanceSummary(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-62.png" alt="plot of chunk unnamed-chunk-6"> </p>
+<p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
 <hr>
 
@@ -198,7 +214,7 @@ ggplot( sp500.df, aes(date) ) +
   labs( title = &quot;S&amp;P 500 (ggplot2::ggplot)&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+<p><img src="assets/fig/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
 
 <hr>
 
@@ -214,7 +230,7 @@ chartSeries(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-82.png" alt="plot of chunk unnamed-chunk-8"> </p>
+<p><img src="assets/fig/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
 
 <p>Just look how easy it is to zoom.</p>
 
@@ -222,7 +238,7 @@ chartSeries(
 zoomChart(&quot;1990::&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-92.png" alt="plot of chunk unnamed-chunk-9"> </p>
+<p><img src="assets/fig/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
 
 <hr>
 
@@ -237,12 +253,12 @@ xts::plot.xts(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+<p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
 
 <hr>
 
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&amp;view=log">timeSeries plot</a> 2009-05-17</h3>
-<p>The timeSeries plot method is basically a port of R&#39;s plot.ts().  It does not significantly add any functionality, but I include it for completeness and since the <a href="https://www.rmetrics.org">Rmetrics team</a> offers robust financial analysis through its many R packages that depend on the timeSeries object.</p>
+<p>The timeSeries plot method is basically a port of R&#39;s plot.ts().  It does not significantly add any plotting functionality, but I include it for completeness and since the <a href="https://www.rmetrics.org">Rmetrics team</a> offers robust financial analysis through its many R packages that depend on the timeSeries object.</p>
 
 <pre><code class="r">require(timeSeries)
 timeSeries::plot(
@@ -251,7 +267,7 @@ timeSeries::plot(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
+<p><img src="assets/fig/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"> </p>
 
 <hr>
 
@@ -282,29 +298,32 @@ returns.annual &lt;- as.xts(
 )
 #name columns something a little more clear
 colnames(returns.annual) &lt;- c(&quot;S&amp;P 500&quot;,&quot;Russell 2000&quot;)
-#using barplot.xts create the plot
-#I made some subtle changes to barplot.xts to experiment so plot will be cosmetically different
-barplot.xts(returns.annual,
-            stacked=FALSE,
-            box=&quot;transparent&quot;,  #get rid of box surrounding the plot
-            ylim=c(-0.5,0.5),
-            ylab=NA,
-            border=c(brewer.pal(n=11,&quot;BrBG&quot;)[c(4,9)]),
-            col=c(brewer.pal(n=11,&quot;BrBG&quot;)[c(4,9)])) #deliberately trying some new colors                         
+
+barplot.xts(
+  returns.annual,
+  stacked=FALSE,
+  box=&quot;transparent&quot;,  #get rid of box surrounding the plot
+  ylim=c(-0.5,0.5),
+  ylab=NA,
+  border=c(brewer.pal(n=11,&quot;BrBG&quot;)[c(4,9)]),
+  col=c(brewer.pal(n=11,&quot;BrBG&quot;)[c(4,9)])
+)
+
+title(
+  main=&quot;Annual Returns of S&amp;P 500 and Russell 2000 (xtsExtra::barplot.xts)&quot;, 
+  outer = TRUE,
+  adj=0.05,
+  font.main = 1,
+  cex.main = 1.25,
+  line = -2
+)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-121.png" alt="plot of chunk unnamed-chunk-12"> </p>
-
-<pre><code class="r">title(main=&quot;Annual Returns of S&amp;P 500 and Russell 2000 (xtsExtra::plot.xts)&quot;, 
-      outer = TRUE,
-      adj=0.05, font.main = 1, cex.main = 1.25, line = -2)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-122.png" alt="plot of chunk unnamed-chunk-12"> </p>
+<p><img src="assets/fig/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"> </p>
 
 <hr>
 
-<h3>rCharts</h3>
+<h3><a href="http://rcharts.github.io/site">rCharts</a> 2013</h3>
 <pre><code class="r"># 2013 the world changes with rCharts
 
 # define a function to convert wide to long
