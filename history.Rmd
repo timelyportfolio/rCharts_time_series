@@ -1,6 +1,6 @@
 ---
 title: R Charting of Time Series
-subtitle: Part 1: History from plot.default to rCharts
+subtitle: History from plot.default to rCharts
 author: Timely Portfolio
 github: {user: ramnathv, repo: rCharts, branch: "gh-pages"}
 framework: minimal
@@ -16,13 +16,20 @@ logo: libraries/frameworks/minimal/images/rCharts.png
 }
 </style>
 
-# Part 1: History of R Charting of Time Series
+# History of R Charting of Time Series
 
-As with all of R, the ability to easily chart financial time series is a result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the steps.  For each step, we will include a link to the source (svn or github) and a minimal example to demo the "out-of-the-box" capability.  Just in case you don't make it to the end,   
+As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the "out-of-the-box" capability.  Separating the time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics.
+
+For a much more extensive discussion of time series analysis with R, please see:
+
+- [Time Series Analysis with R](http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf) by A. Ian McLeod, Hao Yu, and Esam Mahdi
+- [CRAN Task View: Time Series Analysis](http://cran.r-project.org/web/views/TimeSeries.html) by Rob Hyndman
+- [A Little Book of R for Time Series]() by Avril Chohlan
+
+Just in case you don't make it to the end,   
 > Thanks to the contributors!  I wouldn't be using R if it weren't for you.
 
 ```{r echo = F, message = F, cache = F}
-require(rCharts)
 options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
 knitr::opts_chunk$set(
   comment = NA,
@@ -36,16 +43,18 @@ knitr::opts_chunk$set(
 ```
 
 ---
-## Plots Need Data
+## Get Some Data to PLot
 First, to build a plot, we need data. Let's show how easy it is to get a time series of financial data in R through `quantmod` [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log).  The `getSymbols()` function has been a work in progress since December 20, 2006.
 
 ```{r}
 require(latticeExtra)
-require(quantmod)
+require(ggplot2)
 require(reshape2)
-require(rCharts)
+require(quantmod)
 require(PerformanceAnalytics)
+require(timeSeries)
 require(xtsExtra)
+require(rCharts)
 
 
 # get S&P 500 data from FRED (St. Louis Fed)
@@ -106,7 +115,8 @@ zoo::plot.zoo(sp500.monthly)
 
 ```{r}
 # 2006-07-06 zoo also made a handy lattice xyplot.zoo function
-# so no more need to melt wide data to long data prior to plotting
+# so no more need to melt wide data to long data
+# or convert to data.frame prior to plotting
 # although slightly out of chronology
 # I'll also use theEconomist from latticeExtra
 asTheEconomist(
@@ -131,6 +141,18 @@ charts.PerformanceSummary(
 )
 ```
 
+- - -
+
+---
+### [ggplot2](http://cran.r-project.org/src/contrib/Archive/ggplot2/) 2007-06-10
+Although ggplot2 is not designed specifically for time series plotting, I include it in the timeline for both its significant impact on R graphics and its ability to handle dates/times on the x-axis.  To use xts with ggplot2, a simple conversion to a wide or long format data.frame is necessary.
+```{r}
+#ggplot2 requires conversion of xts to data.frame
+#we will use the data.frame from the plot.default example
+ggplot( sp500.df, aes(date) ) + 
+  geom_line( aes( y = sp500 ) ) +
+  labs( title = "S&P 500 (ggplot2::ggplot)")
+```
 - - -
 
 ---
@@ -173,6 +195,16 @@ xts::plot.xts(
 - - -
 
 ---
+### [timeSeries plot](https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&view=log) 2009-05-17
+The timeSeries plot method is basically a port of R's plot.ts().  It does not significantly add any functionality, but I include it for completeness and since the [Rmetrics team](https://www.rmetrics.org) offers robust financial analysis through its many R packages that depend on the timeSeries object.
+
+```{r}
+timeSeries::plot(timeSeries(sp500.monthly))
+```
+
+- - -
+
+---
 ### [xtsExtra plot.xts and barplot.xts](https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/R/plot.R?root=xts&view=log) 2012-05-30
 
 ```{r}
@@ -189,8 +221,8 @@ xts::plot.xts(
 
 #explore barplot.xts to do a chart of annual returns for both indexes
 #merge prices
-getSymbols("^RUT", from = "1900-01-01")  
-prices <- merge(sp500,RUT[,4])
+russell2000 <- getSymbols("^RUT", from = "1900-01-01", auto.assign = F)  
+prices <- merge(sp500,russell2000[,4])
 #use endpoints to get annual returns
 returns.annual <- as.xts(
   apply(
@@ -276,3 +308,14 @@ n1$print("chart1")
 ---
 ## Thanks
 Thanks to all the wonderful and diligent contributors who have made R great.
+
+
+## References
+[http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf]
+[http://cran.r-project.org/web/views/TimeSeries.html]
+
+[http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf]
+[http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf]
+[http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf]
+
+[http://fishyoperations.com/r/timeline-graph-with-ggplot2/]
