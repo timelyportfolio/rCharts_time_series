@@ -148,7 +148,9 @@ graphics::plot.default(
 
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/plot.zoo.R?root=zoo&amp;view=log">zoo</a> 2004-10-08</h3>
 <pre><code class="r"># 2004-10-08 plot.zoo comes to the rescue with the zoo package
-zoo::plot.zoo(sp500.monthly)
+zoo::plot.zoo(
+  sp500.monthly,
+  main = &quot;S&amp;P 500 (zoo::plot.zoo)&quot;)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
@@ -285,7 +287,7 @@ barplot.xts(returns.annual,
 
 <p><img src="assets/fig/unnamed-chunk-121.png" alt="plot of chunk unnamed-chunk-12"> </p>
 
-<pre><code class="r">title(main=&quot;Annual Returns of S&amp;P 500 and Russell 2000&quot;, 
+<pre><code class="r">title(main=&quot;Annual Returns of S&amp;P 500 and Russell 2000 (xtsExtra::plot.xts)&quot;, 
       outer = TRUE,
       adj=0.05, font.main = 1, cex.main = 1.25, line = -2)
 </code></pre>

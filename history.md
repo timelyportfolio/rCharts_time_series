@@ -111,7 +111,9 @@ With the release of lattice and grid and also the improvements in ts mentioned a
 
 ```r
 # 2004-10-08 plot.zoo comes to the rescue with the zoo package
-zoo::plot.zoo(sp500.monthly)
+zoo::plot.zoo(
+  sp500.monthly,
+  main = "S&P 500 (zoo::plot.zoo)")
 ```
 
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
