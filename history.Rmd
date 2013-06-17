@@ -252,7 +252,7 @@ barplot.xts(returns.annual,
             ylab=NA,
             border=c(brewer.pal(n=11,"BrBG")[c(4,9)]),
             col=c(brewer.pal(n=11,"BrBG")[c(4,9)])) #deliberately trying some new colors                         
-title(main="Annual Returns of S&P 500 and Russell 2000", 
+title(main="Annual Returns of S&P 500 and Russell 2000 (xtsExtra::plot.xts)", 
       outer = TRUE,
       adj=0.05, font.main = 1, cex.main = 1.25, line = -2)
 ```

@@ -282,7 +282,7 @@ barplot.xts(returns.annual,
 ![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-121.png) 
 
 ```r
-title(main="Annual Returns of S&P 500 and Russell 2000", 
+title(main="Annual Returns of S&P 500 and Russell 2000 (xtsExtra::plot.xts)", 
       outer = TRUE,
       adj=0.05, font.main = 1, cex.main = 1.25, line = -2)
 ```
