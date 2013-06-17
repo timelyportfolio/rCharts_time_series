@@ -1,312 +1,346 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>History of R Charting of Time Series</title>
-    <link rel="stylesheet" href="libraries/frameworks/minimal/stylesheets/styles.css">
-    <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-        <link rel=stylesheet href="libraries/widgets/morris/css/morris.css"></link>
-<link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
-<link rel=stylesheet href="libraries/widgets/xcharts/css/xcharts.min.css"></link>
-<link rel=stylesheet href="libraries/widgets/leaflet/external/leaflet.css"></link>
-<link rel=stylesheet href="libraries/widgets/leaflet/external/leaflet-rCharts.css"></link>
-<link rel=stylesheet href="libraries/widgets/leaflet/external/legend.css"></link>
-<link rel=stylesheet href="libraries/widgets/rickshaw/css/rickshaw.min.css"></link>
-<link rel=stylesheet href="libraries/widgets/rickshaw/css/jquery-ui.css"></link>
-<link rel=stylesheet href="libraries/widgets/rickshaw/css/rickshaw-rcharts.css"></link>
+---
+title: R Charting of Time Series
+subtitle: History from plot.default to rCharts
+author: Timely Portfolio
+github: {user: ramnathv, repo: rCharts, branch: "gh-pages"}
+framework: minimal
+mode: selfcontained
+ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polycharts", "libraries/highcharts","libraries/xcharts", "libraries/rickshaw"]}
+hitheme: solarized_light
+logo: libraries/frameworks/minimal/images/rCharts.png
+---
 
-    <script src="libraries/widgets/morris/js/jquery.min.js"></script>
-<script src="libraries/widgets/morris/js/raphael-2.1.0.min.js"></script>
-<script src="libraries/widgets/morris/js/morris.min.js"></script>
-<script src="libraries/widgets/nvd3/js/d3.v2.min.js"></script>
-<script src="libraries/widgets/nvd3/js/nv.d3.min.js"></script>
-<script src="libraries/widgets/polycharts/js/polychart2.standalone.js"></script>
-<script src="libraries/widgets/highcharts/js/highcharts.js"></script>
-<script src="libraries/widgets/highcharts/js/highcharts-more.js"></script>
-<script src="libraries/widgets/xcharts/js/xcharts.min.js"></script>
-<script src="libraries/widgets/leaflet/external/leaflet.js"></script>
-<script src="libraries/widgets/leaflet/external/leaflet-providers.js"></script>
-<script src="libraries/widgets/leaflet/external/Control.FullScreen.js"></script>
-<script src="libraries/widgets/rickshaw/js/rickshaw.min.js"></script>
-<script src="libraries/widgets/rickshaw/js/jquery-ui.min.js"></script>
-
-  </head>
-  <body>
-    <div class="wrapper">
-<header>
-  <h1><img src=libraries/frameworks/minimal/images/rCharts.png /></h1>
-  <p>from plot.default to Interactive rCharts</p>
-  <pre><code class='r'>require(devtools)
-install_github('rCharts', 'ramnathv')</code></pre>
-  <p class="view">
-    <a href="http://github.com/ramnathv/rCharts">
-     View the Project on GitHub <small>ramnathv/rCharts</small>
-    </a>
-  </p>
-  <ul class='buttons'>
-    <li><a href="https://github.com/ramnathv/rCharts/zipball/gh-pages">
-      Download <strong>ZIP File</strong>
-    </a></li>
-    <li><a href="https://github.com/ramnathv/rCharts/tarball/gh-pages">
-      Download <strong>TAR Ball</strong>
-    </a></li>
-    <li><a href="http://github.com/ramnathv/rCharts">
-      Fork On <strong>GitHub</strong></a>
-    </li>
-  </ul>
-    <ol>
-    </ol>
-</header>
-
-      <section>
-        
 <style>
 .rChart {
   height: 400px
 }
 </style>
 
-<h1>History of R Charting of Time Series</h1>
+# History of R Charting of Time Series
 
-<p>As with all of R, the ability to easily chart financial time series is a result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of <a href="http://ramnathv.github.io/rCharts">rCharts</a>, I thought it would be interesting to document the steps.  For each step, we will include a link to the source (svn or github) and a minimal example to demo the &quot;out-of-the-box&quot; capability.  Just in case you don&#39;t make it to the end,   </p>
+As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the "out-of-the-box" capability.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.
 
-<blockquote>
-<p>Thanks to the contributors!  I wouldn&#39;t be using R if it weren&#39;t for you.</p>
-</blockquote>
+For a much more extensive discussion of time series analysis with R, please see:
 
-<h2>Plots Need Data</h2>
-<p>First, to build a plot, we need data. Let&#39;s show how easy it is to get a time series of financial data in R through <code>quantmod</code> <a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&amp;view=log"><code>getSymbols()</code></a>.  The <code>getSymbols()</code> function has been a work in progress since December 20, 2006.</p>
+- [Time Series Analysis with R](http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf) by A. Ian McLeod, Hao Yu, and Esam Mahdi
+- [CRAN Task View: Time Series Analysis](http://cran.r-project.org/web/views/TimeSeries.html) by Rob Hyndman
+- [A Little Book of R for Time Series](http://a-little-book-of-r-for-time-series.readthedocs.org/en/latest/src/timeseries.html) by Avril Chohlan
 
-<pre><code class="r">require(latticeExtra)
-require(quantmod)
+Just in case you don't make it to the end,   
+> Thanks to the contributors!  I wouldn't be using R if it weren't for you.
+
+
+
+First, to build a plot, we need data. Let's see how easy it is to get a time series of financial data in R through `quantmod` [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log).  The [`getSymbols()`]((https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log)) function has been a work in progress since December 20, 2006.
+
+
+```r
+require(timeSeries)
+require(latticeExtra)
+require(ggplot2)
 require(reshape2)
-require(rCharts)
+require(quantmod)
 require(PerformanceAnalytics)
 require(xtsExtra)
+require(rCharts)
 
 
-# get S&amp;P 500 data from FRED (St. Louis Fed)
-sp500 &lt;- na.omit( 
+# get S&P 500 data from FRED (St. Louis Fed)
+sp500 <- na.omit( 
   getSymbols(
-    &quot;SP500&quot;,
-    src = &quot;FRED&quot;,
-    from = &quot;1949-12-31&quot;,
+    "SP500",
+    src = "FRED",
+    from = "1949-12-31",
     auto.assign = FALSE
   )
 )
 
 # use monthly data
-sp500.monthly &lt;- sp500[endpoints(sp500, on =&quot;months&quot;)]
-</code></pre>
+sp500.monthly <- sp500[endpoints(sp500, on ="months")]
+```
 
-<h2>Steps in Time</h2>
-<h3>plot.default (As Old as Time Itself)</h3>
 
-<pre><code class="r"># base plot of time series prior to xts
+---
+## Timeline
+
+### plot.default (As Old as Time Itself)
+
+
+```r
+# base plot of time series prior to xts
 # get the data in data.frame format rather than xts
-sp500.df &lt;- data.frame(
+sp500.df <- data.frame(
   index(sp500.monthly),
   coredata(sp500.monthly),
   stringsAsFactors=FALSE
 )
 # name columns
-colnames( sp500.df ) &lt;- c( &quot;date&quot;, &quot;sp500&quot; )
+colnames( sp500.df ) <- c( "date", "sp500" )
 # go back in time to plot.default from the graphics library
 graphics::plot.default(
   x = sp500.df$date,
   y = sp500.df$sp500,
-  type = &quot;l&quot;,
-  xlab = &quot;Date&quot;,
-  ylab = &quot;Closing Value&quot;,
-  main = &quot;S&amp;P 500 (graphics::plot.default)&quot;
+  type = "l",
+  xlab = "Date",
+  ylab = "Closing Value",
+  main = "S&P 500 (graphics::plot.default)"
 )
-</code></pre>
+```
 
-<p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3.png) 
 
-<hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/plot.zoo.R?root=zoo&amp;view=log">zoo</a> 2004-10-08</h3>
-<pre><code class="r"># 2004-10-08 plot.zoo comes to the rescue with the zoo package
+- - -
+
+---
+### [ts](https://stat.ethz.ch/pipermail/r-announce/1999/000097.html) 1999-08-27
+The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley's ["Time Series in R 1.5.0" from Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).
+
+- - -
+
+---
+### [lattice](http://r-forge.r-project.org/scm/?group_id=638) and [grid](http://www.stat.auckland.ac.nz/~paul/grid/grid.html) released with R 1.5.0 2002-04-29
+With the release of lattice and grid and also the improvements in ts mentioned above, R 1.5.0 was a very important milestone for both graphing and time series analysis.  All of these are covered in [Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).
+
+- - -
+
+---
+### [zoo](https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/plot.zoo.R?root=zoo&view=log) 2004-10-08
+
+
+
+```r
+# 2004-10-08 plot.zoo comes to the rescue with the zoo package
 zoo::plot.zoo(sp500.monthly)
-</code></pre>
+```
 
-<p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
 
-<hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/xyplot.zoo.R?root=zoo&amp;view=log">zoo</a> Meets <a href="http://r-forge.r-project.org/scm/?group_id=638">lattice</a> 2006-07-06</h3>
-<pre><code class="r"># 2006-07-06 zoo also made a handy lattice xyplot.zoo function
-# so no more need to melt wide data to long data prior to plotting
+- - -
+
+---
+### [zoo](https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/xyplot.zoo.R?root=zoo&view=log) Meets [lattice](http://r-forge.r-project.org/scm/?group_id=638) 2006-07-06
+
+
+```r
+# 2006-07-06 zoo also made a handy lattice xyplot.zoo function
+# so no more need to melt wide data to long data
+# or convert to data.frame prior to plotting
 # although slightly out of chronology
-# I&#39;ll also use theEconomist from latticeExtra
+# I'll also use theEconomist from latticeExtra
 asTheEconomist(
   xyplot(
     sp500.monthly,
     scales = list( y = list( rot = 0 ) ),
-    main = &quot;S&amp;P 500 (lattice::xyplot.xts)&quot;  
+    main = "S&P 500 (lattice::xyplot.xts)"  
   )
 )
-</code></pre>
+```
 
-<p><img src="assets/fig/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
 
-<hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/PerformanceAnalytics/R/chart.TimeSeries.R?root=returnanalytics&amp;view=log">PerformanceAnalytics chart.TimeSeries</a> 2007-02-02</h3>
-<pre><code class="r"># 2007-02-02 chart.TimeSeries in PerformanceAnalytics
+- - -
+
+---
+### [PerformanceAnalytics chart.TimeSeries](https://r-forge.r-project.org/scm/viewvc.php/pkg/PerformanceAnalytics/R/chart.TimeSeries.R?root=returnanalytics&view=log) 2007-02-02
+
+
+```r
+# 2007-02-02 chart.TimeSeries in PerformanceAnalytics
 charts.PerformanceSummary(
-  ROC(sp500.monthly, n = 1, type = &quot;discrete&quot;),
-  main = &quot;S&amp;P 500 (PerformanceAnalytice::charts.PerformanceSummary)&quot;
+  ROC(sp500.monthly, n = 1, type = "discrete"),
+  main = "S&P 500 (PerformanceAnalytice::charts.PerformanceSummary)"
 )
-</code></pre>
+```
 
-<p><img src="assets/fig/unnamed-chunk-61.png" alt="plot of chunk unnamed-chunk-6"> <img src="assets/fig/unnamed-chunk-62.png" alt="plot of chunk unnamed-chunk-6"> </p>
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-61.png) ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-62.png) 
 
-<hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&amp;view=log">quantmod/ttr chartSeries</a> 2007-10-07</h3>
-<pre><code class="r"># 2007-10-17 then quantmod/ttr built on zoo
+- - -
+
+---
+### [ggplot2](http://cran.r-project.org/src/contrib/Archive/ggplot2/) 2007-06-10
+Although ggplot2 is not designed specifically for time series plotting, I include it in the timeline for both its significant impact on R graphics and its ability to handle dates/times on the x-axis.  To use xts with ggplot2, a simple conversion to a wide or long format data.frame is necessary.
+
+```r
+#ggplot2 requires conversion of xts to data.frame
+#we will use the data.frame from the plot.default example
+ggplot( sp500.df, aes(date) ) + 
+  geom_line( aes( y = sp500 ) ) +
+  labs( title = "S&P 500 (ggplot2::ggplot)")
+```
+
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
+
+- - -
+
+---
+### [quantmod/ttr chartSeries](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&view=log) 2007-10-07
+
+```r
+# 2007-10-17 then quantmod/ttr built on zoo
 # to offer much better handling of financial time series
 # notice the ease of adding pertinent financial information
 chartSeries(
   sp500.monthly,
 #  log = TRUE,
-  theme = chartTheme(&quot;white&quot;),
+  theme = chartTheme("white"),
   TA = c(addBBands(),addTA(RSI(sp500.monthly)))
 )
-</code></pre>
+```
 
-<p><img src="assets/fig/unnamed-chunk-71.png" alt="plot of chunk unnamed-chunk-7"> <img src="assets/fig/unnamed-chunk-72.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
-<p>Just look how easy it is to zoom.</p>
+Just look how easy it is to zoom.
 
-<pre><code class="r"># also easy zooming
-zoomChart(&quot;1990::&quot;)
-</code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-81.png" alt="plot of chunk unnamed-chunk-8"> <img src="assets/fig/unnamed-chunk-82.png" alt="plot of chunk unnamed-chunk-8"> </p>
+```r
+# also easy zooming
+zoomChart("1990::")
+```
 
-<hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/xts/R/plot.R?root=xts&amp;view=log">xts plot.xts</a> 2008-02-17</h3>
-<pre><code class="r"># 2008-02-17 xts improved zoo and other time series libraries
+- - -
+
+---
+### [xts plot.xts](https://r-forge.r-project.org/scm/viewvc.php/pkg/xts/R/plot.R?root=xts&view=log) 2008-02-17
+
+
+```r
+# 2008-02-17 xts improved zoo and other time series libraries
 # http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
 # plot.zoo got ported to plot.xts and little graphing improvement
 xts::plot.xts(
   sp500.monthly,
-  ylab = &quot;Closing Value&quot;,
-  main = &quot;S&amp;P 500 (xts::plot.xts)&quot;  
+  ylab = "Closing Value",
+  main = "S&P 500 (xts::plot.xts)"  
 )
-</code></pre>
+```
 
-<p><img src="assets/fig/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10.png) 
 
-<hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/R/plot.R?root=xts&amp;view=log">xtsExtra plot.xts and barplot.xts</a> 2012-05-30</h3>
-<pre><code class="r"># Summer 2012 Google Summer of Code
+- - -
+
+---
+### [timeSeries plot](https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&view=log) 2009-05-17
+The timeSeries plot method is basically a port of R's plot.ts().  It does not significantly add any functionality, but I include it for completeness and since the [Rmetrics team](https://www.rmetrics.org) offers robust financial analysis through its many R packages that depend on the timeSeries object.
+
+
+```r
+timeSeries::plot(timeSeries(sp500.monthly))
+```
+
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
+
+
+- - -
+
+---
+### [xtsExtra plot.xts and barplot.xts](https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/R/plot.R?root=xts&view=log) 2012-05-30
+
+
+```r
+# Summer 2012 Google Summer of Code
 # xtsExtra significantly improves xts
 # lots of examples in this post
 # http://timelyportfolio.blogspot.com/search/label/plot.xts
 
 #require(devtools)
-#setwd(&quot;C:/Program Files/R/R-2.15.1/sandbox/svnsource/xts/pkg/xtsExtra&quot;)
+#setwd("C:/Program Files/R/R-2.15.1/sandbox/svnsource/xts/pkg/xtsExtra")
 #build()
 #load_all()
 
 
 #explore barplot.xts to do a chart of annual returns for both indexes
 #merge prices
-getSymbols(&quot;^RUT&quot;, from = &quot;1900-01-01&quot;)  
-</code></pre>
-
-<p>[1] &quot;RUT&quot;</p>
-
-<pre><code class="r">prices &lt;- merge(sp500,RUT[,4])
+russell2000 <- getSymbols("^RUT", from = "1900-01-01", auto.assign = F)  
+prices <- merge(sp500,russell2000[,4])
 #use endpoints to get annual returns
-returns.annual &lt;- as.xts(
+returns.annual <- as.xts(
   apply(
-    ROC(prices[endpoints(prices,&quot;years&quot;)],type=&quot;discrete&quot;,n=1),
+    ROC(prices[endpoints(prices,"years")],type="discrete",n=1),
     MARGIN = 2,
     FUN = na.fill, fill = 0
   ),
-  order.by = index(prices[endpoints(prices,&quot;years&quot;)])
+  order.by = index(prices[endpoints(prices,"years")])
 )
 #name columns something a little more clear
-colnames(returns.annual) &lt;- c(&quot;S&amp;P 500&quot;,&quot;Russell 2000&quot;)
+colnames(returns.annual) <- c("S&P 500","Russell 2000")
 #using barplot.xts create the plot
 #I made some subtle changes to barplot.xts to experiment so plot will be cosmetically different
 barplot.xts(returns.annual,
             stacked=FALSE,
-            box=&quot;transparent&quot;,  #get rid of box surrounding the plot
+            box="transparent",  #get rid of box surrounding the plot
             ylim=c(-0.5,0.5),
             ylab=NA,
-            border=c(brewer.pal(n=11,&quot;BrBG&quot;)[c(4,9)]),
-            col=c(brewer.pal(n=11,&quot;BrBG&quot;)[c(4,9)])) #deliberately trying some new colors                         
-</code></pre>
+            border=c(brewer.pal(n=11,"BrBG")[c(4,9)]),
+            col=c(brewer.pal(n=11,"BrBG")[c(4,9)])) #deliberately trying some new colors                         
+```
 
-<p><img src="assets/fig/unnamed-chunk-101.png" alt="plot of chunk unnamed-chunk-10"> </p>
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-121.png) 
 
-<pre><code class="r">title(main=&quot;Annual Returns of S&amp;P 500 and Russell 2000&quot;, 
+```r
+title(main="Annual Returns of S&P 500 and Russell 2000", 
       outer = TRUE,
       adj=0.05, font.main = 1, cex.main = 1.25, line = -2)
-</code></pre>
+```
 
-<p><img src="assets/fig/unnamed-chunk-102.png" alt="plot of chunk unnamed-chunk-10"> </p>
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-122.png) 
 
-<hr>
 
-<h3>rCharts</h3>
-<pre><code class="r"># 2013 the world changes with rCharts
+- - -
+
+---
+### rCharts
+
+
+```r
+# 2013 the world changes with rCharts
 
 # define a function to convert wide to long
-xtsMelt &lt;- function(xtsData,metric){
-  df &lt;- data.frame(index(xtsData),coredata(xtsData),stringsAsFactors=FALSE)
-  df.melt &lt;- melt(df,id.vars=1)
-  df.melt &lt;- data.frame(df.melt,rep(metric,NROW(df.melt)))
+xtsMelt <- function(xtsData,metric){
+  df <- data.frame(index(xtsData),coredata(xtsData),stringsAsFactors=FALSE)
+  df.melt <- melt(df,id.vars=1)
+  df.melt <- data.frame(df.melt,rep(metric,NROW(df.melt)))
   #little unnecessary housekeeping
-  df.melt &lt;- df.melt[,c(1,2,4,3)]
-  colnames(df.melt) &lt;- c(&quot;date&quot;,&quot;indexname&quot;,&quot;metric&quot;,&quot;value&quot;)
-  df.melt$date &lt;- as.Date(df.melt$date)
+  df.melt <- df.melt[,c(1,2,4,3)]
+  colnames(df.melt) <- c("date","indexname","metric","value")
+  df.melt$date <- as.Date(df.melt$date)
   #javascript works better when there are no .
   #remove troublesome . using modified method from this Stack Overflow
   #http://stackoverflow.com/questions/2851015/convert-data-frame-columns-from-factors-to-characters
-  i &lt;- sapply(df.melt, is.factor)
-  df.melt[i] &lt;- lapply(df.melt[i], gsub, pattern=&quot;\\.&quot;, replacement=&quot;&quot;)
-
+  i <- sapply(df.melt, is.factor)
+  df.melt[i] <- lapply(df.melt[i], gsub, pattern="\\.", replacement="")
+  
   return(df.melt)
 }
 
-sp500.melt &lt;- xtsMelt(
+sp500.melt <- xtsMelt(
   sp500.monthly,
-  metric = &quot;price&quot;
+  metric = "price"
 )
 
-n1 &lt;- nPlot(
+n1 <- nPlot(
   value~date,
   data = sp500.melt,
-  group = &quot;indexname&quot;,  # even though only one series need to specify group
-  type = &quot;lineWithFocusChart&quot;
+  group = "indexname",  # even though only one series need to specify group
+  type = "lineWithFocusChart"
 )
 
 n1$xAxis(
-  tickFormat=&quot;#!function(d) {return d3.time.format(&#39;%b %Y&#39;)(new Date( d * 86400000 ));}!#&quot;
+  tickFormat="#!function(d) {return d3.time.format('%b %Y')(new Date( d * 86400000 ));}!#"
 )
 
 n1$x2Axis(
-  tickFormat=&quot;#!function(d) {return d3.time.format(&#39;%Y&#39;)(new Date( d * 86400000 ));}!#&quot;
+  tickFormat="#!function(d) {return d3.time.format('%Y')(new Date( d * 86400000 ));}!#"
 )
-n1$print(&quot;chart1&quot;)
-</code></pre>
+n1$print("chart1")
+```
+
 
 <div id='chart1' class='rChart nvd3'></div>
-
 <script type='text/javascript'>
  $(document).ready(function(){
       drawchart1()
@@ -4386,10 +4420,10 @@ n1$print(&quot;chart1&quot;)
 "value": 1630.7 
 },
 {
- "date":  15869,
+ "date":  15870,
 "indexname": "SP500",
 "metric": "price",
-"value": 1636.4 
+"value": 1626.7 
 } 
 ]
   
@@ -4428,34 +4462,35 @@ n1$print(&quot;chart1&quot;)
     };
 </script>
 
+
+
+
 <h4>morris.js example</h4>
 
 <h4>rickshaw example</h4>
 
-<hr>
+<h4>highcharts example</h4>
 
-<h2>Thanks</h2>
-<p>Thanks to all the wonderful and diligent contributors who have made R great.</p>
 
-      </section>
-      <footer>
-        <p>Maintained by <a href="http://github.com/ramnathv">
-          Timely Portfolio
-        </a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by 
-          <a href="https://github.com/orderedlist">orderedlist</a></small>
-        </p>
-      </footer>    </div>
-    <script src="libraries/frameworks/minimal/javascripts/scale.fix.js"></script>
-  </body>
-  <!-- Load Javascripts for Widgets -->
-  
-  <script src='libraries/widgets/nvd3/js/d3.v2.js'></script>
-  <script src='libraries/widgets/nvd3/js/nv.d3.min.js'></script>
-  
-  <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
-   
-  </html>
+- - -
+
+---
+## Thanks
+Thanks to all the wonderful and diligent contributors who have made R great.
+
+
+## References
+http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf
+
+http://cran.r-project.org/web/views/TimeSeries.html
+
+http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf
+
+http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf
+
+http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
+
+
+
+
+http://fishyoperations.com/r/timeline-graph-with-ggplot2/

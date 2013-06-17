@@ -5,7 +5,7 @@ author: Timely Portfolio
 github: {user: ramnathv, repo: rCharts, branch: "gh-pages"}
 framework: minimal
 mode: selfcontained
-ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polycharts", "libraries/highcharts","libraries/xcharts", "libraries/leaflet", "libraries/rickshaw"]}
+ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polycharts", "libraries/highcharts","libraries/xcharts", "libraries/rickshaw"]}
 hitheme: solarized_light
 logo: libraries/frameworks/minimal/images/rCharts.png
 ---
@@ -18,13 +18,13 @@ logo: libraries/frameworks/minimal/images/rCharts.png
 
 # History of R Charting of Time Series
 
-As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the "out-of-the-box" capability.  Separating the time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics.
+As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the "out-of-the-box" capability.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.
 
 For a much more extensive discussion of time series analysis with R, please see:
 
 - [Time Series Analysis with R](http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf) by A. Ian McLeod, Hao Yu, and Esam Mahdi
 - [CRAN Task View: Time Series Analysis](http://cran.r-project.org/web/views/TimeSeries.html) by Rob Hyndman
-- [A Little Book of R for Time Series]() by Avril Chohlan
+- [A Little Book of R for Time Series](http://a-little-book-of-r-for-time-series.readthedocs.org/en/latest/src/timeseries.html) by Avril Chohlan
 
 Just in case you don't make it to the end,   
 > Thanks to the contributors!  I wouldn't be using R if it weren't for you.
@@ -41,18 +41,15 @@ knitr::opts_chunk$set(
   fig.width = 8,
   fig.height = 5)
 ```
-
----
-## Get Some Data to PLot
-First, to build a plot, we need data. Let's show how easy it is to get a time series of financial data in R through `quantmod` [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log).  The `getSymbols()` function has been a work in progress since December 20, 2006.
+First, to build a plot, we need data. Let's see how easy it is to get a time series of financial data in R through `quantmod` [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log).  The [`getSymbols()`]((https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log)) function has been a work in progress since December 20, 2006.
 
 ```{r}
+require(timeSeries)
 require(latticeExtra)
 require(ggplot2)
 require(reshape2)
 require(quantmod)
 require(PerformanceAnalytics)
-require(timeSeries)
 require(xtsExtra)
 require(rCharts)
 
@@ -72,7 +69,7 @@ sp500.monthly <- sp500[endpoints(sp500, on ="months")]
 ```
 
 ---
-## Steps in Time
+## Timeline
 
 ### plot.default (As Old as Time Itself)
 
@@ -96,6 +93,18 @@ graphics::plot.default(
   main = "S&P 500 (graphics::plot.default)"
 )
 ```
+
+- - -
+
+---
+### [ts](https://stat.ethz.ch/pipermail/r-announce/1999/000097.html) 1999-08-27
+The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley's ["Time Series in R 1.5.0" from Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).
+
+- - -
+
+---
+### [lattice](http://r-forge.r-project.org/scm/?group_id=638) and [grid](http://www.stat.auckland.ac.nz/~paul/grid/grid.html) released with R 1.5.0 2002-04-29
+With the release of lattice and grid and also the improvements in ts mentioned above, R 1.5.0 was a very important milestone for both graphing and time series analysis.  All of these are covered in [Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).
 
 - - -
 
@@ -302,6 +311,8 @@ n1$print("chart1")
 
 <h4>rickshaw example</h4>
 
+<h4>highcharts example</h4>
+
 
 - - -
 
@@ -311,11 +322,17 @@ Thanks to all the wonderful and diligent contributors who have made R great.
 
 
 ## References
-[http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf]
-[http://cran.r-project.org/web/views/TimeSeries.html]
+http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf
 
-[http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf]
-[http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf]
-[http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf]
+http://cran.r-project.org/web/views/TimeSeries.html
 
-[http://fishyoperations.com/r/timeline-graph-with-ggplot2/]
+http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf
+
+http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf
+
+http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
+
+
+
+
+http://fishyoperations.com/r/timeline-graph-with-ggplot2/
