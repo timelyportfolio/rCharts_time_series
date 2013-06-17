@@ -35,7 +35,6 @@ First, to build a plot, we need data. Let's see how easy it is to get a time ser
 
 
 ```r
-require(timeSeries)
 require(latticeExtra)
 require(ggplot2)
 require(reshape2)
@@ -113,7 +112,8 @@ With the release of lattice and grid and also the improvements in ts mentioned a
 # 2004-10-08 plot.zoo comes to the rescue with the zoo package
 zoo::plot.zoo(
   sp500.monthly,
-  main = "S&P 500 (zoo::plot.zoo)")
+  main = "S&P 500 (zoo::plot.zoo)"
+)
 ```
 
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
@@ -166,6 +166,7 @@ charts.PerformanceSummary(
 ### [ggplot2](http://cran.r-project.org/src/contrib/Archive/ggplot2/) 2007-06-10
 Although ggplot2 is not designed specifically for time series plotting, I include it in the timeline for both its significant impact on R graphics and its ability to handle dates/times on the x-axis.  To use xts with ggplot2, a simple conversion to a wide or long format data.frame is necessary.
 
+
 ```r
 #ggplot2 requires conversion of xts to data.frame
 #we will use the data.frame from the plot.default example
@@ -176,13 +177,15 @@ ggplot( sp500.df, aes(date) ) +
 
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
 
+
 - - -
 
 ---
-### [quantmod/ttr chartSeries](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&view=log) 2007-10-07
+### [quantmod/TTR chartSeries](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&view=log) 2007-10-07
+
 
 ```r
-# 2007-10-17 then quantmod/ttr built on zoo
+# 2007-10-17 then quantmod/TTR built on zoo
 # to offer much better handling of financial time series
 # notice the ease of adding pertinent financial information
 chartSeries(
@@ -193,6 +196,8 @@ chartSeries(
 )
 ```
 
+![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-81.png) ![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-82.png) 
+
 
 Just look how easy it is to zoom.
 
@@ -201,6 +206,8 @@ Just look how easy it is to zoom.
 # also easy zooming
 zoomChart("1990::")
 ```
+
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-91.png) ![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-92.png) 
 
 
 - - -
@@ -231,7 +238,11 @@ The timeSeries plot method is basically a port of R's plot.ts().  It does not si
 
 
 ```r
-timeSeries::plot(timeSeries(sp500.monthly))
+require(timeSeries)
+timeSeries::plot(
+  timeSeries(sp500.monthly),
+  main = "S&P 500 (timeseries::plot)"
+)
 ```
 
 ![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 

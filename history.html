@@ -85,8 +85,7 @@ install_github('rCharts', 'ramnathv')</code></pre>
 
 <p>First, to build a plot, we need data. Let&#39;s see how easy it is to get a time series of financial data in R through <code>quantmod</code> <a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&amp;view=log"><code>getSymbols()</code></a>.  The <a href="(https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&amp;view=log"><code>getSymbols()</code></a>) function has been a work in progress since December 20, 2006.</p>
 
-<pre><code class="r">require(timeSeries)
-require(latticeExtra)
+<pre><code class="r">require(latticeExtra)
 require(ggplot2)
 require(reshape2)
 require(quantmod)
@@ -150,7 +149,8 @@ graphics::plot.default(
 <pre><code class="r"># 2004-10-08 plot.zoo comes to the rescue with the zoo package
 zoo::plot.zoo(
   sp500.monthly,
-  main = &quot;S&amp;P 500 (zoo::plot.zoo)&quot;)
+  main = &quot;S&amp;P 500 (zoo::plot.zoo)&quot;
+)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
@@ -202,8 +202,8 @@ ggplot( sp500.df, aes(date) ) +
 
 <hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&amp;view=log">quantmod/ttr chartSeries</a> 2007-10-07</h3>
-<pre><code class="r"># 2007-10-17 then quantmod/ttr built on zoo
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&amp;view=log">quantmod/TTR chartSeries</a> 2007-10-07</h3>
+<pre><code class="r"># 2007-10-17 then quantmod/TTR built on zoo
 # to offer much better handling of financial time series
 # notice the ease of adding pertinent financial information
 chartSeries(
@@ -214,11 +214,15 @@ chartSeries(
 )
 </code></pre>
 
+<p><img src="assets/fig/unnamed-chunk-81.png" alt="plot of chunk unnamed-chunk-8"> <img src="assets/fig/unnamed-chunk-82.png" alt="plot of chunk unnamed-chunk-8"> </p>
+
 <p>Just look how easy it is to zoom.</p>
 
 <pre><code class="r"># also easy zooming
 zoomChart(&quot;1990::&quot;)
 </code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-91.png" alt="plot of chunk unnamed-chunk-9"> <img src="assets/fig/unnamed-chunk-92.png" alt="plot of chunk unnamed-chunk-9"> </p>
 
 <hr>
 
@@ -240,7 +244,11 @@ xts::plot.xts(
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&amp;view=log">timeSeries plot</a> 2009-05-17</h3>
 <p>The timeSeries plot method is basically a port of R&#39;s plot.ts().  It does not significantly add any functionality, but I include it for completeness and since the <a href="https://www.rmetrics.org">Rmetrics team</a> offers robust financial analysis through its many R packages that depend on the timeSeries object.</p>
 
-<pre><code class="r">timeSeries::plot(timeSeries(sp500.monthly))
+<pre><code class="r">require(timeSeries)
+timeSeries::plot(
+  timeSeries(sp500.monthly),
+  main = &quot;S&amp;P 500 (timeseries::plot)&quot;
+)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
