@@ -485,7 +485,4 @@ http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf
 
 http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
 
-
-
-
 http://fishyoperations.com/r/timeline-graph-with-ggplot2/
