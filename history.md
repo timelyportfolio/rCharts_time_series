@@ -181,11 +181,6 @@ charts.PerformanceSummary(
 )
 ```
 
-```
-Error: no applicable method for 'time<-' applied to an object of class
-"c('xts', 'zoo')"
-```
-
 ![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
 
@@ -14887,8 +14882,5 @@ http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf
 http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf
 
 http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
-
-
-
 
 http://fishyoperations.com/r/timeline-graph-with-ggplot2/
