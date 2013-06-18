@@ -12082,9 +12082,11 @@ sp500.df$date &lt;- as.numeric(
 h1 &lt;- hPlot(
   sp500 ~ date,
   data = sp500.df,
-  type = &quot;line&quot;
+  type = &quot;line&quot;, zoomType = &quot;x&quot;
 )
 h1$xAxis( type = &quot;datetime&quot; )
+#hack but works to allow zoom
+h1$params$chart &lt;- list(zoomType = &quot;x&quot;)
 h1$print(&quot;chart5&quot;)
 </code></pre>
 
@@ -14840,10 +14842,11 @@ h1$print(&quot;chart5&quot;)
 "subtitle": {
  "text": null 
 },
-"id": "chart5",
 "chart": {
- "renderTo": "chart5" 
-} 
+ "zoomType": "x",
+"renderTo": "chart5" 
+},
+"id": "chart5" 
 });
         });
     })(jQuery);

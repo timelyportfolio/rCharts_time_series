@@ -12098,9 +12098,11 @@ sp500.df$date <- as.numeric(
 h1 <- hPlot(
   sp500 ~ date,
   data = sp500.df,
-  type = "line"
+  type = "line", zoomType = "x"
 )
 h1$xAxis( type = "datetime" )
+#hack but works to allow zoom
+h1$params$chart <- list(zoomType = "x")
 h1$print("chart5")
 ```
 
@@ -14856,10 +14858,11 @@ h1$print("chart5")
 "subtitle": {
  "text": null 
 },
-"id": "chart5",
 "chart": {
- "renderTo": "chart5" 
-} 
+ "zoomType": "x",
+"renderTo": "chart5" 
+},
+"id": "chart5" 
 });
         });
     })(jQuery);
