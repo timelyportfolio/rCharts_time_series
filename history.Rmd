@@ -15,7 +15,7 @@ hitheme: solarized_light
 }
 </style>
 
-# History of R Charting of Time Series
+# History of R Time Series Plotting
 
 As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of [rCharts](http://ramnathv.github.io/rCharts), I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the "out-of-the-box" capability.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.
 
@@ -41,7 +41,7 @@ knitr::opts_chunk$set(
   fig.height = 5,
   fig.keep = 'last')
 ```
-First, to build a plot, we need data. Let's see how easy it is to get a time series of financial data in R through `quantmod` [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log).  The [`getSymbols()`]((https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log)) function has been a work in progress since December 20, 2006.
+First, to build a plot, we need data. Let's see how easy it is to get a time series of financial data in R through `quantmod` [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log).  The [`getSymbols()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/R/getSymbols.R?root=quantmod&view=log) function has been a work in progress since December 20, 2006.
 
 ```{r}
 require(latticeExtra)
@@ -70,6 +70,89 @@ sp500.monthly <- sp500[endpoints(sp500, on ="months")]
 ---
 ## Timeline
 
+```{r echo = FALSE, fig.width = 8, fig.height = 2.5}
+#require(devtools)
+#install_github('timeline','jbryer')
+require(timeline)
+require(plyr)
+
+rTimeline <- read.csv(
+  "https://docs.google.com/spreadsheet/pub?key=0AieeEIaS0AOsdHpPbmRaZkJtSW44M2pFQnRMaEJLcEE&single=true&gid=0&output=csv",
+  stringsAsFactors = FALSE
+)
+#seems easier to me to get in the default column order
+#expected by timeline
+#label, group, start, end
+rTimeline.clean <- rTimeline[,c(3,3,1,2)]
+
+colnames(rTimeline.clean) <- c(
+  "Release",
+  "Group",
+  "Start",
+  "End"
+)
+#really don't have groups
+#make same group or do by r.?
+rTimeline.clean[,c(2)] <- substr(rTimeline.clean[,2],1,3)
+#convert the text dates to dates
+rTimeline.clean[,c(3,4)] <- lapply(
+  rTimeline.clean[,c(3,4)],
+  FUN = as.Date,
+  format = "%m/%d/%Y"
+)
+#in the Google Doc, I have a phony date to provide a start slide
+#get rid of this last row
+rTimeline.clean <- rTimeline.clean[-nrow(rTimeline.clean),]
+#sort by release date; spreadsheet is in decreasing order
+rTimeline.clean <- rTimeline.clean[order(rTimeline.clean[,3]),]
+#another way to do it shade r.? and then add each release as event
+groupDates <- ddply(
+  rTimeline.clean,
+  .(Group),
+  function(x){return(c(x[1,3],x[nrow(x),4]))}
+)
+groupDates[,4] <- rep("Release",nrow(groupDates))
+colnames(groupDates) <- c("Release","Start","End","Group")
+#define events for the timeline
+events <- data.frame(
+  rbind(
+    c("ts","1999-08-27"),
+    c("lattice/grid","2002-04-29"),
+    c("zoo","2004-10-08"),
+    c("zoo/lattice","2006-07-06"),
+    c("PeformanceAnalytics","2007-02-02"),
+    c("ggplot2","2007-06-10"),
+    c("quantmod/TTR","2007-10-07"),
+    c("xts","2008-02-17"),
+    c("timeSeries","2009-05-17"),
+    c("xtsExtra","2012-05-30"),
+    c("rCharts","2013-04-10")
+  ),
+  stringsAsFactors = FALSE
+)
+colnames(events) <- c("Package","Date")
+events$Date <- as.Date(events$Date)
+
+g2 <- timeline(
+  df = groupDates,
+  events = events,
+  label.col = "Release",
+  group.col ="Group",
+  start.col = "Start",
+  end.col="End",
+  event.label.col = "Package",
+  event.col = "Date",
+  event.above = FALSE,
+#  event.text.angle = 90,
+#  event.text.size = 2,
+#  event.label.method = 1
+) + labs(title = "Timeline of R Time Series Plotting")
+g2
+```
+
+- - -
+
+---
 ### plot.default (As Old as Time Itself)
 
 ```{r}
@@ -97,7 +180,7 @@ graphics::plot.default(
 
 ---
 ### [ts](https://stat.ethz.ch/pipermail/r-announce/1999/000097.html) 1999-08-27
-The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley's ["Time Series in R 1.5.0" from Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).  plot.ts added some nice features, such as the ability to handle multiple series, specify panels per series, and automatically handle acf, ARIMA, and HoltWinters.
+The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley's ["Time Series in R 1.5.0" from Volume 2 of R News, June 2002](http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf).  plot.ts added some nice features, such as the ability to plot multiple/wide time series, specify panels per series, and easily calculate acf, ARIMA,and HoltWinters.
 
 ```{r}
 stats::plot.ts(
@@ -292,6 +375,7 @@ title(
 
 ---
 ### [rCharts](http://rcharts.github.io/site) 2013
+rCharts allows us to create interactive charts straight from R with built-in functionality from frameworks built on top of [d3.js](http://d3js.org), [raphael](http://raphaeljs.com), and other leading javascript libraries.  This interactivity offers a whole new level of discovery and exploration previously not available with static graphics.  See the examples below.  The examples below are minimal examples to demonstrate how much can be done in only a few lines of code.  For more thorough demos, check out the [gallery](http://rcharts.github.io/site/gallery.html).
 
 ```{r}
 # 2013 the world changes with rCharts
@@ -336,14 +420,49 @@ n1$x2Axis(
 )
 n1$print("chart1")
 ```
+<br/><h4>morris.js example</h4>
+```{r}
+sp500.df$date <- format(sp500.df$date, "%Y-%m-%d")
+m1 <- mPlot(
+  sp500 ~ date,
+  data = sp500.df,
+  type = "Line"
+)
+m1$set( pointSize = 0 )
+m1$set( hideHover = "auto" )
+m1$print("chart2")
+```
 
+<br/><h4>rickshaw example</h4>
+```{r}
+#get date in format that rickshaw likes
+sp500.df$date <- as.double(as.POSIXct(as.Date(sp500.df$date),origin="1970-01-01"))
+r1 <- Rickshaw$new()
+r1$layer(
+  sp500 ~ date,
+  data = sp500.df,
+  type = "line"
+)
+r1$set( 
+  slider = TRUE
+)
+r1$print("chart3")
+```
 
-
-<h4>morris.js example</h4>
-
-<h4>rickshaw example</h4>
-
-<h4>highcharts example</h4>
+<br/><h4>highcharts example</h4>
+```{r}
+#get in UTC format that works best with Highcharts
+sp500.df$date <- as.numeric(
+  as.POSIXct(sp500.df$date, origin="1970-01-01")
+) * 1000
+h1 <- hPlot(
+  sp500 ~ date,
+  data = sp500.df,
+  type = "line"
+)
+h1$xAxis( type = "datetime" )
+h1$print("chart5")
+```
 
 
 - - -
