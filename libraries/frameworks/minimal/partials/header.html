@@ -1,8 +1,6 @@
 <header>
-  <h1><img src={{{ page.logo }}} /></h1>
+  <h1> {{{ page.title }}} </h1>
   <p>{{{ page.subtitle }}}</p>
-  <pre><code class='r'>require(devtools)
-install_github('rCharts', 'ramnathv')</code></pre>
   {{# page.github }}
   <p class="view">
     <a href="http://github.com/{{user}}/{{repo}}">

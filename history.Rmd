@@ -1,13 +1,12 @@
 ---
-title: R Charting of Time Series
-subtitle: History from plot.default to rCharts
+title: R Time Series Plotting
+subtitle: from plot.default to rCharts
 author: Timely Portfolio
-github: {user: ramnathv, repo: rCharts, branch: "gh-pages"}
+github: {user: timelyportfolio, repo: rCharts_time_series, branch: "gh-pages"}
 framework: minimal
 mode: selfcontained
 ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polycharts", "libraries/highcharts","libraries/xcharts", "libraries/rickshaw"]}
 hitheme: solarized_light
-logo: libraries/frameworks/minimal/images/rCharts.png
 ---
 
 <style>

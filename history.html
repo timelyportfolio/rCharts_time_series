@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>R Charting of Time Series</title>
+    <title>R Time Series Plotting</title>
     <link rel="stylesheet" href="libraries/frameworks/minimal/stylesheets/styles.css">
     <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -33,23 +33,21 @@
   <body>
     <div class="wrapper">
 <header>
-  <h1><img src=libraries/frameworks/minimal/images/rCharts.png /></h1>
-  <p>History from plot.default to rCharts</p>
-  <pre><code class='r'>require(devtools)
-install_github('rCharts', 'ramnathv')</code></pre>
+  <h1> R Time Series Plotting </h1>
+  <p>from plot.default to rCharts</p>
   <p class="view">
-    <a href="http://github.com/ramnathv/rCharts">
-     View the Project on GitHub <small>ramnathv/rCharts</small>
+    <a href="http://github.com/timelyportfolio/rCharts_time_series">
+     View the Project on GitHub <small>timelyportfolio/rCharts_time_series</small>
     </a>
   </p>
   <ul class='buttons'>
-    <li><a href="https://github.com/ramnathv/rCharts/zipball/gh-pages">
+    <li><a href="https://github.com/timelyportfolio/rCharts_time_series/zipball/gh-pages">
       Download <strong>ZIP File</strong>
     </a></li>
-    <li><a href="https://github.com/ramnathv/rCharts/tarball/gh-pages">
+    <li><a href="https://github.com/timelyportfolio/rCharts_time_series/tarball/gh-pages">
       Download <strong>TAR Ball</strong>
     </a></li>
-    <li><a href="http://github.com/ramnathv/rCharts">
+    <li><a href="http://github.com/timelyportfolio/rCharts_time_series">
       Fork On <strong>GitHub</strong></a>
     </li>
   </ul>
@@ -200,6 +198,10 @@ charts.PerformanceSummary(
 )
 </code></pre>
 
+<pre><code>Error: no applicable method for &#39;time&lt;-&#39; applied to an object of class
+&quot;c(&#39;xts&#39;, &#39;zoo&#39;)&quot;
+</code></pre>
+
 <p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
 <hr>
@@ -230,7 +232,8 @@ chartSeries(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+<pre><code>Error: object &#39;sp500.monthly&#39; not found
+</code></pre>
 
 <p>Just look how easy it is to zoom.</p>
 
@@ -238,7 +241,8 @@ chartSeries(
 zoomChart(&quot;1990::&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+<pre><code>Error: improperly set or missing graphics device
+</code></pre>
 
 <hr>
 
@@ -4448,10 +4452,10 @@ n1$print(&quot;chart1&quot;)
 "value": 1630.7 
 },
 {
- "date":  15870,
+ "date":  15873,
 "indexname": "SP500",
 "metric": "price",
-"value": 1626.7 
+"value":   1639 
 } 
 ]
   
@@ -4517,7 +4521,7 @@ n1$print(&quot;chart1&quot;)
 
       </section>
       <footer>
-        <p>Maintained by <a href="http://github.com/ramnathv">
+        <p>Maintained by <a href="http://github.com/timelyportfolio">
           Timely Portfolio
         </a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by 

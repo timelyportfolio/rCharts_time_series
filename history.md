@@ -1,13 +1,12 @@
 ---
-title: R Charting of Time Series
-subtitle: History from plot.default to rCharts
+title: R Time Series Plotting
+subtitle: from plot.default to rCharts
 author: Timely Portfolio
-github: {user: ramnathv, repo: rCharts, branch: "gh-pages"}
+github: {user: timelyportfolio, repo: rCharts_time_series, branch: "gh-pages"}
 framework: minimal
 mode: selfcontained
 ext_widgets: {rCharts: ["libraries/morris","libraries/nvd3", "libraries/polycharts", "libraries/highcharts","libraries/xcharts", "libraries/rickshaw"]}
 hitheme: solarized_light
-logo: libraries/frameworks/minimal/images/rCharts.png
 ---
 
 <style>
@@ -176,6 +175,11 @@ charts.PerformanceSummary(
 )
 ```
 
+```
+Error: no applicable method for 'time<-' applied to an object of class
+"c('xts', 'zoo')"
+```
+
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
 
 
@@ -215,7 +219,9 @@ chartSeries(
 )
 ```
 
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
+```
+Error: object 'sp500.monthly' not found
+```
 
 
 Just look how easy it is to zoom.
@@ -226,7 +232,9 @@ Just look how easy it is to zoom.
 zoomChart("1990::")
 ```
 
-![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10.png) 
+```
+Error: improperly set or missing graphics device
+```
 
 
 - - -
@@ -4455,10 +4463,10 @@ n1$print("chart1")
 "value": 1630.7 
 },
 {
- "date":  15870,
+ "date":  15873,
 "indexname": "SP500",
 "metric": "price",
-"value": 1626.7 
+"value":   1639 
 } 
 ]
   
