@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>R Time Series Plotting</title>
+    <title>R Financial Time Series Plotting</title>
     <link rel="stylesheet" href="libraries/frameworks/minimal/stylesheets/styles.css">
     <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -33,7 +33,7 @@
   <body>
     <div class="wrapper">
 <header>
-  <h1> R Time Series Plotting </h1>
+  <h1> R Financial Time Series Plotting </h1>
   <p>from plot.default to rCharts</p>
   <p class="view">
     <a href="http://github.com/timelyportfolio/rCharts_time_series">
@@ -63,9 +63,9 @@
 }
 </style>
 
-<h1>History of R Time Series Plotting</h1>
+<h1>History of R Financial Time Series Plotting</h1>
 
-<p>As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of <a href="http://ramnathv.github.io/rCharts">rCharts</a>, I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the &quot;out-of-the-box&quot; capability.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.</p>
+<p>As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of <a href="http://ramnathv.github.io/rCharts">rCharts</a>, I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the &quot;out-of-the-box&quot; capability.   In another iteration, I will explore more advanced usage of these functions.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.</p>
 
 <p>For a much more extensive discussion of time series analysis with R, please see:</p>
 
@@ -158,15 +158,13 @@ graphics::plot.default(
 <hr>
 
 <h3><a href="http://r-forge.r-project.org/scm/?group_id=638">lattice</a> and <a href="http://www.stat.auckland.ac.nz/%7Epaul/grid/grid.html">grid</a> released with R 1.5.0 2002-04-29</h3>
-<p>With the release of lattice and grid and also the improvements in ts mentioned above, R 1.5.0 was a very important milestone for both graphing and time series analysis.  All of these are covered in <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">Volume 2 of R News, June 2002</a>.  lattice began the era of aesthetically pleasing and production-quality graphics straight from R.</p>
+<p>R 1.5.0 was a very important milestone for both graphing and time series analysis with the release of lattice (Deepayan Sarkar) and grid (Paul Murrell) and also the improvements in ts mentioned above., All of these are covered in <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">Volume 2 of R News, June 2002</a>.  lattice using grid as its platform began an era of aesthetically pleasing and production-quality graphics straight from R.  </p>
 
-<hr>
-
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/plot.zoo.R?root=zoo&amp;view=log">zoo</a> 2004-10-08</h3>
-<pre><code class="r"># 2004-10-08 plot.zoo comes to the rescue with the zoo package
-zoo::plot.zoo(
-  sp500.monthly,
-  main = &quot;S&amp;P 500 (zoo::plot.zoo)&quot;
+<pre><code class="r">xyplot(
+  sp500 ~ date,
+  data = sp500.df,
+  type = &quot;l&quot;,
+  main = &quot;S&amp;P 500 (lattice::xyplot)&quot;
 )
 </code></pre>
 
@@ -174,7 +172,22 @@ zoo::plot.zoo(
 
 <hr>
 
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/plot.zoo.R?root=zoo&amp;view=log">zoo</a> 2004-10-08</h3>
+<p><code>zoo</code> made it easier to work with irregular time series in R and &quot;bridged the gap.&quot;  <code>plot.zoo()</code> gave us the <code>plot.ts()</code> functionality for zoo objects.</p>
+
+<pre><code class="r">zoo::plot.zoo(
+  sp500.monthly,
+  main = &quot;S&amp;P 500 (zoo::plot.zoo)&quot;
+)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+<hr>
+
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/xyplot.zoo.R?root=zoo&amp;view=log">zoo</a> Meets <a href="http://r-forge.r-project.org/scm/?group_id=638">lattice</a> 2006-07-06</h3>
+<p><code>zoo</code> adds a very handy <code>xyplot.zoo()</code> function so there is no more need to convert <code>zoo</code> objects before accessing all the power off <code>lattice</code>.</p>
+
 <pre><code class="r"># 2006-07-06 zoo also made a handy lattice xyplot.zoo function
 # so no more need to melt wide data to long data
 # or convert to data.frame prior to plotting
@@ -189,11 +202,13 @@ asTheEconomist(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+<p><img src="assets/fig/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
 
 <hr>
 
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/PerformanceAnalytics/R/chart.TimeSeries.R?root=returnanalytics&amp;view=log">PerformanceAnalytics chart.TimeSeries</a> 2007-02-02</h3>
+<p><code>PerformanceAnalytics</code> addressed many of the graphical patterns necessary for financial performance reporting.  <code>chart.TimeSeries()</code> and <code>chart.BarVaR()</code> serve as the base for functions such as the very useful <code>charts.PerformanceSummary()</code> below.  In addition to the charts, <code>PerformanceAnalytics</code> adds many useful tables and makes both easy and very complicated performance calculations accessible in R.  Most of the <code>PerformanceAnalytics</code> functions require a xts return series rather than price.</p>
+
 <pre><code class="r"># 2007-02-02 chart.TimeSeries in PerformanceAnalytics
 charts.PerformanceSummary(
   ROC(sp500.monthly, n = 1, type = &quot;discrete&quot;),
@@ -201,12 +216,12 @@ charts.PerformanceSummary(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
+<p><img src="assets/fig/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
 
 <hr>
 
 <h3><a href="http://cran.r-project.org/src/contrib/Archive/ggplot2/">ggplot2</a> 2007-06-10</h3>
-<p>Although ggplot2 is not designed specifically for time series plotting, I include it in the timeline for both its significant impact on R graphics and its ability to handle dates/times on the x-axis.  To use xts with ggplot2, a simple conversion to a wide or long format data.frame is necessary.</p>
+<p>Hadley Wickham&#39;s 2005 original ggplot was significant, but the <a href="http://comments.gmane.org/gmane.comp.lang.r.general/86781">2007 rewrite into ggplot2 0.5</a> completely changed R graphics.  Although ggplot2 is comprehensive and not designed specifically for time series plotting, I include it in the timeline due to both its significant impact on R graphics and its ability to handle dates/times on the x-axis.  To use xts with ggplot2, a simple conversion to a wide or long format data.frame is necessary.</p>
 
 <pre><code class="r">#ggplot2 requires conversion of xts to data.frame
 #we will use the data.frame from the plot.default example
@@ -215,23 +230,21 @@ ggplot( sp500.df, aes(date) ) +
   labs( title = &quot;S&amp;P 500 (ggplot2::ggplot)&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+<p><img src="assets/fig/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
 
 <hr>
 
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&amp;view=log">quantmod/TTR chartSeries</a> 2007-10-07</h3>
-<pre><code class="r"># 2007-10-17 then quantmod/TTR built on zoo
-# to offer much better handling of financial time series
-# notice the ease of adding pertinent financial information
-chartSeries(
+<p><code>quantmod</code> and <code>TTR</code> were designed to give R technical analysis tools and calculations.  The <code>chartSeries()</code> function makes OHLC, candlesticks, and bars charts of prices easy.  Adding technical analysis, such as Bollinger Bands, RSI, MACD, becomes a couple letter function.</p>
+
+<pre><code class="r">chartSeries(
   sp500.monthly,
-#  log = TRUE,
   theme = chartTheme(&quot;white&quot;),
   TA = c(addBBands(),addTA(RSI(sp500.monthly)))
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+<p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
 
 <p>Just look how easy it is to zoom.</p>
 
@@ -239,11 +252,13 @@ chartSeries(
 zoomChart(&quot;1990::&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
+<p><img src="assets/fig/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"> </p>
 
 <hr>
 
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/xts/R/plot.R?root=xts&amp;view=log">xts plot.xts</a> 2008-02-17</h3>
+<p>In 2008, despite the various time series options in R, the world of finance demanded more and Jeff Ryan and Joshua Ulrich responded with <code>xts</code>.  I strongly recommend reading the <a href="http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf">xts vignette</a> to understand the benefits of <code>xts</code>.  It is now the standard for financial time series in R.  <code>xts</code> ported <code>plot.zoo()</code> to its own <code>plot()</code> method.  A <code>xyplot.xts()</code> was also provided for use with <code>lattice</code>.</p>
+
 <pre><code class="r"># 2008-02-17 xts improved zoo and other time series libraries
 # http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
 # plot.zoo got ported to plot.xts and little graphing improvement
@@ -254,7 +269,7 @@ xts::plot.xts(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"> </p>
+<p><img src="assets/fig/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"> </p>
 
 <hr>
 
@@ -268,21 +283,15 @@ timeSeries::plot(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"> </p>
+<p><img src="assets/fig/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"> </p>
 
 <hr>
 
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/xtsExtra/R/plot.R?root=xts&amp;view=log">xtsExtra plot.xts and barplot.xts</a> 2012-05-30</h3>
-<pre><code class="r"># Summer 2012 Google Summer of Code
-# xtsExtra significantly improves xts
-# lots of examples in this post
+<p>The Summer 2012 Google Summer of Code project <code>xtsExtra</code> by Michael Weylandt sought to improve the <code>xts</code> plotting methods as described well in <a href="https://stat.ethz.ch/pipermail/r-sig-finance/2012q3/010652.html">Michael&#39;s announcement to R-Sig-Finance</a>.</p>
+
+<pre><code class="r"># lots of examples in this post
 # http://timelyportfolio.blogspot.com/search/label/plot.xts
-
-#require(devtools)
-#setwd(&quot;C:/Program Files/R/R-2.15.1/sandbox/svnsource/xts/pkg/xtsExtra&quot;)
-#build()
-#load_all()
-
 
 #explore barplot.xts to do a chart of annual returns for both indexes
 #merge prices
@@ -320,12 +329,12 @@ title(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"> </p>
+<p><img src="assets/fig/unnamed-chunk-15.png" alt="plot of chunk unnamed-chunk-15"> </p>
 
 <hr>
 
 <h3><a href="http://rcharts.github.io/site">rCharts</a> 2013</h3>
-<p>rCharts allows us to create interactive charts straight from R with built-in functionality from frameworks built on top of <a href="http://d3js.org">d3.js</a>, <a href="http://raphaeljs.com">raphael</a>, and other leading javascript libraries.  This interactivity offers a whole new level of discovery and exploration previously not available with static graphics.  See the examples below.  The examples below are minimal examples to demonstrate how much can be done in only a few lines of code.  For more thorough demos, check out the <a href="http://rcharts.github.io/site/gallery.html">gallery</a>.</p>
+<p>Although beautiful charts were possible with all the methods above in R, good interactivity was still missing.  rCharts released in 2013 by Ramnath Vaidyanathan makes interactive charts straight from R with built-in functionality from frameworks built on top of <a href="http://d3js.org">d3.js</a>, <a href="http://raphaeljs.com">raphael</a>, and other leading javascript libraries.  This interactivity offers a whole new level of discovery and exploration previously not available with static graphics.  See the examples below.  The examples are only minimal examples to demonstrate how much can be done in a few lines of code.  For more thorough demos, check out the <a href="http://rcharts.github.io/site/gallery.html">gallery</a>.</p>
 
 <pre><code class="r"># 2013 the world changes with rCharts
 
@@ -12075,14 +12084,22 @@ var sliderchart3 = new Rickshaw.Graph.RangeSlider({
 sp500.df$date &lt;- as.numeric(
   as.POSIXct(sp500.df$date, origin=&quot;1970-01-01&quot;)
 ) * 1000
+
 h1 &lt;- hPlot(
   sp500 ~ date,
   data = sp500.df,
-  type = &quot;line&quot;, zoomType = &quot;x&quot;
+  type = &quot;line&quot;
 )
-h1$xAxis( type = &quot;datetime&quot; )
-#hack but works to allow zoom
-h1$params$chart &lt;- list(zoomType = &quot;x&quot;)
+
+h1$xAxis(type = &quot;datetime&quot;)
+h1$chart(zoomType = &quot;x&quot;)
+
+h1$plotOptions(
+  line = list(
+    marker = list(enabled = F)
+  )
+)
+
 h1$print(&quot;chart5&quot;)
 </code></pre>
 
@@ -14841,6 +14858,13 @@ h1$print(&quot;chart5&quot;)
 "chart": {
  "zoomType": "x",
 "renderTo": "chart5" 
+},
+"plotOptions": {
+ "line": {
+ "marker": {
+ "enabled": false 
+} 
+} 
 },
 "id": "chart5" 
 });
