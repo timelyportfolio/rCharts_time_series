@@ -65,7 +65,7 @@
 
 <h1>History of R Financial Time Series Plotting</h1>
 
-<p>As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of <a href="http://ramnathv.github.io/rCharts">rCharts</a>, I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the &quot;out-of-the-box&quot; capability.   In another iteration, I will explore more advanced usage of these functions.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.</p>
+<p>As with all of R, the ability to easily chart financial time series is the result of an iterative progression driven by the collaboration of an extremely dedicated group of open source volunteers.  With the release of <a href="http://ramnathv.github.io/rCharts"><code>rCharts</code></a>, I thought it would be interesting to document the timeline of this progression.  For each step in the timeline, I will include a link to the source code (svn or github) of the package and a minimal example to demo the &quot;out-of-the-box&quot; capability.   In another iteration, I will explore more advanced usage of these functions.  Separating the financial time series piece from graphing in general can get murky, and some of the timeline will differ from the timeline of R graphics and the timeline of R time series analysis.</p>
 
 <p>For a much more extensive discussion of time series analysis with R, please see:</p>
 
@@ -111,7 +111,7 @@ sp500.monthly &lt;- sp500[endpoints(sp500, on =&quot;months&quot;)]
 
 <hr>
 
-<h3>plot.default (As Old as Time Itself)</h3>
+<h3><code>plot.default</code> (As Old as Time Itself)</h3>
 <pre><code class="r"># base plot of time series prior to xts
 # get the data in data.frame format rather than xts
 sp500.df &lt;- data.frame(
@@ -136,8 +136,8 @@ graphics::plot.default(
 
 <hr>
 
-<h3><a href="https://stat.ethz.ch/pipermail/r-announce/1999/000097.html">ts</a> 1999-08-27</h3>
-<p>The ts package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley&#39;s <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">&quot;Time Series in R 1.5.0&quot; from Volume 2 of R News, June 2002</a>.  plot.ts added some nice features, such as the ability to plot multiple/wide time series, specify panels per series, and easily calculate acf, ARIMA,and HoltWinters.</p>
+<h3><a href="https://stat.ethz.ch/pipermail/r-announce/1999/000097.html"><code>ts</code></a> 1999-08-27</h3>
+<p>The <code>ts</code> package was added in R version 0.65.0 and significantly improved with release 1.5.0 in April 2002.  There is a very good discussion of the improvements in Brian Ripley&#39;s <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">&quot;Time Series in R 1.5.0&quot; from Volume 2 of R News, June 2002</a>.  <code>plot.ts()</code> added some nice features, such as the ability to plot multiple/wide time series, specify panels per series, and easily calculate acf, ARIMA,and HoltWinters.</p>
 
 <pre><code class="r">stats::plot.ts(
   ts(sp500.monthly,
@@ -157,8 +157,8 @@ graphics::plot.default(
 
 <hr>
 
-<h3><a href="http://r-forge.r-project.org/scm/?group_id=638">lattice</a> and <a href="http://www.stat.auckland.ac.nz/%7Epaul/grid/grid.html">grid</a> released with R 1.5.0 2002-04-29</h3>
-<p>R 1.5.0 was a very important milestone for both graphing and time series analysis with the release of lattice (Deepayan Sarkar) and grid (Paul Murrell) and also the improvements in ts mentioned above., All of these are covered in <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">Volume 2 of R News, June 2002</a>.  lattice using grid as its platform began an era of aesthetically pleasing and production-quality graphics straight from R.  </p>
+<h3><a href="http://r-forge.r-project.org/scm/?group_id=638"><code>lattice</code></a> and <a href="http://www.stat.auckland.ac.nz/%7Epaul/grid/grid.html"><code>grid</code></a> released with R 1.5.0 2002-04-29</h3>
+<p>R 1.5.0 was a very important milestone for both graphing and time series analysis with the release of <code>lattice</code> (Deepayan Sarkar) and <code>gri</code>d (Paul Murrell) and also the improvements in <code>ts</code> mentioned above., All of these are covered in <a href="http://cran.r-project.org/doc/Rnews/Rnews_2002-2.pdf">Volume 2 of R News, June 2002</a>.  <code>lattice</code> using <code>grid</code> as its platform began an era of aesthetically pleasing and production-quality graphics straight from R.  </p>
 
 <pre><code class="r">xyplot(
   sp500 ~ date,
@@ -173,7 +173,7 @@ graphics::plot.default(
 <hr>
 
 <h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/plot.zoo.R?root=zoo&amp;view=log">zoo</a> 2004-10-08</h3>
-<p><code>zoo</code> made it easier to work with irregular time series in R and &quot;bridged the gap.&quot;  <code>plot.zoo()</code> gave us the <code>plot.ts()</code> functionality for zoo objects.</p>
+<p><code>zoo</code> made it easier to work with irregular time series in R and &quot;bridged the gap.&quot;  <code>plot.zoo()</code> allowed us <code>plot.ts()</code> functionality for zoo objects.</p>
 
 <pre><code class="r">zoo::plot.zoo(
   sp500.monthly,
@@ -185,13 +185,10 @@ graphics::plot.default(
 
 <hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/xyplot.zoo.R?root=zoo&amp;view=log">zoo</a> Meets <a href="http://r-forge.r-project.org/scm/?group_id=638">lattice</a> 2006-07-06</h3>
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/xyplot.zoo.R?root=zoo&amp;view=log"><code>zoo</code></a> Meets <a href="http://r-forge.r-project.org/scm/?group_id=638"><code>lattice</code></a> 2006-07-06</h3>
 <p><code>zoo</code> adds a very handy <code>xyplot.zoo()</code> function so there is no more need to convert <code>zoo</code> objects before accessing all the power off <code>lattice</code>.</p>
 
-<pre><code class="r"># 2006-07-06 zoo also made a handy lattice xyplot.zoo function
-# so no more need to melt wide data to long data
-# or convert to data.frame prior to plotting
-# although slightly out of chronology
+<pre><code class="r"># although slightly out of chronology
 # I&#39;ll also use theEconomist from latticeExtra
 asTheEconomist(
   xyplot(
@@ -206,8 +203,8 @@ asTheEconomist(
 
 <hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/PerformanceAnalytics/R/chart.TimeSeries.R?root=returnanalytics&amp;view=log">PerformanceAnalytics chart.TimeSeries</a> 2007-02-02</h3>
-<p><code>PerformanceAnalytics</code> addressed many of the graphical patterns necessary for financial performance reporting.  <code>chart.TimeSeries()</code> and <code>chart.BarVaR()</code> serve as the base for functions such as the very useful <code>charts.PerformanceSummary()</code> below.  In addition to the charts, <code>PerformanceAnalytics</code> adds many useful tables and makes both easy and very complicated performance calculations accessible in R.  Most of the <code>PerformanceAnalytics</code> functions require a xts return series rather than price.</p>
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/PerformanceAnalytics/R/chart.TimeSeries.R?root=returnanalytics&amp;view=log"><code>PerformanceAnalytics</code> <code>chart.TimeSerie</code>s</a> 2007-02-02</h3>
+<p><code>PerformanceAnalytics</code> addressed many of the graphical patterns necessary for financial performance reporting.  <code>chart.TimeSeries()</code> and <code>chart.BarVaR()</code> serve as the base for functions such as the very useful <code>charts.PerformanceSummary()</code> below.  In addition to the charts, <code>PerformanceAnalytics</code> adds many useful tables and makes both easy and very complicated performance calculations accessible in R.  Most of the <code>PerformanceAnalytics</code> functions require a <code>xts</code> return series rather than price.</p>
 
 <pre><code class="r"># 2007-02-02 chart.TimeSeries in PerformanceAnalytics
 charts.PerformanceSummary(
@@ -220,8 +217,8 @@ charts.PerformanceSummary(
 
 <hr>
 
-<h3><a href="http://cran.r-project.org/src/contrib/Archive/ggplot2/">ggplot2</a> 2007-06-10</h3>
-<p>Hadley Wickham&#39;s 2005 original ggplot was significant, but the <a href="http://comments.gmane.org/gmane.comp.lang.r.general/86781">2007 rewrite into ggplot2 0.5</a> completely changed R graphics.  Although ggplot2 is comprehensive and not designed specifically for time series plotting, I include it in the timeline due to both its significant impact on R graphics and its ability to handle dates/times on the x-axis.  To use xts with ggplot2, a simple conversion to a wide or long format data.frame is necessary.</p>
+<h3><a href="http://cran.r-project.org/src/contrib/Archive/ggplot2/"><code>ggplot2</code></a> 2007-06-10</h3>
+<p>Hadley Wickham&#39;s 2005 original <code>ggplot</code> was significant, but the <a href="http://comments.gmane.org/gmane.comp.lang.r.general/86781">2007 rewrite into <code>ggplot2</code> 0.5</a> completely changed R graphics.  Although <code>ggplot2</code> is comprehensive and not designed specifically for time series plotting, I include it in the timeline due to both its significant impact on R graphics and its ability to handle dates/times on the x-axis.  To use xts with <code>ggplot2</code>, a simple conversion to a wide or long format data.frame is necessary.</p>
 
 <pre><code class="r">#ggplot2 requires conversion of xts to data.frame
 #we will use the data.frame from the plot.default example
@@ -234,7 +231,7 @@ ggplot( sp500.df, aes(date) ) +
 
 <hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&amp;view=log">quantmod/TTR chartSeries</a> 2007-10-07</h3>
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/R/chartSeries.R?root=quantmod&amp;view=log"><code>quantmod</code>/<code>TTR</code> <code>chartSeries</code></a> 2007-10-07</h3>
 <p><code>quantmod</code> and <code>TTR</code> were designed to give R technical analysis tools and calculations.  The <code>chartSeries()</code> function makes OHLC, candlesticks, and bars charts of prices easy.  Adding technical analysis, such as Bollinger Bands, RSI, MACD, becomes a couple letter function.</p>
 
 <pre><code class="r">chartSeries(
@@ -256,8 +253,8 @@ zoomChart(&quot;1990::&quot;)
 
 <hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/xts/R/plot.R?root=xts&amp;view=log">xts plot.xts</a> 2008-02-17</h3>
-<p>In 2008, despite the various time series options in R, the world of finance demanded more and Jeff Ryan and Joshua Ulrich responded with <code>xts</code>.  I strongly recommend reading the <a href="http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf">xts vignette</a> to understand the benefits of <code>xts</code>.  It is now the standard for financial time series in R.  <code>xts</code> ported <code>plot.zoo()</code> to its own <code>plot()</code> method.  A <code>xyplot.xts()</code> was also provided for use with <code>lattice</code>.</p>
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/xts/R/plot.R?root=xts&amp;view=log"><code>xts</code> <code>plot.xts</code></a> 2008-02-17</h3>
+<p>In 2008, despite the various time series options in R, the world of finance demanded more and Jeff Ryan and Joshua Ulrich responded with <code>xts</code>.  I strongly recommend reading the <a href="http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf"><code>xts</code> vignette</a> to understand the benefits of <code>xts</code>.  It is now the standard for financial time series in R.  <code>xts</code> ported <code>plot.zoo()</code> to its own <code>plot()</code> method.  A <code>xyplot.xts()</code> was also provided for use with <code>lattice</code>.</p>
 
 <pre><code class="r"># 2008-02-17 xts improved zoo and other time series libraries
 # http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf
@@ -273,8 +270,8 @@ xts::plot.xts(
 
 <hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&amp;view=log">timeSeries plot</a> 2009-05-17</h3>
-<p>The timeSeries plot method is basically a port of R&#39;s plot.ts().  It does not significantly add any plotting functionality, but I include it for completeness and since the <a href="https://www.rmetrics.org">Rmetrics team</a> offers robust financial analysis through its many R packages that depend on the timeSeries object.</p>
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&amp;view=log"><code>timeSerie</code> <code>plot</code></a> 2009-05-17</h3>
+<p>The <code>timeSeries</code> <code>plot()</code> method is basically a port of R&#39;s <code>plot.ts()</code>.  It does not significantly add any plotting functionality, but I include it for completeness and since the <a href="https://www.rmetrics.org">Rmetrics team</a> offers robust financial analysis through its many R packages that depend on the <code>timeSeries</code> object.</p>
 
 <pre><code class="r">require(timeSeries)
 timeSeries::plot(
@@ -333,8 +330,8 @@ title(
 
 <hr>
 
-<h3><a href="http://rcharts.github.io/site">rCharts</a> 2013</h3>
-<p>Although beautiful charts were possible with all the methods above in R, good interactivity was still missing.  rCharts released in 2013 by Ramnath Vaidyanathan makes interactive charts straight from R with built-in functionality from frameworks built on top of <a href="http://d3js.org">d3.js</a>, <a href="http://raphaeljs.com">raphael</a>, and other leading javascript libraries.  This interactivity offers a whole new level of discovery and exploration previously not available with static graphics.  See the examples below.  The examples are only minimal examples to demonstrate how much can be done in a few lines of code.  For more thorough demos, check out the <a href="http://rcharts.github.io/site/gallery.html">gallery</a>.</p>
+<h3><a href="http://rcharts.github.io/site"><code>rCharts</code></a> 2013</h3>
+<p>Although beautiful charts were possible with all the methods above in R, good interactivity was still missing.  <code>rCharts</code> released in 2013 by Ramnath Vaidyanathan makes interactive charts straight from R with built-in functionality from frameworks built on top of <a href="http://d3js.org"><code>d3.js</code></a>, <a href="http://raphaeljs.com"><code>raphael</code></a>, and other leading javascript libraries.  This interactivity offers a whole new level of discovery and exploration previously not available with static graphics.  See the examples below.  The examples are only minimal examples to demonstrate how much can be done in a few lines of code.  For more thorough demos, check out the <a href="http://rcharts.github.io/site/gallery.html">gallery</a>.</p>
 
 <pre><code class="r"># 2013 the world changes with rCharts
 
@@ -4460,10 +4457,10 @@ n1$print(&quot;chart1&quot;)
 "value": 1630.7 
 },
 {
- "date":  15873,
+ "date":  15874,
 "indexname": "SP500",
 "metric": "price",
-"value":   1639 
+"value": 1651.8 
 } 
 ]
   
@@ -7236,8 +7233,8 @@ m1$print(&quot;chart2&quot;)
 "sp500":        1630.74 
 },
 {
- "date": "2013-06-17",
-"sp500":        1639.04 
+ "date": "2013-06-18",
+"sp500":        1651.81 
 } 
 ],
 "pointSize":              0,
@@ -9991,8 +9988,8 @@ r1$print(&quot;chart3&quot;)
 "y":        1630.74 
 },
 {
- "x":     1371427200,
-"y":        1639.04 
+ "x":     1371513600,
+"y":        1651.81 
 } 
 ],
 "name": "sp500",
@@ -12028,8 +12025,8 @@ r1$print(&quot;chart3&quot;)
 "1369958400": [
      1369958400 
 ],
-"1371427200": [
-     1371427200 
+"1371513600": [
+     1371513600 
 ] 
 },
 "color":  palette.color()  
@@ -12128,2151 +12125,2151 @@ h1$print(&quot;chart5&quot;)
  {
  "data": [
  [
- -4.0761e+11,
+ -4.0764e+11,
  44.72 
 ],
 [
- -4.0519e+11,
+ -4.0522e+11,
  43.26 
 ],
 [
- -4.0269e+11,
+ -4.0271e+11,
  44.11 
 ],
 [
- -3.9992e+11,
+ -3.9995e+11,
  45.74 
 ],
 [
- -3.9725e+11,
+ -3.9727e+11,
  47.43 
 ],
 [
- -3.9483e+11,
+ -3.9485e+11,
  47.37 
 ],
 [
- -3.9198e+11,
+ -3.92e+11,
  47.91 
 ],
 [
- -3.8938e+11,
+ -3.894e+11,
  45.22 
 ],
 [
- -3.867e+11,
+ -3.8673e+11,
  42.42 
 ],
 [
- -3.8403e+11,
+ -3.8405e+11,
  41.06 
 ],
 [
- -3.8152e+11,
+ -3.8154e+11,
  41.72 
 ],
 [
- -3.7876e+11,
+ -3.7878e+11,
  39.99 
 ],
 [
- -3.7608e+11,
+ -3.761e+11,
   41.7 
 ],
 [
- -3.7366e+11,
+ -3.7368e+11,
  40.84 
 ],
 [
- -3.7098e+11,
+ -3.71e+11,
   42.1 
 ],
 [
- -3.6839e+11,
+ -3.6841e+11,
  43.44 
 ],
 [
- -3.6588e+11,
+ -3.659e+11,
  44.09 
 ],
 [
- -3.6312e+11,
+ -3.6314e+11,
  45.24 
 ],
 [
- -3.6044e+11,
+ -3.6046e+11,
  47.19 
 ],
 [
- -3.5793e+11,
+ -3.5796e+11,
  47.75 
 ],
 [
- -3.5517e+11,
+ -3.5519e+11,
  50.06 
 ],
 [
- -3.5249e+11,
+ -3.5251e+11,
  51.33 
 ],
 [
- -3.5007e+11,
+ -3.5009e+11,
  52.48 
 ],
 [
- -3.4722e+11,
+ -3.4724e+11,
  55.21 
 ],
 [
- -3.4463e+11,
+ -3.4465e+11,
  55.42 
 ],
 [
- -3.4221e+11,
+ -3.4223e+11,
  55.41 
 ],
 [
- -3.3944e+11,
+ -3.3947e+11,
  55.44 
 ],
 [
- -3.3685e+11,
+ -3.3687e+11,
  57.59 
 ],
 [
- -3.3435e+11,
+ -3.3437e+11,
  58.68 
 ],
 [
- -3.3158e+11,
+ -3.316e+11,
  58.47 
 ],
 [
- -3.289e+11,
+ -3.2892e+11,
  60.51 
 ],
 [
- -3.2622e+11,
+ -3.2625e+11,
   59.6 
 ],
 [
- -3.2363e+11,
+ -3.2365e+11,
  56.88 
 ],
 [
- -3.2104e+11,
+ -3.2106e+11,
  57.52 
 ],
 [
- -3.1836e+11,
+ -3.1838e+11,
  58.28 
 ],
 [
- -3.1568e+11,
+ -3.1571e+11,
  59.89 
 ],
 [
- -3.1318e+11,
+ -3.132e+11,
  55.61 
 ],
 [
- -3.105e+11,
+ -3.1052e+11,
  56.12 
 ],
 [
- -3.0782e+11,
+ -3.0784e+11,
  55.34 
 ],
 [
- -3.0532e+11,
+ -3.0534e+11,
  54.37 
 ],
 [
- -3.0255e+11,
+ -3.0257e+11,
  55.83 
 ],
 [
- -2.9996e+11,
+ -2.9998e+11,
  56.92 
 ],
 [
- -2.9745e+11,
+ -2.9748e+11,
  55.51 
 ],
 [
- -2.946e+11,
+ -2.9462e+11,
  56.96 
 ],
 [
- -2.9201e+11,
+ -2.9203e+11,
  53.52 
 ],
 [
- -2.8933e+11,
+ -2.8935e+11,
  53.39 
 ],
 [
- -2.8674e+11,
+ -2.8676e+11,
  55.54 
 ],
 [
- -2.8415e+11,
+ -2.8417e+11,
  58.11 
 ],
 [
- -2.8138e+11,
+ -2.814e+11,
  61.78 
 ],
 [
- -2.7896e+11,
+ -2.7899e+11,
  63.44 
 ],
 [
- -2.7637e+11,
+ -2.7639e+11,
  65.06 
 ],
 [
- -2.7387e+11,
+ -2.7389e+11,
  65.31 
 ],
 [
- -2.7102e+11,
+ -2.7104e+11,
  66.56 
 ],
 [
- -2.6842e+11,
+ -2.6844e+11,
  64.64 
 ],
 [
- -2.6574e+11,
+ -2.6577e+11,
  66.76 
 ],
 [
- -2.6307e+11,
+ -2.6309e+11,
  68.07 
 ],
 [
- -2.6056e+11,
+ -2.6058e+11,
  66.73 
 ],
 [
- -2.578e+11,
+ -2.5782e+11,
  68.62 
 ],
 [
- -2.552e+11,
+ -2.5523e+11,
  71.32 
 ],
 [
- -2.527e+11,
+ -2.5272e+11,
  71.55 
 ],
 [
- -2.4985e+11,
+ -2.4987e+11,
  68.84 
 ],
 [
- -2.4743e+11,
+ -2.4745e+11,
  69.96 
 ],
 [
- -2.4484e+11,
+ -2.4486e+11,
  69.55 
 ],
 [
- -2.4216e+11,
+ -2.4218e+11,
  65.24 
 ],
 [
- -2.3948e+11,
+ -2.395e+11,
  59.63 
 ],
 [
- -2.3697e+11,
+ -2.37e+11,
  54.75 
 ],
 [
- -2.3421e+11,
+ -2.3423e+11,
  58.23 
 ],
 [
- -2.3153e+11,
+ -2.3155e+11,
  59.12 
 ],
 [
- -2.2911e+11,
+ -2.2913e+11,
  56.27 
 ],
 [
- -2.2626e+11,
+ -2.2628e+11,
  56.52 
 ],
 [
- -2.2367e+11,
+ -2.2369e+11,
  62.26 
 ],
 [
- -2.2099e+11,
+ -2.2101e+11,
   63.1 
 ],
 [
- -2.1831e+11,
+ -2.1833e+11,
   66.2 
 ],
 [
- -2.1589e+11,
+ -2.1591e+11,
  64.29 
 ],
 [
- -2.1339e+11,
+ -2.1341e+11,
  66.57 
 ],
 [
- -2.1062e+11,
+ -2.1064e+11,
   69.8 
 ],
 [
- -2.0794e+11,
+ -2.0796e+11,
   70.8 
 ],
 [
- -2.0552e+11,
+ -2.0555e+11,
  69.37 
 ],
 [
- -2.0267e+11,
+ -2.0269e+11,
  69.13 
 ],
 [
- -2.0008e+11,
+ -2.001e+11,
   72.5 
 ],
 [
- -1.974e+11,
+ -1.9742e+11,
   71.7 
 ],
 [
- -1.9472e+11,
+ -1.9475e+11,
  74.01 
 ],
 [
- -1.9222e+11,
+ -1.9224e+11,
  73.23 
 ],
 [
- -1.8945e+11,
+ -1.8948e+11,
  75.02 
 ],
 [
- -1.8678e+11,
+ -1.868e+11,
  77.04 
 ],
 [
- -1.8436e+11,
+ -1.8438e+11,
   77.8 
 ],
 [
- -1.8159e+11,
+ -1.8161e+11,
  78.98 
 ],
 [
- -1.79e+11,
+ -1.7902e+11,
  79.46 
 ],
 [
- -1.7658e+11,
+ -1.766e+11,
  80.37 
 ],
 [
- -1.7373e+11,
+ -1.7375e+11,
  81.69 
 ],
 [
- -1.7105e+11,
+ -1.7107e+11,
  83.18 
 ],
 [
- -1.6837e+11,
+ -1.6839e+11,
  81.83 
 ],
 [
- -1.6578e+11,
+ -1.658e+11,
  84.18 
 ],
 [
- -1.6319e+11,
+ -1.6321e+11,
  84.86 
 ],
 [
- -1.6051e+11,
+ -1.6053e+11,
  84.42 
 ],
 [
- -1.5783e+11,
+ -1.5785e+11,
  84.75 
 ],
 [
- -1.5533e+11,
+ -1.5535e+11,
  87.56 
 ],
 [
- -1.5291e+11,
+ -1.5293e+11,
  87.43 
 ],
 [
- -1.5006e+11,
+ -1.5008e+11,
  86.16 
 ],
 [
- -1.4746e+11,
+ -1.4748e+11,
  89.11 
 ],
 [
- -1.4504e+11,
+ -1.4507e+11,
  88.42 
 ],
 [
- -1.4219e+11,
+ -1.4221e+11,
  84.12 
 ],
 [
- -1.396e+11,
+ -1.3962e+11,
  85.25 
 ],
 [
- -1.3684e+11,
+ -1.3686e+11,
  87.17 
 ],
 [
- -1.3424e+11,
+ -1.3427e+11,
  89.96 
 ],
 [
- -1.3174e+11,
+ -1.3176e+11,
  92.42 
 ],
 [
- -1.2897e+11,
+ -1.29e+11,
  91.61 
 ],
 [
- -1.263e+11,
+ -1.2632e+11,
  92.43 
 ],
 [
- -1.2362e+11,
+ -1.2364e+11,
  92.88 
 ],
 [
- -1.212e+11,
+ -1.2122e+11,
  91.22 
 ],
 [
- -1.1852e+11,
+ -1.1854e+11,
  89.23 
 ],
 [
- -1.1601e+11,
+ -1.1604e+11,
  91.06 
 ],
 [
- -1.1325e+11,
+ -1.1327e+11,
  86.13 
 ],
 [
- -1.1066e+11,
+ -1.1068e+11,
  84.74 
 ],
 [
- -1.0815e+11,
+ -1.0817e+11,
   83.6 
 ],
 [
- -1.053e+11,
+ -1.0532e+11,
   77.1 
 ],
 [
- -1.0271e+11,
+ -1.0273e+11,
  76.56 
 ],
 [
- -1.0003e+11,
+ -1.0005e+11,
   80.2 
 ],
 [
- -9.7438e+10,
+ -9.7459e+10,
  80.45 
 ],
 [
- -9.4846e+10,
+ -9.4867e+10,
  80.33 
 ],
 [
- -9.2081e+10,
+ -9.2102e+10,
  86.61 
 ],
 [
- -8.9662e+10,
+ -8.9683e+10,
  86.78 
 ],
 [
- -8.6983e+10,
+ -8.7005e+10,
   90.2 
 ],
 [
- -8.4564e+10,
+ -8.4586e+10,
  94.01 
 ],
 [
- -8.1713e+10,
+ -8.1734e+10,
  89.08 
 ],
 [
- -7.9121e+10,
+ -7.9142e+10,
  90.64 
 ],
 [
- -7.6442e+10,
+ -7.6464e+10,
  94.75 
 ],
 [
- -7.3764e+10,
+ -7.3786e+10,
  93.64 
 ],
 [
- -7.1258e+10,
+ -7.128e+10,
  96.71 
 ],
 [
- -6.8494e+10,
+ -6.8515e+10,
   93.9 
 ],
 [
- -6.5902e+10,
+ -6.5923e+10,
     94 
 ],
 [
- -6.3396e+10,
+ -6.3418e+10,
  96.47 
 ],
 [
- -6.0545e+10,
+ -6.0566e+10,
  92.24 
 ],
 [
- -5.8039e+10,
+ -5.8061e+10,
  89.36 
 ],
 [
- -5.5534e+10,
+ -5.5555e+10,
   90.2 
 ],
 [
- -5.2769e+10,
+ -5.279e+10,
  97.59 
 ],
 [
- -5.009e+10,
+ -5.0112e+10,
  98.68 
 ],
 [
- -4.7671e+10,
+ -4.7693e+10,
  99.58 
 ],
 [
- -4.4906e+10,
+ -4.4928e+10,
  97.74 
 ],
 [
- -4.2228e+10,
+ -4.225e+10,
  98.86 
 ],
 [
- -3.955e+10,
+ -3.9571e+10,
 102.67 
 ],
 [
- -3.6871e+10,
+ -3.6893e+10,
 103.41 
 ],
 [
- -3.4366e+10,
+ -3.4387e+10,
 108.37 
 ],
 [
- -3.1601e+10,
+ -3.1622e+10,
 103.86 
 ],
 [
- -2.8922e+10,
+ -2.8944e+10,
 103.01 
 ],
 [
- -2.6503e+10,
+ -2.6525e+10,
  98.13 
 ],
 [
- -2.4084e+10,
+ -2.4106e+10,
 101.51 
 ],
 [
- -2.1233e+10,
+ -2.1254e+10,
 103.69 
 ],
 [
- -1.8727e+10,
+ -1.8749e+10,
 103.46 
 ],
 [
- -1.5962e+10,
+ -1.5984e+10,
  97.71 
 ],
 [
- -1.3284e+10,
+ -1.3306e+10,
  91.83 
 ],
 [
- -1.0778e+10,
+ -1.08e+10,
  95.51 
 ],
 [
- -8.0136e+09,
+ -8.0352e+09,
  93.12 
 ],
 [
- -5.3352e+09,
+ -5.3568e+09,
  97.24 
 ],
 [
- -2.916e+09,
+ -2.9376e+09,
  93.81 
 ],
 [
- -6.48e+07,
+ -8.64e+07,
  92.06 
 ],
 [
- 2.5272e+09,
+ 2.5056e+09,
  85.02 
 ],
 [
- 4.9464e+09,
+ 4.9248e+09,
   89.5 
 ],
 [
- 7.7112e+09,
+ 7.6896e+09,
  89.63 
 ],
 [
- 1.0303e+10,
+ 1.0282e+10,
  81.52 
 ],
 [
- 1.2809e+10,
+ 1.2787e+10,
  76.55 
 ],
 [
- 1.5574e+10,
+ 1.5552e+10,
  72.72 
 ],
 [
- 1.8252e+10,
+ 1.823e+10,
  78.05 
 ],
 [
- 2.093e+10,
+ 2.0909e+10,
  81.52 
 ],
 [
- 2.3522e+10,
+ 2.3501e+10,
  84.21 
 ],
 [
- 2.6114e+10,
+ 2.6093e+10,
  83.25 
 ],
 [
- 2.8793e+10,
+ 2.8771e+10,
   87.2 
 ],
 [
- 3.1471e+10,
+ 3.145e+10,
  92.15 
 ],
 [
- 3.3977e+10,
+ 3.3955e+10,
  95.88 
 ],
 [
- 3.6396e+10,
+ 3.6374e+10,
  96.75 
 ],
 [
- 3.9247e+10,
+ 3.9226e+10,
 100.31 
 ],
 [
- 4.1839e+10,
+ 4.1818e+10,
 103.95 
 ],
 [
- 4.4258e+10,
+ 4.4237e+10,
  99.63 
 ],
 [
- 4.711e+10,
+ 4.7088e+10,
   99.7 
 ],
 [
- 4.9702e+10,
+ 4.968e+10,
  95.58 
 ],
 [
- 5.2466e+10,
+ 5.2445e+10,
  99.03 
 ],
 [
- 5.5058e+10,
+ 5.5037e+10,
  98.34 
 ],
 [
- 5.7564e+10,
+ 5.7542e+10,
  94.23 
 ],
 [
- 6.0329e+10,
+ 6.0307e+10,
  93.99 
 ],
 [
- 6.3007e+10,
+ 6.2986e+10,
 102.09 
 ],
 [
- 6.5686e+10,
+ 6.5664e+10,
 103.94 
 ],
 [
- 6.8191e+10,
+ 6.817e+10,
 106.57 
 ],
 [
- 7.0783e+10,
+ 7.0762e+10,
  107.2 
 ],
 [
- 7.3289e+10,
+ 7.3267e+10,
 107.67 
 ],
 [
- 7.614e+10,
+ 7.6118e+10,
 109.53 
 ],
 [
- 7.8732e+10,
+ 7.871e+10,
 107.14 
 ],
 [
- 8.141e+10,
+ 8.1389e+10,
 107.39 
 ],
 [
- 8.4089e+10,
+ 8.4067e+10,
 111.09 
 ],
 [
- 8.6594e+10,
+ 8.6573e+10,
 110.55 
 ],
 [
- 8.9359e+10,
+ 8.9338e+10,
 111.58 
 ],
 [
- 9.1951e+10,
+ 9.193e+10,
 116.67 
 ],
 [
- 9.4457e+10,
+ 9.4435e+10,
 118.05 
 ],
 [
- 9.7308e+10,
+ 9.7286e+10,
 116.03 
 ],
 [
- 9.9727e+10,
+ 9.9706e+10,
 111.68 
 ],
 [
- 1.0232e+11,
+ 1.023e+11,
 111.52 
 ],
 [
- 1.05e+11,
+ 1.0498e+11,
 106.97 
 ],
 [
- 1.0768e+11,
+ 1.0765e+11,
 104.95 
 ],
 [
- 1.1018e+11,
+ 1.1016e+11,
 104.26 
 ],
 [
- 1.1295e+11,
+ 1.1292e+11,
 108.22 
 ],
 [
- 1.1562e+11,
+ 1.156e+11,
 104.25 
 ],
 [
- 1.1804e+11,
+ 1.1802e+11,
 108.43 
 ],
 [
- 1.209e+11,
+ 1.2087e+11,
 108.29 
 ],
 [
- 1.2349e+11,
+ 1.2347e+11,
  95.96 
 ],
 [
- 1.2617e+11,
+ 1.2614e+11,
  97.55 
 ],
 [
- 1.2884e+11,
+ 1.2882e+11,
  96.57 
 ],
 [
- 1.3126e+11,
+ 1.3124e+11,
  96.22 
 ],
 [
- 1.3377e+11,
+ 1.3375e+11,
  93.98 
 ],
 [
- 1.3653e+11,
+ 1.3651e+11,
  90.31 
 ],
 [
- 1.3921e+11,
+ 1.3919e+11,
  87.28 
 ],
 [
- 1.4163e+11,
+ 1.4161e+11,
     86 
 ],
 [
- 1.4448e+11,
+ 1.4446e+11,
  79.31 
 ],
 [
- 1.4707e+11,
+ 1.4705e+11,
  72.15 
 ],
 [
- 1.4975e+11,
+ 1.4973e+11,
  63.54 
 ],
 [
- 1.5243e+11,
+ 1.5241e+11,
   73.9 
 ],
 [
- 1.5494e+11,
+ 1.5492e+11,
  69.97 
 ],
 [
- 1.577e+11,
+ 1.5768e+11,
  68.56 
 ],
 [
- 1.6038e+11,
+ 1.6036e+11,
  76.98 
 ],
 [
- 1.628e+11,
+ 1.6278e+11,
  81.59 
 ],
 [
- 1.6548e+11,
+ 1.6546e+11,
  83.36 
 ],
 [
- 1.6807e+11,
+ 1.6805e+11,
   87.3 
 ],
 [
- 1.7066e+11,
+ 1.7064e+11,
  91.15 
 ],
 [
- 1.7334e+11,
+ 1.7332e+11,
  95.19 
 ],
 [
- 1.7602e+11,
+ 1.76e+11,
  88.75 
 ],
 [
- 1.7852e+11,
+ 1.785e+11,
  86.88 
 ],
 [
- 1.8129e+11,
+ 1.8127e+11,
  83.87 
 ],
 [
- 1.8397e+11,
+ 1.8395e+11,
  89.04 
 ],
 [
- 1.8639e+11,
+ 1.8636e+11,
  91.24 
 ],
 [
- 1.8924e+11,
+ 1.8922e+11,
  90.19 
 ],
 [
- 1.9183e+11,
+ 1.9181e+11,
 100.86 
 ],
 [
- 1.9425e+11,
+ 1.9423e+11,
  99.71 
 ],
 [
- 1.971e+11,
+ 1.9708e+11,
 102.77 
 ],
 [
- 1.9969e+11,
+ 1.9967e+11,
 101.64 
 ],
 [
- 2.0211e+11,
+ 2.0209e+11,
 100.18 
 ],
 [
- 2.0496e+11,
+ 2.0494e+11,
 104.28 
 ],
 [
- 2.0755e+11,
+ 2.0753e+11,
 103.44 
 ],
 [
- 2.1032e+11,
+ 2.103e+11,
 102.91 
 ],
 [
- 2.1291e+11,
+ 2.1289e+11,
 105.24 
 ],
 [
- 2.1542e+11,
+ 2.154e+11,
  102.9 
 ],
 [
- 2.1818e+11,
+ 2.1816e+11,
  102.1 
 ],
 [
- 2.2086e+11,
+ 2.2084e+11,
 107.46 
 ],
 [
- 2.2354e+11,
+ 2.2352e+11,
 102.03 
 ],
 [
- 2.2596e+11,
+ 2.2594e+11,
  99.82 
 ],
 [
- 2.2864e+11,
+ 2.2861e+11,
  98.42 
 ],
 [
- 2.3114e+11,
+ 2.3112e+11,
  98.44 
 ],
 [
- 2.3391e+11,
+ 2.3388e+11,
  96.12 
 ],
 [
- 2.365e+11,
+ 2.3648e+11,
 100.48 
 ],
 [
- 2.39e+11,
+ 2.3898e+11,
  98.85 
 ],
 [
- 2.4186e+11,
+ 2.4183e+11,
  96.77 
 ],
 [
- 2.4445e+11,
+ 2.4443e+11,
  96.53 
 ],
 [
- 2.4713e+11,
+ 2.471e+11,
  92.34 
 ],
 [
- 2.4972e+11,
+ 2.497e+11,
  94.83 
 ],
 [
- 2.5231e+11,
+ 2.5229e+11,
   95.1 
 ],
 [
- 2.5507e+11,
+ 2.5505e+11,
  89.25 
 ],
 [
- 2.5749e+11,
+ 2.5747e+11,
  87.04 
 ],
 [
- 2.6017e+11,
+ 2.6015e+11,
  89.21 
 ],
 [
- 2.6259e+11,
+ 2.6257e+11,
  96.83 
 ],
 [
- 2.6544e+11,
+ 2.6542e+11,
  97.29 
 ],
 [
- 2.6803e+11,
+ 2.6801e+11,
  95.53 
 ],
 [
- 2.7071e+11,
+ 2.7069e+11,
 100.68 
 ],
 [
- 2.7339e+11,
+ 2.7337e+11,
 103.29 
 ],
 [
- 2.759e+11,
+ 2.7588e+11,
 102.54 
 ],
 [
- 2.7866e+11,
+ 2.7864e+11,
  93.15 
 ],
 [
- 2.8125e+11,
+ 2.8123e+11,
   94.7 
 ],
 [
- 2.8376e+11,
+ 2.8374e+11,
  96.11 
 ],
 [
- 2.8661e+11,
+ 2.8659e+11,
  99.93 
 ],
 [
- 2.8903e+11,
+ 2.8901e+11,
  96.28 
 ],
 [
- 2.9162e+11,
+ 2.916e+11,
 101.59 
 ],
 [
- 2.943e+11,
+ 2.9428e+11,
 101.76 
 ],
 [
- 2.9698e+11,
+ 2.9696e+11,
  99.08 
 ],
 [
- 2.9948e+11,
+ 2.9946e+11,
 102.91 
 ],
 [
- 3.0225e+11,
+ 3.0223e+11,
 103.81 
 ],
 [
- 3.0493e+11,
+ 3.0491e+11,
 109.32 
 ],
 [
- 3.0735e+11,
+ 3.0732e+11,
 109.32 
 ],
 [
- 3.102e+11,
+ 3.1018e+11,
 101.82 
 ],
 [
- 3.1279e+11,
+ 3.1277e+11,
 106.16 
 ],
 [
- 3.1547e+11,
+ 3.1545e+11,
 107.94 
 ],
 [
- 3.1815e+11,
+ 3.1812e+11,
 114.16 
 ],
 [
- 3.2065e+11,
+ 3.2063e+11,
 113.66 
 ],
 [
- 3.2333e+11,
+ 3.2331e+11,
 102.09 
 ],
 [
- 3.2592e+11,
+ 3.259e+11,
 106.29 
 ],
 [
- 3.2851e+11,
+ 3.2849e+11,
 111.24 
 ],
 [
- 3.3119e+11,
+ 3.3117e+11,
 114.24 
 ],
 [
- 3.3387e+11,
+ 3.3385e+11,
 121.67 
 ],
 [
- 3.3638e+11,
+ 3.3636e+11,
 122.38 
 ],
 [
- 3.3914e+11,
+ 3.3912e+11,
 125.46 
 ],
 [
- 3.4182e+11,
+ 3.418e+11,
 127.47 
 ],
 [
- 3.4424e+11,
+ 3.4422e+11,
 140.52 
 ],
 [
- 3.4709e+11,
+ 3.4707e+11,
 135.76 
 ],
 [
- 3.4968e+11,
+ 3.4966e+11,
 129.55 
 ],
 [
- 3.521e+11,
+ 3.5208e+11,
 131.27 
 ],
 [
- 3.5487e+11,
+ 3.5484e+11,
    136 
 ],
 [
- 3.5746e+11,
+ 3.5744e+11,
 132.81 
 ],
 [
- 3.5996e+11,
+ 3.5994e+11,
 132.59 
 ],
 [
- 3.6273e+11,
+ 3.6271e+11,
 131.21 
 ],
 [
- 3.6541e+11,
+ 3.6539e+11,
 130.92 
 ],
 [
- 3.6809e+11,
+ 3.6806e+11,
 122.79 
 ],
 [
- 3.7068e+11,
+ 3.7066e+11,
 116.18 
 ],
 [
- 3.7327e+11,
+ 3.7325e+11,
 121.89 
 ],
 [
- 3.7595e+11,
+ 3.7593e+11,
 126.35 
 ],
 [
- 3.7863e+11,
+ 3.786e+11,
 122.55 
 ],
 [
- 3.8113e+11,
+ 3.8111e+11,
  120.4 
 ],
 [
- 3.8355e+11,
+ 3.8353e+11,
 113.11 
 ],
 [
- 3.864e+11,
+ 3.8638e+11,
 111.96 
 ],
 [
- 3.8899e+11,
+ 3.8897e+11,
 116.44 
 ],
 [
- 3.9141e+11,
+ 3.9139e+11,
 111.88 
 ],
 [
- 3.9426e+11,
+ 3.9424e+11,
 109.61 
 ],
 [
- 3.9686e+11,
+ 3.9684e+11,
 107.09 
 ],
 [
- 3.9962e+11,
+ 3.996e+11,
 119.51 
 ],
 [
- 4.0221e+11,
+ 4.0219e+11,
 120.42 
 ],
 [
- 4.0472e+11,
+ 4.047e+11,
 133.71 
 ],
 [
- 4.0748e+11,
+ 4.0746e+11,
 138.54 
 ],
 [
- 4.1016e+11,
+ 4.1014e+11,
 140.64 
 ],
 [
- 4.1284e+11,
+ 4.1282e+11,
  145.3 
 ],
 [
- 4.1526e+11,
+ 4.1524e+11,
 148.06 
 ],
 [
- 4.1794e+11,
+ 4.1792e+11,
 152.96 
 ],
 [
- 4.2044e+11,
+ 4.2042e+11,
 164.42 
 ],
 [
- 4.2321e+11,
+ 4.2319e+11,
 162.39 
 ],
 [
- 4.258e+11,
+ 4.2578e+11,
 168.11 
 ],
 [
- 4.2831e+11,
+ 4.2828e+11,
 162.56 
 ],
 [
- 4.3116e+11,
+ 4.3114e+11,
  164.4 
 ],
 [
- 4.3375e+11,
+ 4.3373e+11,
 166.07 
 ],
 [
- 4.3643e+11,
+ 4.3641e+11,
 163.55 
 ],
 [
- 4.3902e+11,
+ 4.39e+11,
  166.4 
 ],
 [
- 4.4161e+11,
+ 4.4159e+11,
 164.93 
 ],
 [
- 4.4438e+11,
+ 4.4436e+11,
 163.41 
 ],
 [
- 4.4688e+11,
+ 4.4686e+11,
 157.06 
 ],
 [
- 4.4947e+11,
+ 4.4945e+11,
 159.18 
 ],
 [
- 4.5215e+11,
+ 4.5213e+11,
 160.05 
 ],
 [
- 4.5483e+11,
+ 4.5481e+11,
 150.55 
 ],
 [
- 4.5734e+11,
+ 4.5732e+11,
 153.18 
 ],
 [
- 4.601e+11,
+ 4.6008e+11,
 150.66 
 ],
 [
- 4.6278e+11,
+ 4.6276e+11,
 166.68 
 ],
 [
- 4.652e+11,
+ 4.6518e+11,
  166.1 
 ],
 [
- 4.6805e+11,
+ 4.6803e+11,
 166.09 
 ],
 [
- 4.7064e+11,
+ 4.7062e+11,
 163.58 
 ],
 [
- 4.7332e+11,
+ 4.733e+11,
 167.24 
 ],
 [
- 4.76e+11,
+ 4.7598e+11,
 179.63 
 ],
 [
- 4.7842e+11,
+ 4.784e+11,
 181.18 
 ],
 [
- 4.8092e+11,
+ 4.809e+11,
 180.66 
 ],
 [
- 4.8369e+11,
+ 4.8367e+11,
 179.83 
 ],
 [
- 4.8637e+11,
+ 4.8635e+11,
 189.55 
 ],
 [
- 4.8879e+11,
+ 4.8876e+11,
 191.85 
 ],
 [
- 4.9164e+11,
+ 4.9162e+11,
 190.92 
 ],
 [
- 4.9423e+11,
+ 4.9421e+11,
 188.63 
 ],
 [
- 4.9691e+11,
+ 4.9689e+11,
 182.08 
 ],
 [
- 4.9959e+11,
+ 4.9956e+11,
 189.82 
 ],
 [
- 5.0209e+11,
+ 5.0207e+11,
 202.17 
 ],
 [
- 5.0486e+11,
+ 5.0484e+11,
 211.28 
 ],
 [
- 5.0754e+11,
+ 5.0751e+11,
 211.78 
 ],
 [
- 5.0995e+11,
+ 5.0993e+11,
 226.92 
 ],
 [
- 5.1263e+11,
+ 5.1261e+11,
  238.9 
 ],
 [
- 5.1522e+11,
+ 5.152e+11,
 235.52 
 ],
 [
- 5.1782e+11,
+ 5.178e+11,
 247.35 
 ],
 [
- 5.205e+11,
+ 5.2047e+11,
 250.84 
 ],
 [
- 5.2317e+11,
+ 5.2315e+11,
 236.12 
 ],
 [
- 5.2568e+11,
+ 5.2566e+11,
 252.93 
 ],
 [
- 5.2844e+11,
+ 5.2842e+11,
 231.32 
 ],
 [
- 5.3112e+11,
+ 5.311e+11,
 243.98 
 ],
 [
- 5.3354e+11,
+ 5.3352e+11,
 249.22 
 ],
 [
- 5.3639e+11,
+ 5.3637e+11,
 242.17 
 ],
 [
- 5.3898e+11,
+ 5.3896e+11,
 274.08 
 ],
 [
- 5.414e+11,
+ 5.4138e+11,
  284.2 
 ],
 [
- 5.4417e+11,
+ 5.4415e+11,
  291.7 
 ],
 [
- 5.4676e+11,
+ 5.4674e+11,
 288.36 
 ],
 [
- 5.4927e+11,
+ 5.4924e+11,
  290.1 
 ],
 [
- 5.5203e+11,
+ 5.5201e+11,
    304 
 ],
 [
- 5.5471e+11,
+ 5.5469e+11,
 318.66 
 ],
 [
- 5.5739e+11,
+ 5.5737e+11,
  329.8 
 ],
 [
- 5.5998e+11,
+ 5.5996e+11,
 321.83 
 ],
 [
- 5.6257e+11,
+ 5.6255e+11,
 251.79 
 ],
 [
- 5.6525e+11,
+ 5.6523e+11,
  230.3 
 ],
 [
- 5.6793e+11,
+ 5.6791e+11,
 247.08 
 ],
 [
- 5.7043e+11,
+ 5.7041e+11,
 257.07 
 ],
 [
- 5.7311e+11,
+ 5.7309e+11,
 267.82 
 ],
 [
- 5.7579e+11,
+ 5.7577e+11,
 258.89 
 ],
 [
- 5.783e+11,
+ 5.7828e+11,
 261.33 
 ],
 [
- 5.8106e+11,
+ 5.8104e+11,
 262.16 
 ],
 [
- 5.8365e+11,
+ 5.8363e+11,
  273.5 
 ],
 [
- 5.8616e+11,
+ 5.8614e+11,
 272.02 
 ],
 [
- 5.8901e+11,
+ 5.8899e+11,
 261.52 
 ],
 [
- 5.916e+11,
+ 5.9158e+11,
 271.91 
 ],
 [
- 5.9428e+11,
+ 5.9426e+11,
 278.97 
 ],
 [
- 5.9687e+11,
+ 5.9685e+11,
  273.7 
 ],
 [
- 5.9946e+11,
+ 5.9944e+11,
 277.72 
 ],
 [
- 6.0223e+11,
+ 6.0221e+11,
 297.47 
 ],
 [
- 6.0465e+11,
+ 6.0463e+11,
 288.86 
 ],
 [
- 6.0733e+11,
+ 6.0731e+11,
 294.87 
 ],
 [
- 6.0975e+11,
+ 6.0972e+11,
 309.64 
 ],
 [
- 6.126e+11,
+ 6.1258e+11,
 320.52 
 ],
 [
- 6.1519e+11,
+ 6.1517e+11,
 317.98 
 ],
 [
- 6.1787e+11,
+ 6.1785e+11,
 346.08 
 ],
 [
- 6.2055e+11,
+ 6.2052e+11,
 351.45 
 ],
 [
- 6.2305e+11,
+ 6.2303e+11,
 349.15 
 ],
 [
- 6.2582e+11,
+ 6.258e+11,
 340.36 
 ],
 [
- 6.2841e+11,
+ 6.2839e+11,
 345.99 
 ],
 [
- 6.3091e+11,
+ 6.3089e+11,
  353.4 
 ],
 [
- 6.3377e+11,
+ 6.3374e+11,
 329.08 
 ],
 [
- 6.3618e+11,
+ 6.3616e+11,
 331.89 
 ],
 [
- 6.3878e+11,
+ 6.3876e+11,
 339.94 
 ],
 [
- 6.4146e+11,
+ 6.4143e+11,
  330.8 
 ],
 [
- 6.4413e+11,
+ 6.4411e+11,
 361.23 
 ],
 [
- 6.4664e+11,
+ 6.4662e+11,
 358.02 
 ],
 [
- 6.494e+11,
+ 6.4938e+11,
 356.15 
 ],
 [
- 6.5208e+11,
+ 6.5206e+11,
 322.56 
 ],
 [
- 6.545e+11,
+ 6.5448e+11,
 306.05 
 ],
 [
- 6.5735e+11,
+ 6.5733e+11,
    304 
 ],
 [
- 6.5994e+11,
+ 6.5992e+11,
 322.22 
 ],
 [
- 6.6262e+11,
+ 6.626e+11,
 330.22 
 ],
 [
- 6.653e+11,
+ 6.6528e+11,
 343.93 
 ],
 [
- 6.6772e+11,
+ 6.677e+11,
 367.07 
 ],
 [
- 6.7014e+11,
+ 6.7012e+11,
 375.22 
 ],
 [
- 6.7299e+11,
+ 6.7297e+11,
 375.35 
 ],
 [
- 6.7567e+11,
+ 6.7565e+11,
 389.83 
 ],
 [
- 6.7809e+11,
+ 6.7807e+11,
 371.16 
 ],
 [
- 6.8094e+11,
+ 6.8092e+11,
 387.81 
 ],
 [
- 6.8353e+11,
+ 6.8351e+11,
 395.43 
 ],
 [
- 6.8621e+11,
+ 6.8619e+11,
 387.86 
 ],
 [
- 6.8889e+11,
+ 6.8887e+11,
 392.46 
 ],
 [
- 6.9139e+11,
+ 6.9137e+11,
 375.22 
 ],
 [
- 6.9416e+11,
+ 6.9414e+11,
 417.09 
 ],
 [
- 6.9684e+11,
+ 6.9682e+11,
 408.79 
 ],
 [
- 6.9926e+11,
+ 6.9924e+11,
  412.7 
 ],
 [
- 7.0202e+11,
+ 7.02e+11,
 403.69 
 ],
 [
- 7.0461e+11,
+ 7.0459e+11,
 414.95 
 ],
 [
- 7.0712e+11,
+ 7.071e+11,
 415.35 
 ],
 [
- 7.0988e+11,
+ 7.0986e+11,
 408.14 
 ],
 [
- 7.1256e+11,
+ 7.1254e+11,
 424.21 
 ],
 [
- 7.1524e+11,
+ 7.1522e+11,
 414.03 
 ],
 [
- 7.1783e+11,
+ 7.1781e+11,
  417.8 
 ],
 [
- 7.2042e+11,
+ 7.204e+11,
 418.68 
 ],
 [
- 7.231e+11,
+ 7.2308e+11,
 431.35 
 ],
 [
- 7.2578e+11,
+ 7.2576e+11,
 435.71 
 ],
 [
- 7.2829e+11,
+ 7.2827e+11,
 438.78 
 ],
 [
- 7.3071e+11,
+ 7.3068e+11,
 443.38 
 ],
 [
- 7.3356e+11,
+ 7.3354e+11,
 451.67 
 ],
 [
- 7.3615e+11,
+ 7.3613e+11,
 440.19 
 ],
 [
- 7.3857e+11,
+ 7.3855e+11,
 450.19 
 ],
 [
- 7.4142e+11,
+ 7.414e+11,
 450.53 
 ],
 [
- 7.4401e+11,
+ 7.4399e+11,
 448.13 
 ],
 [
- 7.4678e+11,
+ 7.4676e+11,
 463.56 
 ],
 [
- 7.4937e+11,
+ 7.4935e+11,
 458.93 
 ],
 [
- 7.5187e+11,
+ 7.5185e+11,
 467.83 
 ],
 [
- 7.5464e+11,
+ 7.5462e+11,
 461.79 
 ],
 [
- 7.5732e+11,
+ 7.573e+11,
 466.45 
 ],
 [
- 7.6e+11,
+ 7.5997e+11,
 481.61 
 ],
 [
- 7.6242e+11,
+ 7.6239e+11,
 467.14 
 ],
 [
- 7.6509e+11,
+ 7.6507e+11,
 445.77 
 ],
 [
- 7.676e+11,
+ 7.6758e+11,
 450.91 
 ],
 [
- 7.7036e+11,
+ 7.7034e+11,
  456.5 
 ],
 [
- 7.7296e+11,
+ 7.7293e+11,
 444.27 
 ],
 [
- 7.7546e+11,
+ 7.7544e+11,
 458.26 
 ],
 [
- 7.7831e+11,
+ 7.7829e+11,
 475.49 
 ],
 [
- 7.809e+11,
+ 7.8088e+11,
 462.69 
 ],
 [
- 7.8358e+11,
+ 7.8356e+11,
 472.35 
 ],
 [
- 7.8618e+11,
+ 7.8615e+11,
 453.69 
 ],
 [
- 7.8877e+11,
+ 7.8875e+11,
 459.27 
 ],
 [
- 7.9153e+11,
+ 7.9151e+11,
 470.42 
 ],
 [
- 7.9395e+11,
+ 7.9393e+11,
 487.39 
 ],
 [
- 7.9663e+11,
+ 7.9661e+11,
 500.71 
 ],
 [
- 7.9905e+11,
+ 7.9903e+11,
 514.71 
 ],
 [
- 8.019e+11,
+ 8.0188e+11,
  533.4 
 ],
 [
- 8.0449e+11,
+ 8.0447e+11,
 544.75 
 ],
 [
- 8.0717e+11,
+ 8.0715e+11,
 562.06 
 ],
 [
- 8.0985e+11,
+ 8.0983e+11,
 561.88 
 ],
 [
- 8.1235e+11,
+ 8.1233e+11,
 584.41 
 ],
 [
- 8.1512e+11,
+ 8.151e+11,
  581.5 
 ],
 [
- 8.1771e+11,
+ 8.1769e+11,
 605.37 
 ],
 [
- 8.2022e+11,
+ 8.202e+11,
 615.93 
 ],
 [
- 8.2307e+11,
+ 8.2305e+11,
 636.02 
 ],
 [
- 8.2557e+11,
+ 8.2555e+11,
 640.43 
 ],
 [
- 8.2808e+11,
+ 8.2806e+11,
  645.5 
 ],
 [
- 8.3084e+11,
+ 8.3082e+11,
 654.17 
 ],
 [
- 8.3352e+11,
+ 8.335e+11,
 669.12 
 ],
 [
- 8.3594e+11,
+ 8.3592e+11,
 670.63 
 ],
 [
- 8.3879e+11,
+ 8.3877e+11,
 639.95 
 ],
 [
- 8.4138e+11,
+ 8.4136e+11,
 651.99 
 ],
 [
- 8.4406e+11,
+ 8.4404e+11,
 687.31 
 ],
 [
- 8.4674e+11,
+ 8.4672e+11,
 705.27 
 ],
 [
- 8.4925e+11,
+ 8.4923e+11,
 757.02 
 ],
 [
- 8.5201e+11,
+ 8.5199e+11,
 740.74 
 ],
 [
- 8.5469e+11,
+ 8.5467e+11,
 786.16 
 ],
 [
- 8.5711e+11,
+ 8.5709e+11,
 790.82 
 ],
 [
- 8.5979e+11,
+ 8.5977e+11,
 757.12 
 ],
 [
- 8.6238e+11,
+ 8.6236e+11,
 801.34 
 ],
 [
- 8.6497e+11,
+ 8.6495e+11,
 848.28 
 ],
 [
- 8.6765e+11,
+ 8.6763e+11,
 885.14 
 ],
 [
- 8.7033e+11,
+ 8.7031e+11,
 954.29 
 ],
 [
- 8.7283e+11,
+ 8.7281e+11,
 899.47 
 ],
 [
- 8.756e+11,
+ 8.7558e+11,
 947.28 
 ],
 [
- 8.7828e+11,
+ 8.7826e+11,
 914.62 
 ],
 [
- 8.807e+11,
+ 8.8068e+11,
  955.4 
 ],
 [
- 8.8355e+11,
+ 8.8353e+11,
 970.43 
 ],
 [
- 8.8614e+11,
+ 8.8612e+11,
 980.28 
 ],
 [
- 8.8856e+11,
+ 8.8854e+11,
 1049.3 
 ],
 [
- 8.9132e+11,
+ 8.913e+11,
 1101.8 
 ],
 [
- 8.9392e+11,
+ 8.9389e+11,
 1111.8 
 ],
 [
- 8.9642e+11,
+ 8.964e+11,
 1090.8 
 ],
 [
- 8.9919e+11,
+ 8.9916e+11,
 1133.8 
 ],
 [
- 9.0186e+11,
+ 9.0184e+11,
 1120.7 
 ],
 [
- 9.0454e+11,
+ 9.0452e+11,
 957.28 
 ],
 [
- 9.0714e+11,
+ 9.0711e+11,
   1017 
 ],
 [
- 9.0973e+11,
+ 9.0971e+11,
 1098.7 
 ],
 [
- 9.1241e+11,
+ 9.1238e+11,
 1163.6 
 ],
 [
- 9.1508e+11,
+ 9.1506e+11,
 1229.2 
 ],
 [
- 9.1759e+11,
+ 9.1757e+11,
 1279.6 
 ],
 [
- 9.2001e+11,
+ 9.1999e+11,
 1238.3 
 ],
 [
- 9.2286e+11,
+ 9.2284e+11,
 1286.4 
 ],
 [
- 9.2545e+11,
+ 9.2543e+11,
 1335.2 
 ],
 [
- 9.2787e+11,
+ 9.2785e+11,
 1301.8 
 ],
 [
- 9.3072e+11,
+ 9.307e+11,
 1372.7 
 ],
 [
- 9.3331e+11,
+ 9.3329e+11,
 1328.7 
 ],
 [
- 9.3608e+11,
+ 9.3606e+11,
 1320.4 
 ],
 [
- 9.3867e+11,
+ 9.3865e+11,
 1282.7 
 ],
 [
- 9.4118e+11,
+ 9.4116e+11,
 1362.9 
 ],
 [
- 9.4394e+11,
+ 9.4392e+11,
 1388.9 
 ],
 [
- 9.4662e+11,
+ 9.466e+11,
 1469.2 
 ],
 [
- 9.493e+11,
+ 9.4928e+11,
 1394.5 
 ],
 [
- 9.518e+11,
+ 9.5178e+11,
 1366.4 
 ],
 [
- 9.5448e+11,
+ 9.5446e+11,
 1498.6 
 ],
 [
- 9.569e+11,
+ 9.5688e+11,
 1452.4 
 ],
 [
- 9.5975e+11,
+ 9.5973e+11,
 1420.6 
 ],
 [
- 9.6234e+11,
+ 9.6232e+11,
 1454.6 
 ],
 [
- 9.6502e+11,
+ 9.65e+11,
 1430.8 
 ],
 [
- 9.677e+11,
+ 9.6768e+11,
 1517.7 
 ],
 [
- 9.7021e+11,
+ 9.7019e+11,
 1436.5 
 ],
 [
- 9.7297e+11,
+ 9.7295e+11,
 1429.4 
 ],
 [
- 9.7556e+11,
+ 9.7554e+11,
   1315 
 ],
 [
- 9.7807e+11,
+ 9.7805e+11,
 1320.3 
 ],
 [
- 9.8092e+11,
+ 9.809e+11,
   1366 
 ],
 [
- 9.8334e+11,
+ 9.8332e+11,
 1239.9 
 ],
 [
- 9.8593e+11,
+ 9.8591e+11,
 1160.3 
 ],
 [
- 9.8861e+11,
+ 9.8859e+11,
 1249.5 
 ],
 [
- 9.9129e+11,
+ 9.9127e+11,
 1255.8 
 ],
 [
- 9.9379e+11,
+ 9.9377e+11,
 1224.4 
 ],
 [
- 9.9656e+11,
+ 9.9654e+11,
 1211.2 
 ],
 [
- 9.9924e+11,
+ 9.9922e+11,
 1133.6 
 ],
 [
- 1.0017e+12,
+ 1.0016e+12,
 1040.9 
 ],
 [
@@ -14288,7 +14285,7 @@ h1$print(&quot;chart5&quot;)
 1148.1 
 ],
 [
- 1.0125e+12,
+ 1.0124e+12,
 1130.2 
 ],
 [
@@ -14320,7 +14317,7 @@ h1$print(&quot;chart5&quot;)
 916.07 
 ],
 [
- 1.0334e+12,
+ 1.0333e+12,
 815.28 
 ],
 [
@@ -14356,7 +14353,7 @@ h1$print(&quot;chart5&quot;)
 963.59 
 ],
 [
- 1.057e+12,
+ 1.0569e+12,
  974.5 
 ],
 [
@@ -14380,7 +14377,7 @@ h1$print(&quot;chart5&quot;)
 1058.2 
 ],
 [
- 1.0729e+12,
+ 1.0728e+12,
 1111.9 
 ],
 [
@@ -14388,7 +14385,7 @@ h1$print(&quot;chart5&quot;)
 1131.1 
 ],
 [
- 1.0779e+12,
+ 1.0778e+12,
 1144.9 
 ],
 [
@@ -14408,7 +14405,7 @@ h1$print(&quot;chart5&quot;)
 1140.8 
 ],
 [
- 1.0912e+12,
+ 1.0911e+12,
 1101.7 
 ],
 [
@@ -14432,11 +14429,11 @@ h1$print(&quot;chart5&quot;)
 1211.9 
 ],
 [
- 1.1072e+12,
+ 1.1071e+12,
 1181.3 
 ],
 [
- 1.1096e+12,
+ 1.1095e+12,
 1203.6 
 ],
 [
@@ -14444,7 +14441,7 @@ h1$print(&quot;chart5&quot;)
 1180.6 
 ],
 [
- 1.1148e+12,
+ 1.1147e+12,
 1156.8 
 ],
 [
@@ -14460,11 +14457,11 @@ h1$print(&quot;chart5&quot;)
 1234.2 
 ],
 [
- 1.1255e+12,
+ 1.1254e+12,
 1220.3 
 ],
 [
- 1.1281e+12,
+ 1.128e+12,
 1228.8 
 ],
 [
@@ -14496,7 +14493,7 @@ h1$print(&quot;chart5&quot;)
 1310.6 
 ],
 [
- 1.1491e+12,
+ 1.149e+12,
 1270.1 
 ],
 [
@@ -14520,7 +14517,7 @@ h1$print(&quot;chart5&quot;)
 1377.9 
 ],
 [
- 1.1649e+12,
+ 1.1648e+12,
 1400.6 
 ],
 [
@@ -14552,7 +14549,7 @@ h1$print(&quot;chart5&quot;)
 1503.3 
 ],
 [
- 1.1859e+12,
+ 1.1858e+12,
 1455.3 
 ],
 [
@@ -14560,7 +14557,7 @@ h1$print(&quot;chart5&quot;)
   1474 
 ],
 [
- 1.191e+12,
+ 1.1909e+12,
 1526.8 
 ],
 [
@@ -14576,11 +14573,11 @@ h1$print(&quot;chart5&quot;)
 1468.4 
 ],
 [
- 1.2018e+12,
+ 1.2017e+12,
 1378.5 
 ],
 [
- 1.2043e+12,
+ 1.2042e+12,
 1330.6 
 ],
 [
@@ -14608,7 +14605,7 @@ h1$print(&quot;chart5&quot;)
 1282.8 
 ],
 [
- 1.2228e+12,
+ 1.2227e+12,
 1166.4 
 ],
 [
@@ -14616,7 +14613,7 @@ h1$print(&quot;chart5&quot;)
 968.75 
 ],
 [
- 1.2279e+12,
+ 1.2278e+12,
 896.24 
 ],
 [
@@ -14636,7 +14633,7 @@ h1$print(&quot;chart5&quot;)
 797.87 
 ],
 [
- 1.2411e+12,
+ 1.241e+12,
 872.81 
 ],
 [
@@ -14664,7 +14661,7 @@ h1$print(&quot;chart5&quot;)
 1036.2 
 ],
 [
- 1.2596e+12,
+ 1.2595e+12,
 1095.6 
 ],
 [
@@ -14676,7 +14673,7 @@ h1$print(&quot;chart5&quot;)
 1073.9 
 ],
 [
- 1.2672e+12,
+ 1.2671e+12,
 1104.5 
 ],
 [
@@ -14696,7 +14693,7 @@ h1$print(&quot;chart5&quot;)
 1030.7 
 ],
 [
- 1.2805e+12,
+ 1.2804e+12,
 1101.6 
 ],
 [
@@ -14720,7 +14717,7 @@ h1$print(&quot;chart5&quot;)
 1257.6 
 ],
 [
- 1.2965e+12,
+ 1.2964e+12,
 1286.1 
 ],
 [
@@ -14728,11 +14725,11 @@ h1$print(&quot;chart5&quot;)
 1327.2 
 ],
 [
- 1.3016e+12,
+ 1.3015e+12,
 1325.8 
 ],
 [
- 1.3041e+12,
+ 1.304e+12,
 1363.6 
 ],
 [
@@ -14748,11 +14745,11 @@ h1$print(&quot;chart5&quot;)
 1292.3 
 ],
 [
- 1.3148e+12,
+ 1.3147e+12,
 1218.9 
 ],
 [
- 1.3174e+12,
+ 1.3173e+12,
 1131.4 
 ],
 [
@@ -14780,7 +14777,7 @@ h1$print(&quot;chart5&quot;)
 1408.5 
 ],
 [
- 1.3358e+12,
+ 1.3357e+12,
 1397.9 
 ],
 [
@@ -14804,11 +14801,11 @@ h1$print(&quot;chart5&quot;)
 1440.7 
 ],
 [
- 1.3517e+12,
+ 1.3516e+12,
 1412.2 
 ],
 [
- 1.3543e+12,
+ 1.3542e+12,
 1416.2 
 ],
 [
@@ -14824,7 +14821,7 @@ h1$print(&quot;chart5&quot;)
 1514.7 
 ],
 [
- 1.3645e+12,
+ 1.3644e+12,
 1569.2 
 ],
 [
@@ -14836,8 +14833,8 @@ h1$print(&quot;chart5&quot;)
 1630.7 
 ],
 [
- 1.3714e+12,
-  1639 
+ 1.3715e+12,
+1651.8 
 ] 
 ],
 "type": "line",
@@ -14879,17 +14876,14 @@ h1$print(&quot;chart5&quot;)
 
 <h2>References</h2>
 
-<p><a href="http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf">http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf</a></p>
-
-<p><a href="http://cran.r-project.org/web/views/TimeSeries.html">http://cran.r-project.org/web/views/TimeSeries.html</a></p>
-
-<p><a href="http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf">http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf</a></p>
-
-<p><a href="http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf">http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf</a></p>
-
-<p><a href="http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf">http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf</a></p>
-
-<p><a href="http://fishyoperations.com/r/timeline-graph-with-ggplot2/">http://fishyoperations.com/r/timeline-graph-with-ggplot2/</a></p>
+<ul>
+<li><p><a href="http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf">http://www.stats.uwo.ca/faculty/aim/tsar/tsar.pdf</a></p></li>
+<li><p><a href="http://cran.r-project.org/web/views/TimeSeries.html">http://cran.r-project.org/web/views/TimeSeries.html</a></p></li>
+<li><p><a href="http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf">http://cran.r-project.org/web/packages/zoo/vignettes/zoo.pdf</a></p></li>
+<li><p><a href="http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf">http://cran.r-project.org/web/packages/timeSeries/timeSeries.pdf</a></p></li>
+<li><p><a href="http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf">http://cran.r-project.org/web/packages/xts/vignettes/xts.pdf</a></p></li>
+<li><p><a href="http://fishyoperations.com/r/timeline-graph-with-ggplot2/">http://fishyoperations.com/r/timeline-graph-with-ggplot2/</a></p></li>
+</ul>
 
       </section>
       <footer>
