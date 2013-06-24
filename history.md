@@ -3215,12 +3215,12 @@ n1 <- nPlot(
 
 n1$xAxis(
   tickFormat=
-    "#!function(d) {return d3.time.format('%b %Y')(new Date( d * 86400000 ));}!#"
+    "#!function(d) {return d3.time.format('%b %Y')(new Date( d ));}!#"
 )
 
 n1$x2Axis(
   tickFormat=
-    "#!function(d) {return d3.time.format('%Y')(new Date( d * 86400000 ));}!#"
+    "#!function(d) {return d3.time.format('%Y')(new Date( d ));}!#"
 )
 n1$print("chart1")
 ```
@@ -7329,10 +7329,10 @@ n1$print("chart1")
         
           
         chart.xAxis
-  .tickFormat(function(d) {return d3.time.format('%b %Y')(new Date( d * 86400000 ));})
+  .tickFormat(function(d) {return d3.time.format('%b %Y')(new Date( d ));})
 
         chart.x2Axis
-  .tickFormat(function(d) {return d3.time.format('%Y')(new Date( d * 86400000 ));})
+  .tickFormat(function(d) {return d3.time.format('%Y')(new Date( d ));})
         
         
       

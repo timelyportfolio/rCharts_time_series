@@ -3201,12 +3201,12 @@ n1 &lt;- nPlot(
 
 n1$xAxis(
   tickFormat=
-    &quot;#!function(d) {return d3.time.format(&#39;%b %Y&#39;)(new Date( d * 86400000 ));}!#&quot;
+    &quot;#!function(d) {return d3.time.format(&#39;%b %Y&#39;)(new Date( d ));}!#&quot;
 )
 
 n1$x2Axis(
   tickFormat=
-    &quot;#!function(d) {return d3.time.format(&#39;%Y&#39;)(new Date( d * 86400000 ));}!#&quot;
+    &quot;#!function(d) {return d3.time.format(&#39;%Y&#39;)(new Date( d ));}!#&quot;
 )
 n1$print(&quot;chart1&quot;)
 </code></pre>
@@ -7315,10 +7315,10 @@ n1$print(&quot;chart1&quot;)
         
           
         chart.xAxis
-  .tickFormat(function(d) {return d3.time.format('%b %Y')(new Date( d * 86400000 ));})
+  .tickFormat(function(d) {return d3.time.format('%b %Y')(new Date( d ));})
 
         chart.x2Axis
-  .tickFormat(function(d) {return d3.time.format('%Y')(new Date( d * 86400000 ));})
+  .tickFormat(function(d) {return d3.time.format('%Y')(new Date( d ));})
         
         
       
