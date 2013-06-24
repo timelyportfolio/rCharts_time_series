@@ -86,6 +86,9 @@
 <pre><code class="r">require(latticeExtra)
 require(ggplot2)
 require(reshape2)
+suppressPackageStartupMessages(
+  require(googleVis)
+)
 require(quantmod)
 require(PerformanceAnalytics)
 require(xtsExtra)
@@ -270,7 +273,7 @@ xts::plot.xts(
 
 <hr>
 
-<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&amp;view=log"><code>timeSerie</code> <code>plot</code></a> 2009-05-17</h3>
+<h3><a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&amp;view=log"><code>timeSeries</code> <code>plot</code></a> 2009-05-17</h3>
 <p>The <code>timeSeries</code> <code>plot()</code> method is basically a port of R&#39;s <code>plot.ts()</code>.  It does not significantly add any plotting functionality, but I include it for completeness and since the <a href="https://www.rmetrics.org">Rmetrics team</a> offers robust financial analysis through its many R packages that depend on the <code>timeSeries</code> object.</p>
 
 <pre><code class="r">require(timeSeries)
@@ -281,6 +284,2827 @@ timeSeries::plot(
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"> </p>
+
+<hr>
+
+<h3><a href="http://cran.r-project.org/src/contrib/Archive/googleVis/"><code>googleVis</code></a> 2010-11-30 and <a href="https://code.google.com/p/google-motion-charts-with-r/">source</a></h3>
+<p><code>googleVis</code> adds accessible interactivity to charts using <a href="https://developers.google.com/chart/interactive/docs/index">Google Charts</a>.  There are a variety of chart types along with very nice animation/storyboard options.</p>
+
+<pre><code class="r">g1 &lt;- gvisLineChart(
+  data = sp500.df,
+  xvar = &quot;date&quot;,
+  yvar = &quot;sp500&quot;,
+  options = list(
+    title = &quot;S&amp;P 500 (googleVis::gvisLineChart)&quot;,
+    height = 400,
+    width = 600
+  )
+)
+print(g1,&quot;chart&quot;)
+</code></pre>
+
+<!-- LineChart generated in R 3.0.1 by googleVis 0.4.3 package -->
+
+<!-- Sun Jun 23 22:37:27 2013 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataLineChartID17502e13468f () {
+  var data = new google.visualization.DataTable();
+  var datajson =
+[
+ [
+ new Date(1957,0,31),
+44.72 
+],
+[
+ new Date(1957,1,28),
+43.26 
+],
+[
+ new Date(1957,2,29),
+44.11 
+],
+[
+ new Date(1957,3,30),
+45.74 
+],
+[
+ new Date(1957,4,31),
+47.43 
+],
+[
+ new Date(1957,5,28),
+47.37 
+],
+[
+ new Date(1957,6,31),
+47.91 
+],
+[
+ new Date(1957,7,30),
+45.22 
+],
+[
+ new Date(1957,8,30),
+42.42 
+],
+[
+ new Date(1957,9,31),
+41.06 
+],
+[
+ new Date(1957,10,29),
+41.72 
+],
+[
+ new Date(1957,11,31),
+39.99 
+],
+[
+ new Date(1958,0,31),
+41.7 
+],
+[
+ new Date(1958,1,28),
+40.84 
+],
+[
+ new Date(1958,2,31),
+42.1 
+],
+[
+ new Date(1958,3,30),
+43.44 
+],
+[
+ new Date(1958,4,29),
+44.09 
+],
+[
+ new Date(1958,5,30),
+45.24 
+],
+[
+ new Date(1958,6,31),
+47.19 
+],
+[
+ new Date(1958,7,29),
+47.75 
+],
+[
+ new Date(1958,8,30),
+50.06 
+],
+[
+ new Date(1958,9,31),
+51.33 
+],
+[
+ new Date(1958,10,28),
+52.48 
+],
+[
+ new Date(1958,11,31),
+55.21 
+],
+[
+ new Date(1959,0,30),
+55.42 
+],
+[
+ new Date(1959,1,27),
+55.41 
+],
+[
+ new Date(1959,2,31),
+55.44 
+],
+[
+ new Date(1959,3,30),
+57.59 
+],
+[
+ new Date(1959,4,29),
+58.68 
+],
+[
+ new Date(1959,5,30),
+58.47 
+],
+[
+ new Date(1959,6,31),
+60.51 
+],
+[
+ new Date(1959,7,31),
+59.6 
+],
+[
+ new Date(1959,8,30),
+56.88 
+],
+[
+ new Date(1959,9,30),
+57.52 
+],
+[
+ new Date(1959,10,30),
+58.28 
+],
+[
+ new Date(1959,11,31),
+59.89 
+],
+[
+ new Date(1960,0,29),
+55.61 
+],
+[
+ new Date(1960,1,29),
+56.12 
+],
+[
+ new Date(1960,2,31),
+55.34 
+],
+[
+ new Date(1960,3,29),
+54.37 
+],
+[
+ new Date(1960,4,31),
+55.83 
+],
+[
+ new Date(1960,5,30),
+56.92 
+],
+[
+ new Date(1960,6,29),
+55.51 
+],
+[
+ new Date(1960,7,31),
+56.96 
+],
+[
+ new Date(1960,8,30),
+53.52 
+],
+[
+ new Date(1960,9,31),
+53.39 
+],
+[
+ new Date(1960,10,30),
+55.54 
+],
+[
+ new Date(1960,11,30),
+58.11 
+],
+[
+ new Date(1961,0,31),
+61.78 
+],
+[
+ new Date(1961,1,28),
+63.44 
+],
+[
+ new Date(1961,2,30),
+65.06 
+],
+[
+ new Date(1961,3,28),
+65.31 
+],
+[
+ new Date(1961,4,31),
+66.56 
+],
+[
+ new Date(1961,5,30),
+64.64 
+],
+[
+ new Date(1961,6,31),
+66.76 
+],
+[
+ new Date(1961,7,31),
+68.07 
+],
+[
+ new Date(1961,8,29),
+66.73 
+],
+[
+ new Date(1961,9,31),
+68.62 
+],
+[
+ new Date(1961,10,30),
+71.32 
+],
+[
+ new Date(1961,11,29),
+71.55 
+],
+[
+ new Date(1962,0,31),
+68.84 
+],
+[
+ new Date(1962,1,28),
+69.96 
+],
+[
+ new Date(1962,2,30),
+69.55 
+],
+[
+ new Date(1962,3,30),
+65.24 
+],
+[
+ new Date(1962,4,31),
+59.63 
+],
+[
+ new Date(1962,5,29),
+54.75 
+],
+[
+ new Date(1962,6,31),
+58.23 
+],
+[
+ new Date(1962,7,31),
+59.12 
+],
+[
+ new Date(1962,8,28),
+56.27 
+],
+[
+ new Date(1962,9,31),
+56.52 
+],
+[
+ new Date(1962,10,30),
+62.26 
+],
+[
+ new Date(1962,11,31),
+63.1 
+],
+[
+ new Date(1963,0,31),
+66.2 
+],
+[
+ new Date(1963,1,28),
+64.29 
+],
+[
+ new Date(1963,2,29),
+66.57 
+],
+[
+ new Date(1963,3,30),
+69.8 
+],
+[
+ new Date(1963,4,31),
+70.8 
+],
+[
+ new Date(1963,5,28),
+69.37 
+],
+[
+ new Date(1963,6,31),
+69.13 
+],
+[
+ new Date(1963,7,30),
+72.5 
+],
+[
+ new Date(1963,8,30),
+71.7 
+],
+[
+ new Date(1963,9,31),
+74.01 
+],
+[
+ new Date(1963,10,29),
+73.23 
+],
+[
+ new Date(1963,11,31),
+75.02 
+],
+[
+ new Date(1964,0,31),
+77.04 
+],
+[
+ new Date(1964,1,28),
+77.8 
+],
+[
+ new Date(1964,2,31),
+78.98 
+],
+[
+ new Date(1964,3,30),
+79.46 
+],
+[
+ new Date(1964,4,28),
+80.37 
+],
+[
+ new Date(1964,5,30),
+81.69 
+],
+[
+ new Date(1964,6,31),
+83.18 
+],
+[
+ new Date(1964,7,31),
+81.83 
+],
+[
+ new Date(1964,8,30),
+84.18 
+],
+[
+ new Date(1964,9,30),
+84.86 
+],
+[
+ new Date(1964,10,30),
+84.42 
+],
+[
+ new Date(1964,11,31),
+84.75 
+],
+[
+ new Date(1965,0,29),
+87.56 
+],
+[
+ new Date(1965,1,26),
+87.43 
+],
+[
+ new Date(1965,2,31),
+86.16 
+],
+[
+ new Date(1965,3,30),
+89.11 
+],
+[
+ new Date(1965,4,28),
+88.42 
+],
+[
+ new Date(1965,5,30),
+84.12 
+],
+[
+ new Date(1965,6,30),
+85.25 
+],
+[
+ new Date(1965,7,31),
+87.17 
+],
+[
+ new Date(1965,8,30),
+89.96 
+],
+[
+ new Date(1965,9,29),
+92.42 
+],
+[
+ new Date(1965,10,30),
+91.61 
+],
+[
+ new Date(1965,11,31),
+92.43 
+],
+[
+ new Date(1966,0,31),
+92.88 
+],
+[
+ new Date(1966,1,28),
+91.22 
+],
+[
+ new Date(1966,2,31),
+89.23 
+],
+[
+ new Date(1966,3,29),
+91.06 
+],
+[
+ new Date(1966,4,31),
+86.13 
+],
+[
+ new Date(1966,5,30),
+84.74 
+],
+[
+ new Date(1966,6,29),
+83.6 
+],
+[
+ new Date(1966,7,31),
+77.1 
+],
+[
+ new Date(1966,8,30),
+76.56 
+],
+[
+ new Date(1966,9,31),
+80.2 
+],
+[
+ new Date(1966,10,30),
+80.45 
+],
+[
+ new Date(1966,11,30),
+80.33 
+],
+[
+ new Date(1967,0,31),
+86.61 
+],
+[
+ new Date(1967,1,28),
+86.78 
+],
+[
+ new Date(1967,2,31),
+90.2 
+],
+[
+ new Date(1967,3,28),
+94.01 
+],
+[
+ new Date(1967,4,31),
+89.08 
+],
+[
+ new Date(1967,5,30),
+90.64 
+],
+[
+ new Date(1967,6,31),
+94.75 
+],
+[
+ new Date(1967,7,31),
+93.64 
+],
+[
+ new Date(1967,8,29),
+96.71 
+],
+[
+ new Date(1967,9,31),
+93.9 
+],
+[
+ new Date(1967,10,30),
+94 
+],
+[
+ new Date(1967,11,29),
+96.47 
+],
+[
+ new Date(1968,0,31),
+92.24 
+],
+[
+ new Date(1968,1,29),
+89.36 
+],
+[
+ new Date(1968,2,29),
+90.2 
+],
+[
+ new Date(1968,3,30),
+97.59 
+],
+[
+ new Date(1968,4,31),
+98.68 
+],
+[
+ new Date(1968,5,28),
+99.58 
+],
+[
+ new Date(1968,6,30),
+97.74 
+],
+[
+ new Date(1968,7,30),
+98.86 
+],
+[
+ new Date(1968,8,30),
+102.67 
+],
+[
+ new Date(1968,9,31),
+103.41 
+],
+[
+ new Date(1968,10,29),
+108.37 
+],
+[
+ new Date(1968,11,31),
+103.86 
+],
+[
+ new Date(1969,0,31),
+103.01 
+],
+[
+ new Date(1969,1,28),
+98.13 
+],
+[
+ new Date(1969,2,28),
+101.51 
+],
+[
+ new Date(1969,3,30),
+103.69 
+],
+[
+ new Date(1969,4,29),
+103.46 
+],
+[
+ new Date(1969,5,30),
+97.71 
+],
+[
+ new Date(1969,6,31),
+91.83 
+],
+[
+ new Date(1969,7,29),
+95.51 
+],
+[
+ new Date(1969,8,30),
+93.12 
+],
+[
+ new Date(1969,9,31),
+97.24 
+],
+[
+ new Date(1969,10,28),
+93.81 
+],
+[
+ new Date(1969,11,31),
+92.06 
+],
+[
+ new Date(1970,0,30),
+85.02 
+],
+[
+ new Date(1970,1,27),
+89.5 
+],
+[
+ new Date(1970,2,31),
+89.63 
+],
+[
+ new Date(1970,3,30),
+81.52 
+],
+[
+ new Date(1970,4,29),
+76.55 
+],
+[
+ new Date(1970,5,30),
+72.72 
+],
+[
+ new Date(1970,6,31),
+78.05 
+],
+[
+ new Date(1970,7,31),
+81.52 
+],
+[
+ new Date(1970,8,30),
+84.21 
+],
+[
+ new Date(1970,9,30),
+83.25 
+],
+[
+ new Date(1970,10,30),
+87.2 
+],
+[
+ new Date(1970,11,31),
+92.15 
+],
+[
+ new Date(1971,0,29),
+95.88 
+],
+[
+ new Date(1971,1,26),
+96.75 
+],
+[
+ new Date(1971,2,31),
+100.31 
+],
+[
+ new Date(1971,3,30),
+103.95 
+],
+[
+ new Date(1971,4,28),
+99.63 
+],
+[
+ new Date(1971,5,30),
+99.7 
+],
+[
+ new Date(1971,6,30),
+95.58 
+],
+[
+ new Date(1971,7,31),
+99.03 
+],
+[
+ new Date(1971,8,30),
+98.34 
+],
+[
+ new Date(1971,9,29),
+94.23 
+],
+[
+ new Date(1971,10,30),
+93.99 
+],
+[
+ new Date(1971,11,31),
+102.09 
+],
+[
+ new Date(1972,0,31),
+103.94 
+],
+[
+ new Date(1972,1,29),
+106.57 
+],
+[
+ new Date(1972,2,30),
+107.2 
+],
+[
+ new Date(1972,3,28),
+107.67 
+],
+[
+ new Date(1972,4,31),
+109.53 
+],
+[
+ new Date(1972,5,30),
+107.14 
+],
+[
+ new Date(1972,6,31),
+107.39 
+],
+[
+ new Date(1972,7,31),
+111.09 
+],
+[
+ new Date(1972,8,29),
+110.55 
+],
+[
+ new Date(1972,9,31),
+111.58 
+],
+[
+ new Date(1972,10,30),
+116.67 
+],
+[
+ new Date(1972,11,29),
+118.05 
+],
+[
+ new Date(1973,0,31),
+116.03 
+],
+[
+ new Date(1973,1,28),
+111.68 
+],
+[
+ new Date(1973,2,30),
+111.52 
+],
+[
+ new Date(1973,3,30),
+106.97 
+],
+[
+ new Date(1973,4,31),
+104.95 
+],
+[
+ new Date(1973,5,29),
+104.26 
+],
+[
+ new Date(1973,6,31),
+108.22 
+],
+[
+ new Date(1973,7,31),
+104.25 
+],
+[
+ new Date(1973,8,28),
+108.43 
+],
+[
+ new Date(1973,9,31),
+108.29 
+],
+[
+ new Date(1973,10,30),
+95.96 
+],
+[
+ new Date(1973,11,31),
+97.55 
+],
+[
+ new Date(1974,0,31),
+96.57 
+],
+[
+ new Date(1974,1,28),
+96.22 
+],
+[
+ new Date(1974,2,29),
+93.98 
+],
+[
+ new Date(1974,3,30),
+90.31 
+],
+[
+ new Date(1974,4,31),
+87.28 
+],
+[
+ new Date(1974,5,28),
+86 
+],
+[
+ new Date(1974,6,31),
+79.31 
+],
+[
+ new Date(1974,7,30),
+72.15 
+],
+[
+ new Date(1974,8,30),
+63.54 
+],
+[
+ new Date(1974,9,31),
+73.9 
+],
+[
+ new Date(1974,10,29),
+69.97 
+],
+[
+ new Date(1974,11,31),
+68.56 
+],
+[
+ new Date(1975,0,31),
+76.98 
+],
+[
+ new Date(1975,1,28),
+81.59 
+],
+[
+ new Date(1975,2,31),
+83.36 
+],
+[
+ new Date(1975,3,30),
+87.3 
+],
+[
+ new Date(1975,4,30),
+91.15 
+],
+[
+ new Date(1975,5,30),
+95.19 
+],
+[
+ new Date(1975,6,31),
+88.75 
+],
+[
+ new Date(1975,7,29),
+86.88 
+],
+[
+ new Date(1975,8,30),
+83.87 
+],
+[
+ new Date(1975,9,31),
+89.04 
+],
+[
+ new Date(1975,10,28),
+91.24 
+],
+[
+ new Date(1975,11,31),
+90.19 
+],
+[
+ new Date(1976,0,30),
+100.86 
+],
+[
+ new Date(1976,1,27),
+99.71 
+],
+[
+ new Date(1976,2,31),
+102.77 
+],
+[
+ new Date(1976,3,30),
+101.64 
+],
+[
+ new Date(1976,4,28),
+100.18 
+],
+[
+ new Date(1976,5,30),
+104.28 
+],
+[
+ new Date(1976,6,30),
+103.44 
+],
+[
+ new Date(1976,7,31),
+102.91 
+],
+[
+ new Date(1976,8,30),
+105.24 
+],
+[
+ new Date(1976,9,29),
+102.9 
+],
+[
+ new Date(1976,10,30),
+102.1 
+],
+[
+ new Date(1976,11,31),
+107.46 
+],
+[
+ new Date(1977,0,31),
+102.03 
+],
+[
+ new Date(1977,1,28),
+99.82 
+],
+[
+ new Date(1977,2,31),
+98.42 
+],
+[
+ new Date(1977,3,29),
+98.44 
+],
+[
+ new Date(1977,4,31),
+96.12 
+],
+[
+ new Date(1977,5,30),
+100.48 
+],
+[
+ new Date(1977,6,29),
+98.85 
+],
+[
+ new Date(1977,7,31),
+96.77 
+],
+[
+ new Date(1977,8,30),
+96.53 
+],
+[
+ new Date(1977,9,31),
+92.34 
+],
+[
+ new Date(1977,10,30),
+94.83 
+],
+[
+ new Date(1977,11,30),
+95.1 
+],
+[
+ new Date(1978,0,31),
+89.25 
+],
+[
+ new Date(1978,1,28),
+87.04 
+],
+[
+ new Date(1978,2,31),
+89.21 
+],
+[
+ new Date(1978,3,28),
+96.83 
+],
+[
+ new Date(1978,4,31),
+97.29 
+],
+[
+ new Date(1978,5,30),
+95.53 
+],
+[
+ new Date(1978,6,31),
+100.68 
+],
+[
+ new Date(1978,7,31),
+103.29 
+],
+[
+ new Date(1978,8,29),
+102.54 
+],
+[
+ new Date(1978,9,31),
+93.15 
+],
+[
+ new Date(1978,10,30),
+94.7 
+],
+[
+ new Date(1978,11,29),
+96.11 
+],
+[
+ new Date(1979,0,31),
+99.93 
+],
+[
+ new Date(1979,1,28),
+96.28 
+],
+[
+ new Date(1979,2,30),
+101.59 
+],
+[
+ new Date(1979,3,30),
+101.76 
+],
+[
+ new Date(1979,4,31),
+99.08 
+],
+[
+ new Date(1979,5,29),
+102.91 
+],
+[
+ new Date(1979,6,31),
+103.81 
+],
+[
+ new Date(1979,7,31),
+109.32 
+],
+[
+ new Date(1979,8,28),
+109.32 
+],
+[
+ new Date(1979,9,31),
+101.82 
+],
+[
+ new Date(1979,10,30),
+106.16 
+],
+[
+ new Date(1979,11,31),
+107.94 
+],
+[
+ new Date(1980,0,31),
+114.16 
+],
+[
+ new Date(1980,1,29),
+113.66 
+],
+[
+ new Date(1980,2,31),
+102.09 
+],
+[
+ new Date(1980,3,30),
+106.29 
+],
+[
+ new Date(1980,4,30),
+111.24 
+],
+[
+ new Date(1980,5,30),
+114.24 
+],
+[
+ new Date(1980,6,31),
+121.67 
+],
+[
+ new Date(1980,7,29),
+122.38 
+],
+[
+ new Date(1980,8,30),
+125.46 
+],
+[
+ new Date(1980,9,31),
+127.47 
+],
+[
+ new Date(1980,10,28),
+140.52 
+],
+[
+ new Date(1980,11,31),
+135.76 
+],
+[
+ new Date(1981,0,30),
+129.55 
+],
+[
+ new Date(1981,1,27),
+131.27 
+],
+[
+ new Date(1981,2,31),
+136 
+],
+[
+ new Date(1981,3,30),
+132.81 
+],
+[
+ new Date(1981,4,29),
+132.59 
+],
+[
+ new Date(1981,5,30),
+131.21 
+],
+[
+ new Date(1981,6,31),
+130.92 
+],
+[
+ new Date(1981,7,31),
+122.79 
+],
+[
+ new Date(1981,8,30),
+116.18 
+],
+[
+ new Date(1981,9,30),
+121.89 
+],
+[
+ new Date(1981,10,30),
+126.35 
+],
+[
+ new Date(1981,11,31),
+122.55 
+],
+[
+ new Date(1982,0,29),
+120.4 
+],
+[
+ new Date(1982,1,26),
+113.11 
+],
+[
+ new Date(1982,2,31),
+111.96 
+],
+[
+ new Date(1982,3,30),
+116.44 
+],
+[
+ new Date(1982,4,28),
+111.88 
+],
+[
+ new Date(1982,5,30),
+109.61 
+],
+[
+ new Date(1982,6,30),
+107.09 
+],
+[
+ new Date(1982,7,31),
+119.51 
+],
+[
+ new Date(1982,8,30),
+120.42 
+],
+[
+ new Date(1982,9,29),
+133.71 
+],
+[
+ new Date(1982,10,30),
+138.54 
+],
+[
+ new Date(1982,11,31),
+140.64 
+],
+[
+ new Date(1983,0,31),
+145.3 
+],
+[
+ new Date(1983,1,28),
+148.06 
+],
+[
+ new Date(1983,2,31),
+152.96 
+],
+[
+ new Date(1983,3,29),
+164.42 
+],
+[
+ new Date(1983,4,31),
+162.39 
+],
+[
+ new Date(1983,5,30),
+168.11 
+],
+[
+ new Date(1983,6,29),
+162.56 
+],
+[
+ new Date(1983,7,31),
+164.4 
+],
+[
+ new Date(1983,8,30),
+166.07 
+],
+[
+ new Date(1983,9,31),
+163.55 
+],
+[
+ new Date(1983,10,30),
+166.4 
+],
+[
+ new Date(1983,11,30),
+164.93 
+],
+[
+ new Date(1984,0,31),
+163.41 
+],
+[
+ new Date(1984,1,29),
+157.06 
+],
+[
+ new Date(1984,2,30),
+159.18 
+],
+[
+ new Date(1984,3,30),
+160.05 
+],
+[
+ new Date(1984,4,31),
+150.55 
+],
+[
+ new Date(1984,5,29),
+153.18 
+],
+[
+ new Date(1984,6,31),
+150.66 
+],
+[
+ new Date(1984,7,31),
+166.68 
+],
+[
+ new Date(1984,8,28),
+166.1 
+],
+[
+ new Date(1984,9,31),
+166.09 
+],
+[
+ new Date(1984,10,30),
+163.58 
+],
+[
+ new Date(1984,11,31),
+167.24 
+],
+[
+ new Date(1985,0,31),
+179.63 
+],
+[
+ new Date(1985,1,28),
+181.18 
+],
+[
+ new Date(1985,2,29),
+180.66 
+],
+[
+ new Date(1985,3,30),
+179.83 
+],
+[
+ new Date(1985,4,31),
+189.55 
+],
+[
+ new Date(1985,5,28),
+191.85 
+],
+[
+ new Date(1985,6,31),
+190.92 
+],
+[
+ new Date(1985,7,30),
+188.63 
+],
+[
+ new Date(1985,8,30),
+182.08 
+],
+[
+ new Date(1985,9,31),
+189.82 
+],
+[
+ new Date(1985,10,29),
+202.17 
+],
+[
+ new Date(1985,11,31),
+211.28 
+],
+[
+ new Date(1986,0,31),
+211.78 
+],
+[
+ new Date(1986,1,28),
+226.92 
+],
+[
+ new Date(1986,2,31),
+238.9 
+],
+[
+ new Date(1986,3,30),
+235.52 
+],
+[
+ new Date(1986,4,30),
+247.35 
+],
+[
+ new Date(1986,5,30),
+250.84 
+],
+[
+ new Date(1986,6,31),
+236.12 
+],
+[
+ new Date(1986,7,29),
+252.93 
+],
+[
+ new Date(1986,8,30),
+231.32 
+],
+[
+ new Date(1986,9,31),
+243.98 
+],
+[
+ new Date(1986,10,28),
+249.22 
+],
+[
+ new Date(1986,11,31),
+242.17 
+],
+[
+ new Date(1987,0,30),
+274.08 
+],
+[
+ new Date(1987,1,27),
+284.2 
+],
+[
+ new Date(1987,2,31),
+291.7 
+],
+[
+ new Date(1987,3,30),
+288.36 
+],
+[
+ new Date(1987,4,29),
+290.1 
+],
+[
+ new Date(1987,5,30),
+304 
+],
+[
+ new Date(1987,6,31),
+318.66 
+],
+[
+ new Date(1987,7,31),
+329.8 
+],
+[
+ new Date(1987,8,30),
+321.83 
+],
+[
+ new Date(1987,9,30),
+251.79 
+],
+[
+ new Date(1987,10,30),
+230.3 
+],
+[
+ new Date(1987,11,31),
+247.08 
+],
+[
+ new Date(1988,0,29),
+257.07 
+],
+[
+ new Date(1988,1,29),
+267.82 
+],
+[
+ new Date(1988,2,31),
+258.89 
+],
+[
+ new Date(1988,3,29),
+261.33 
+],
+[
+ new Date(1988,4,31),
+262.16 
+],
+[
+ new Date(1988,5,30),
+273.5 
+],
+[
+ new Date(1988,6,29),
+272.02 
+],
+[
+ new Date(1988,7,31),
+261.52 
+],
+[
+ new Date(1988,8,30),
+271.91 
+],
+[
+ new Date(1988,9,31),
+278.97 
+],
+[
+ new Date(1988,10,30),
+273.7 
+],
+[
+ new Date(1988,11,30),
+277.72 
+],
+[
+ new Date(1989,0,31),
+297.47 
+],
+[
+ new Date(1989,1,28),
+288.86 
+],
+[
+ new Date(1989,2,31),
+294.87 
+],
+[
+ new Date(1989,3,28),
+309.64 
+],
+[
+ new Date(1989,4,31),
+320.52 
+],
+[
+ new Date(1989,5,30),
+317.98 
+],
+[
+ new Date(1989,6,31),
+346.08 
+],
+[
+ new Date(1989,7,31),
+351.45 
+],
+[
+ new Date(1989,8,29),
+349.15 
+],
+[
+ new Date(1989,9,31),
+340.36 
+],
+[
+ new Date(1989,10,30),
+345.99 
+],
+[
+ new Date(1989,11,29),
+353.4 
+],
+[
+ new Date(1990,0,31),
+329.08 
+],
+[
+ new Date(1990,1,28),
+331.89 
+],
+[
+ new Date(1990,2,30),
+339.94 
+],
+[
+ new Date(1990,3,30),
+330.8 
+],
+[
+ new Date(1990,4,31),
+361.23 
+],
+[
+ new Date(1990,5,29),
+358.02 
+],
+[
+ new Date(1990,6,31),
+356.15 
+],
+[
+ new Date(1990,7,31),
+322.56 
+],
+[
+ new Date(1990,8,28),
+306.05 
+],
+[
+ new Date(1990,9,31),
+304 
+],
+[
+ new Date(1990,10,30),
+322.22 
+],
+[
+ new Date(1990,11,31),
+330.22 
+],
+[
+ new Date(1991,0,31),
+343.93 
+],
+[
+ new Date(1991,1,28),
+367.07 
+],
+[
+ new Date(1991,2,28),
+375.22 
+],
+[
+ new Date(1991,3,30),
+375.35 
+],
+[
+ new Date(1991,4,31),
+389.83 
+],
+[
+ new Date(1991,5,28),
+371.16 
+],
+[
+ new Date(1991,6,31),
+387.81 
+],
+[
+ new Date(1991,7,30),
+395.43 
+],
+[
+ new Date(1991,8,30),
+387.86 
+],
+[
+ new Date(1991,9,31),
+392.46 
+],
+[
+ new Date(1991,10,29),
+375.22 
+],
+[
+ new Date(1991,11,31),
+417.09 
+],
+[
+ new Date(1992,0,31),
+408.79 
+],
+[
+ new Date(1992,1,28),
+412.7 
+],
+[
+ new Date(1992,2,31),
+403.69 
+],
+[
+ new Date(1992,3,30),
+414.95 
+],
+[
+ new Date(1992,4,29),
+415.35 
+],
+[
+ new Date(1992,5,30),
+408.14 
+],
+[
+ new Date(1992,6,31),
+424.21 
+],
+[
+ new Date(1992,7,31),
+414.03 
+],
+[
+ new Date(1992,8,30),
+417.8 
+],
+[
+ new Date(1992,9,30),
+418.68 
+],
+[
+ new Date(1992,10,30),
+431.35 
+],
+[
+ new Date(1992,11,31),
+435.71 
+],
+[
+ new Date(1993,0,29),
+438.78 
+],
+[
+ new Date(1993,1,26),
+443.38 
+],
+[
+ new Date(1993,2,31),
+451.67 
+],
+[
+ new Date(1993,3,30),
+440.19 
+],
+[
+ new Date(1993,4,28),
+450.19 
+],
+[
+ new Date(1993,5,30),
+450.53 
+],
+[
+ new Date(1993,6,30),
+448.13 
+],
+[
+ new Date(1993,7,31),
+463.56 
+],
+[
+ new Date(1993,8,30),
+458.93 
+],
+[
+ new Date(1993,9,29),
+467.83 
+],
+[
+ new Date(1993,10,30),
+461.79 
+],
+[
+ new Date(1993,11,31),
+466.45 
+],
+[
+ new Date(1994,0,31),
+481.61 
+],
+[
+ new Date(1994,1,28),
+467.14 
+],
+[
+ new Date(1994,2,31),
+445.77 
+],
+[
+ new Date(1994,3,29),
+450.91 
+],
+[
+ new Date(1994,4,31),
+456.5 
+],
+[
+ new Date(1994,5,30),
+444.27 
+],
+[
+ new Date(1994,6,29),
+458.26 
+],
+[
+ new Date(1994,7,31),
+475.49 
+],
+[
+ new Date(1994,8,30),
+462.69 
+],
+[
+ new Date(1994,9,31),
+472.35 
+],
+[
+ new Date(1994,10,30),
+453.69 
+],
+[
+ new Date(1994,11,30),
+459.27 
+],
+[
+ new Date(1995,0,31),
+470.42 
+],
+[
+ new Date(1995,1,28),
+487.39 
+],
+[
+ new Date(1995,2,31),
+500.71 
+],
+[
+ new Date(1995,3,28),
+514.71 
+],
+[
+ new Date(1995,4,31),
+533.4 
+],
+[
+ new Date(1995,5,30),
+544.75 
+],
+[
+ new Date(1995,6,31),
+562.06 
+],
+[
+ new Date(1995,7,31),
+561.88 
+],
+[
+ new Date(1995,8,29),
+584.41 
+],
+[
+ new Date(1995,9,31),
+581.5 
+],
+[
+ new Date(1995,10,30),
+605.37 
+],
+[
+ new Date(1995,11,29),
+615.93 
+],
+[
+ new Date(1996,0,31),
+636.02 
+],
+[
+ new Date(1996,1,29),
+640.43 
+],
+[
+ new Date(1996,2,29),
+645.5 
+],
+[
+ new Date(1996,3,30),
+654.17 
+],
+[
+ new Date(1996,4,31),
+669.12 
+],
+[
+ new Date(1996,5,28),
+670.63 
+],
+[
+ new Date(1996,6,31),
+639.95 
+],
+[
+ new Date(1996,7,30),
+651.99 
+],
+[
+ new Date(1996,8,30),
+687.31 
+],
+[
+ new Date(1996,9,31),
+705.27 
+],
+[
+ new Date(1996,10,29),
+757.02 
+],
+[
+ new Date(1996,11,31),
+740.74 
+],
+[
+ new Date(1997,0,31),
+786.16 
+],
+[
+ new Date(1997,1,28),
+790.82 
+],
+[
+ new Date(1997,2,31),
+757.12 
+],
+[
+ new Date(1997,3,30),
+801.34 
+],
+[
+ new Date(1997,4,30),
+848.28 
+],
+[
+ new Date(1997,5,30),
+885.14 
+],
+[
+ new Date(1997,6,31),
+954.29 
+],
+[
+ new Date(1997,7,29),
+899.47 
+],
+[
+ new Date(1997,8,30),
+947.28 
+],
+[
+ new Date(1997,9,31),
+914.62 
+],
+[
+ new Date(1997,10,28),
+955.4 
+],
+[
+ new Date(1997,11,31),
+970.43 
+],
+[
+ new Date(1998,0,30),
+980.28 
+],
+[
+ new Date(1998,1,27),
+1049.34 
+],
+[
+ new Date(1998,2,31),
+1101.75 
+],
+[
+ new Date(1998,3,30),
+1111.75 
+],
+[
+ new Date(1998,4,29),
+1090.82 
+],
+[
+ new Date(1998,5,30),
+1133.84 
+],
+[
+ new Date(1998,6,31),
+1120.67 
+],
+[
+ new Date(1998,7,31),
+957.28 
+],
+[
+ new Date(1998,8,30),
+1017.01 
+],
+[
+ new Date(1998,9,30),
+1098.67 
+],
+[
+ new Date(1998,10,30),
+1163.63 
+],
+[
+ new Date(1998,11,31),
+1229.23 
+],
+[
+ new Date(1999,0,29),
+1279.64 
+],
+[
+ new Date(1999,1,26),
+1238.33 
+],
+[
+ new Date(1999,2,31),
+1286.37 
+],
+[
+ new Date(1999,3,30),
+1335.18 
+],
+[
+ new Date(1999,4,28),
+1301.84 
+],
+[
+ new Date(1999,5,30),
+1372.71 
+],
+[
+ new Date(1999,6,30),
+1328.72 
+],
+[
+ new Date(1999,7,31),
+1320.41 
+],
+[
+ new Date(1999,8,30),
+1282.71 
+],
+[
+ new Date(1999,9,29),
+1362.93 
+],
+[
+ new Date(1999,10,30),
+1388.91 
+],
+[
+ new Date(1999,11,31),
+1469.25 
+],
+[
+ new Date(2000,0,31),
+1394.46 
+],
+[
+ new Date(2000,1,29),
+1366.42 
+],
+[
+ new Date(2000,2,31),
+1498.58 
+],
+[
+ new Date(2000,3,28),
+1452.43 
+],
+[
+ new Date(2000,4,31),
+1420.6 
+],
+[
+ new Date(2000,5,30),
+1454.6 
+],
+[
+ new Date(2000,6,31),
+1430.83 
+],
+[
+ new Date(2000,7,31),
+1517.68 
+],
+[
+ new Date(2000,8,29),
+1436.51 
+],
+[
+ new Date(2000,9,31),
+1429.4 
+],
+[
+ new Date(2000,10,30),
+1314.95 
+],
+[
+ new Date(2000,11,29),
+1320.28 
+],
+[
+ new Date(2001,0,31),
+1366.01 
+],
+[
+ new Date(2001,1,28),
+1239.94 
+],
+[
+ new Date(2001,2,30),
+1160.33 
+],
+[
+ new Date(2001,3,30),
+1249.46 
+],
+[
+ new Date(2001,4,31),
+1255.82 
+],
+[
+ new Date(2001,5,29),
+1224.42 
+],
+[
+ new Date(2001,6,31),
+1211.23 
+],
+[
+ new Date(2001,7,31),
+1133.58 
+],
+[
+ new Date(2001,8,28),
+1040.94 
+],
+[
+ new Date(2001,9,31),
+1059.78 
+],
+[
+ new Date(2001,10,30),
+1139.45 
+],
+[
+ new Date(2001,11,31),
+1148.08 
+],
+[
+ new Date(2002,0,31),
+1130.2 
+],
+[
+ new Date(2002,1,28),
+1106.73 
+],
+[
+ new Date(2002,2,28),
+1147.39 
+],
+[
+ new Date(2002,3,30),
+1076.92 
+],
+[
+ new Date(2002,4,31),
+1067.14 
+],
+[
+ new Date(2002,5,28),
+989.81 
+],
+[
+ new Date(2002,6,31),
+911.62 
+],
+[
+ new Date(2002,7,30),
+916.07 
+],
+[
+ new Date(2002,8,30),
+815.28 
+],
+[
+ new Date(2002,9,31),
+885.76 
+],
+[
+ new Date(2002,10,29),
+936.31 
+],
+[
+ new Date(2002,11,31),
+879.82 
+],
+[
+ new Date(2003,0,31),
+855.7 
+],
+[
+ new Date(2003,1,28),
+841.15 
+],
+[
+ new Date(2003,2,31),
+848.18 
+],
+[
+ new Date(2003,3,30),
+916.92 
+],
+[
+ new Date(2003,4,30),
+963.59 
+],
+[
+ new Date(2003,5,30),
+974.5 
+],
+[
+ new Date(2003,6,31),
+990.31 
+],
+[
+ new Date(2003,7,29),
+1008.01 
+],
+[
+ new Date(2003,8,30),
+995.97 
+],
+[
+ new Date(2003,9,31),
+1050.71 
+],
+[
+ new Date(2003,10,28),
+1058.2 
+],
+[
+ new Date(2003,11,31),
+1111.92 
+],
+[
+ new Date(2004,0,30),
+1131.13 
+],
+[
+ new Date(2004,1,27),
+1144.94 
+],
+[
+ new Date(2004,2,31),
+1126.21 
+],
+[
+ new Date(2004,3,30),
+1107.3 
+],
+[
+ new Date(2004,4,28),
+1120.68 
+],
+[
+ new Date(2004,5,30),
+1140.84 
+],
+[
+ new Date(2004,6,30),
+1101.72 
+],
+[
+ new Date(2004,7,31),
+1104.24 
+],
+[
+ new Date(2004,8,30),
+1114.58 
+],
+[
+ new Date(2004,9,29),
+1130.2 
+],
+[
+ new Date(2004,10,30),
+1173.82 
+],
+[
+ new Date(2004,11,31),
+1211.92 
+],
+[
+ new Date(2005,0,31),
+1181.27 
+],
+[
+ new Date(2005,1,28),
+1203.6 
+],
+[
+ new Date(2005,2,31),
+1180.59 
+],
+[
+ new Date(2005,3,29),
+1156.85 
+],
+[
+ new Date(2005,4,31),
+1191.5 
+],
+[
+ new Date(2005,5,30),
+1191.33 
+],
+[
+ new Date(2005,6,29),
+1234.18 
+],
+[
+ new Date(2005,7,31),
+1220.33 
+],
+[
+ new Date(2005,8,30),
+1228.81 
+],
+[
+ new Date(2005,9,31),
+1207.01 
+],
+[
+ new Date(2005,10,30),
+1249.48 
+],
+[
+ new Date(2005,11,30),
+1248.29 
+],
+[
+ new Date(2006,0,31),
+1280.08 
+],
+[
+ new Date(2006,1,28),
+1280.66 
+],
+[
+ new Date(2006,2,31),
+1294.83 
+],
+[
+ new Date(2006,3,28),
+1310.61 
+],
+[
+ new Date(2006,4,31),
+1270.09 
+],
+[
+ new Date(2006,5,30),
+1270.2 
+],
+[
+ new Date(2006,6,31),
+1276.66 
+],
+[
+ new Date(2006,7,31),
+1303.82 
+],
+[
+ new Date(2006,8,29),
+1335.85 
+],
+[
+ new Date(2006,9,31),
+1377.94 
+],
+[
+ new Date(2006,10,30),
+1400.63 
+],
+[
+ new Date(2006,11,29),
+1418.3 
+],
+[
+ new Date(2007,0,31),
+1438.24 
+],
+[
+ new Date(2007,1,28),
+1406.82 
+],
+[
+ new Date(2007,2,30),
+1420.86 
+],
+[
+ new Date(2007,3,30),
+1482.37 
+],
+[
+ new Date(2007,4,31),
+1530.62 
+],
+[
+ new Date(2007,5,29),
+1503.35 
+],
+[
+ new Date(2007,6,31),
+1455.27 
+],
+[
+ new Date(2007,7,31),
+1473.99 
+],
+[
+ new Date(2007,8,28),
+1526.75 
+],
+[
+ new Date(2007,9,31),
+1549.38 
+],
+[
+ new Date(2007,10,30),
+1481.14 
+],
+[
+ new Date(2007,11,31),
+1468.36 
+],
+[
+ new Date(2008,0,31),
+1378.55 
+],
+[
+ new Date(2008,1,29),
+1330.63 
+],
+[
+ new Date(2008,2,31),
+1322.7 
+],
+[
+ new Date(2008,3,30),
+1385.59 
+],
+[
+ new Date(2008,4,30),
+1400.38 
+],
+[
+ new Date(2008,5,30),
+1280 
+],
+[
+ new Date(2008,6,31),
+1267.38 
+],
+[
+ new Date(2008,7,29),
+1282.83 
+],
+[
+ new Date(2008,8,30),
+1166.36 
+],
+[
+ new Date(2008,9,31),
+968.75 
+],
+[
+ new Date(2008,10,28),
+896.24 
+],
+[
+ new Date(2008,11,31),
+903.25 
+],
+[
+ new Date(2009,0,30),
+825.88 
+],
+[
+ new Date(2009,1,27),
+735.09 
+],
+[
+ new Date(2009,2,31),
+797.87 
+],
+[
+ new Date(2009,3,30),
+872.81 
+],
+[
+ new Date(2009,4,29),
+919.14 
+],
+[
+ new Date(2009,5,30),
+919.32 
+],
+[
+ new Date(2009,6,31),
+987.48 
+],
+[
+ new Date(2009,7,31),
+1020.62 
+],
+[
+ new Date(2009,8,30),
+1057.08 
+],
+[
+ new Date(2009,9,30),
+1036.19 
+],
+[
+ new Date(2009,10,30),
+1095.63 
+],
+[
+ new Date(2009,11,31),
+1115.1 
+],
+[
+ new Date(2010,0,29),
+1073.87 
+],
+[
+ new Date(2010,1,26),
+1104.49 
+],
+[
+ new Date(2010,2,31),
+1169.43 
+],
+[
+ new Date(2010,3,30),
+1186.69 
+],
+[
+ new Date(2010,4,28),
+1089.41 
+],
+[
+ new Date(2010,5,30),
+1030.71 
+],
+[
+ new Date(2010,6,30),
+1101.6 
+],
+[
+ new Date(2010,7,31),
+1049.33 
+],
+[
+ new Date(2010,8,30),
+1141.2 
+],
+[
+ new Date(2010,9,29),
+1183.26 
+],
+[
+ new Date(2010,10,30),
+1180.55 
+],
+[
+ new Date(2010,11,31),
+1257.64 
+],
+[
+ new Date(2011,0,31),
+1286.12 
+],
+[
+ new Date(2011,1,28),
+1327.22 
+],
+[
+ new Date(2011,2,31),
+1325.83 
+],
+[
+ new Date(2011,3,29),
+1363.61 
+],
+[
+ new Date(2011,4,31),
+1345.2 
+],
+[
+ new Date(2011,5,30),
+1320.64 
+],
+[
+ new Date(2011,6,29),
+1292.28 
+],
+[
+ new Date(2011,7,31),
+1218.89 
+],
+[
+ new Date(2011,8,30),
+1131.42 
+],
+[
+ new Date(2011,9,31),
+1253.3 
+],
+[
+ new Date(2011,10,30),
+1246.96 
+],
+[
+ new Date(2011,11,30),
+1257.6 
+],
+[
+ new Date(2012,0,31),
+1312.41 
+],
+[
+ new Date(2012,1,29),
+1365.68 
+],
+[
+ new Date(2012,2,30),
+1408.47 
+],
+[
+ new Date(2012,3,30),
+1397.91 
+],
+[
+ new Date(2012,4,31),
+1310.33 
+],
+[
+ new Date(2012,5,29),
+1362.16 
+],
+[
+ new Date(2012,6,31),
+1379.32 
+],
+[
+ new Date(2012,7,31),
+1406.58 
+],
+[
+ new Date(2012,8,28),
+1440.67 
+],
+[
+ new Date(2012,9,31),
+1412.16 
+],
+[
+ new Date(2012,10,30),
+1416.18 
+],
+[
+ new Date(2012,11,31),
+1426.19 
+],
+[
+ new Date(2013,0,31),
+1498.11 
+],
+[
+ new Date(2013,1,28),
+1514.68 
+],
+[
+ new Date(2013,2,28),
+1569.19 
+],
+[
+ new Date(2013,3,30),
+1597.57 
+],
+[
+ new Date(2013,4,31),
+1630.74 
+],
+[
+ new Date(2013,5,20),
+1588.19 
+] 
+];
+data.addColumn('date','date');
+data.addColumn('number','sp500');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartLineChartID17502e13468f() {
+  var data = gvisDataLineChartID17502e13468f();
+  var options = {};
+options["allowHtml"] = true;
+options["title"] = "S&P 500 (googleVis::gvisLineChart)";
+options["height"] =    400;
+options["width"] =    600;
+
+     var chart = new google.visualization.LineChart(
+       document.getElementById('LineChartID17502e13468f')
+     );
+     chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  var chartid = "corechart";
+
+  // Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+  var i, newPackage = true;
+  for (i = 0; newPackage && i < pkgs.length; i++) {
+    if (pkgs[i] === chartid)
+      newPackage = false;
+  }
+  if (newPackage)
+    pkgs.push(chartid);
+
+  // Add the drawChart function to the global list of callbacks
+  callbacks.push(drawChartLineChartID17502e13468f);
+})();
+function displayChartLineChartID17502e13468f() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+    var pkgCount = pkgs.length;
+    google.load("visualization", "1", { packages:pkgs, callback: function() {
+      if (pkgCount != pkgs.length) {
+        // Race condition where another setTimeout call snuck in after us; if
+        // that call added a package, we must not shift its callback
+        return;
+      }
+      while (callbacks.length > 0)
+        callbacks.shift()();
+    } });
+  }, 100);
+}
+ 
+// jsFooter
+ </script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartLineChartID17502e13468f"></script>
+ 
+
+<!-- divChart -->
+
+<div id="LineChartID17502e13468f"
+  style="width: 600px; height: 400px;">
+</div>
 
 <hr>
 
@@ -326,7 +3150,18 @@ title(
 )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-15.png" alt="plot of chunk unnamed-chunk-15"> </p>
+<p><img src="assets/fig/unnamed-chunk-16.png" alt="plot of chunk unnamed-chunk-16"> </p>
+
+<hr>
+
+<h3><code>zoo</code> meets <code>ggplot2</code> with <a href="https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/ggplot2.zoo.R?view=markup&amp;revision=939&amp;root=zoo"><code>autoplot.zoo()</code></a> 2012-10-14</h3>
+<p>Similar to <code>zoo</code> meets <code>lattice</code> above, <code>autoplot.zoo()</code> makes plotting <code>zoo</code> with <code>ggplot2</code> much easier.  As the codes shows below, <code>xts</code> can also use <code>autoplot.zoo()</code> with no explicit transformation.</p>
+
+<pre><code class="r">autoplot.zoo(sp500.monthly) + 
+  ggtitle(&quot;S&amp;P 500 (zoo::autoplot.zoo)&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-17.png" alt="plot of chunk unnamed-chunk-17"> </p>
 
 <hr>
 
@@ -395,4072 +3230,4072 @@ n1$print(&quot;chart1&quot;)
 },
         data = [
  {
- "date":  -4718,
+ "date": new Date(1957,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  44.72 
 },
 {
- "date":  -4690,
+ "date": new Date(1957,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  43.26 
 },
 {
- "date":  -4661,
+ "date": new Date(1957,2,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  44.11 
 },
 {
- "date":  -4629,
+ "date": new Date(1957,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  45.74 
 },
 {
- "date":  -4598,
+ "date": new Date(1957,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  47.43 
 },
 {
- "date":  -4570,
+ "date": new Date(1957,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  47.37 
 },
 {
- "date":  -4537,
+ "date": new Date(1957,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  47.91 
 },
 {
- "date":  -4507,
+ "date": new Date(1957,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  45.22 
 },
 {
- "date":  -4476,
+ "date": new Date(1957,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  42.42 
 },
 {
- "date":  -4445,
+ "date": new Date(1957,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  41.06 
 },
 {
- "date":  -4416,
+ "date": new Date(1957,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  41.72 
 },
 {
- "date":  -4384,
+ "date": new Date(1957,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  39.99 
 },
 {
- "date":  -4353,
+ "date": new Date(1958,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   41.7 
 },
 {
- "date":  -4325,
+ "date": new Date(1958,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  40.84 
 },
 {
- "date":  -4294,
+ "date": new Date(1958,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   42.1 
 },
 {
- "date":  -4264,
+ "date": new Date(1958,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  43.44 
 },
 {
- "date":  -4235,
+ "date": new Date(1958,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  44.09 
 },
 {
- "date":  -4203,
+ "date": new Date(1958,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  45.24 
 },
 {
- "date":  -4172,
+ "date": new Date(1958,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  47.19 
 },
 {
- "date":  -4143,
+ "date": new Date(1958,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  47.75 
 },
 {
- "date":  -4111,
+ "date": new Date(1958,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  50.06 
 },
 {
- "date":  -4080,
+ "date": new Date(1958,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  51.33 
 },
 {
- "date":  -4052,
+ "date": new Date(1958,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  52.48 
 },
 {
- "date":  -4019,
+ "date": new Date(1958,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.21 
 },
 {
- "date":  -3989,
+ "date": new Date(1959,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.42 
 },
 {
- "date":  -3961,
+ "date": new Date(1959,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.41 
 },
 {
- "date":  -3929,
+ "date": new Date(1959,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.44 
 },
 {
- "date":  -3899,
+ "date": new Date(1959,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  57.59 
 },
 {
- "date":  -3870,
+ "date": new Date(1959,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  58.68 
 },
 {
- "date":  -3838,
+ "date": new Date(1959,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  58.47 
 },
 {
- "date":  -3807,
+ "date": new Date(1959,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  60.51 
 },
 {
- "date":  -3776,
+ "date": new Date(1959,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   59.6 
 },
 {
- "date":  -3746,
+ "date": new Date(1959,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  56.88 
 },
 {
- "date":  -3716,
+ "date": new Date(1959,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  57.52 
 },
 {
- "date":  -3685,
+ "date": new Date(1959,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  58.28 
 },
 {
- "date":  -3654,
+ "date": new Date(1959,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  59.89 
 },
 {
- "date":  -3625,
+ "date": new Date(1960,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.61 
 },
 {
- "date":  -3594,
+ "date": new Date(1960,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  56.12 
 },
 {
- "date":  -3563,
+ "date": new Date(1960,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.34 
 },
 {
- "date":  -3534,
+ "date": new Date(1960,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  54.37 
 },
 {
- "date":  -3502,
+ "date": new Date(1960,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.83 
 },
 {
- "date":  -3472,
+ "date": new Date(1960,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  56.92 
 },
 {
- "date":  -3443,
+ "date": new Date(1960,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.51 
 },
 {
- "date":  -3410,
+ "date": new Date(1960,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  56.96 
 },
 {
- "date":  -3380,
+ "date": new Date(1960,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  53.52 
 },
 {
- "date":  -3349,
+ "date": new Date(1960,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  53.39 
 },
 {
- "date":  -3319,
+ "date": new Date(1960,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  55.54 
 },
 {
- "date":  -3289,
+ "date": new Date(1960,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  58.11 
 },
 {
- "date":  -3257,
+ "date": new Date(1961,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  61.78 
 },
 {
- "date":  -3229,
+ "date": new Date(1961,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  63.44 
 },
 {
- "date":  -3199,
+ "date": new Date(1961,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  65.06 
 },
 {
- "date":  -3170,
+ "date": new Date(1961,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  65.31 
 },
 {
- "date":  -3137,
+ "date": new Date(1961,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  66.56 
 },
 {
- "date":  -3107,
+ "date": new Date(1961,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  64.64 
 },
 {
- "date":  -3076,
+ "date": new Date(1961,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  66.76 
 },
 {
- "date":  -3045,
+ "date": new Date(1961,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  68.07 
 },
 {
- "date":  -3016,
+ "date": new Date(1961,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  66.73 
 },
 {
- "date":  -2984,
+ "date": new Date(1961,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  68.62 
 },
 {
- "date":  -2954,
+ "date": new Date(1961,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  71.32 
 },
 {
- "date":  -2925,
+ "date": new Date(1961,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  71.55 
 },
 {
- "date":  -2892,
+ "date": new Date(1962,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  68.84 
 },
 {
- "date":  -2864,
+ "date": new Date(1962,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  69.96 
 },
 {
- "date":  -2834,
+ "date": new Date(1962,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  69.55 
 },
 {
- "date":  -2803,
+ "date": new Date(1962,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  65.24 
 },
 {
- "date":  -2772,
+ "date": new Date(1962,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  59.63 
 },
 {
- "date":  -2743,
+ "date": new Date(1962,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  54.75 
 },
 {
- "date":  -2711,
+ "date": new Date(1962,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  58.23 
 },
 {
- "date":  -2680,
+ "date": new Date(1962,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  59.12 
 },
 {
- "date":  -2652,
+ "date": new Date(1962,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  56.27 
 },
 {
- "date":  -2619,
+ "date": new Date(1962,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  56.52 
 },
 {
- "date":  -2589,
+ "date": new Date(1962,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  62.26 
 },
 {
- "date":  -2558,
+ "date": new Date(1962,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   63.1 
 },
 {
- "date":  -2527,
+ "date": new Date(1963,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   66.2 
 },
 {
- "date":  -2499,
+ "date": new Date(1963,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  64.29 
 },
 {
- "date":  -2470,
+ "date": new Date(1963,2,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  66.57 
 },
 {
- "date":  -2438,
+ "date": new Date(1963,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   69.8 
 },
 {
- "date":  -2407,
+ "date": new Date(1963,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   70.8 
 },
 {
- "date":  -2379,
+ "date": new Date(1963,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  69.37 
 },
 {
- "date":  -2346,
+ "date": new Date(1963,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  69.13 
 },
 {
- "date":  -2316,
+ "date": new Date(1963,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   72.5 
 },
 {
- "date":  -2285,
+ "date": new Date(1963,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   71.7 
 },
 {
- "date":  -2254,
+ "date": new Date(1963,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  74.01 
 },
 {
- "date":  -2225,
+ "date": new Date(1963,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  73.23 
 },
 {
- "date":  -2193,
+ "date": new Date(1963,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  75.02 
 },
 {
- "date":  -2162,
+ "date": new Date(1964,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  77.04 
 },
 {
- "date":  -2134,
+ "date": new Date(1964,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":   77.8 
 },
 {
- "date":  -2102,
+ "date": new Date(1964,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  78.98 
 },
 {
- "date":  -2072,
+ "date": new Date(1964,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  79.46 
 },
 {
- "date":  -2044,
+ "date": new Date(1964,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  80.37 
 },
 {
- "date":  -2011,
+ "date": new Date(1964,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  81.69 
 },
 {
- "date":  -1980,
+ "date": new Date(1964,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  83.18 
 },
 {
- "date":  -1949,
+ "date": new Date(1964,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  81.83 
 },
 {
- "date":  -1919,
+ "date": new Date(1964,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  84.18 
 },
 {
- "date":  -1889,
+ "date": new Date(1964,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  84.86 
 },
 {
- "date":  -1858,
+ "date": new Date(1964,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  84.42 
 },
 {
- "date":  -1827,
+ "date": new Date(1964,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  84.75 
 },
 {
- "date":  -1798,
+ "date": new Date(1965,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  87.56 
 },
 {
- "date":  -1770,
+ "date": new Date(1965,1,26),
 "indexname": "SP500",
 "metric": "price",
 "value":  87.43 
 },
 {
- "date":  -1737,
+ "date": new Date(1965,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  86.16 
 },
 {
- "date":  -1707,
+ "date": new Date(1965,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.11 
 },
 {
- "date":  -1679,
+ "date": new Date(1965,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  88.42 
 },
 {
- "date":  -1646,
+ "date": new Date(1965,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  84.12 
 },
 {
- "date":  -1616,
+ "date": new Date(1965,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  85.25 
 },
 {
- "date":  -1584,
+ "date": new Date(1965,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  87.17 
 },
 {
- "date":  -1554,
+ "date": new Date(1965,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.96 
 },
 {
- "date":  -1525,
+ "date": new Date(1965,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  92.42 
 },
 {
- "date":  -1493,
+ "date": new Date(1965,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  91.61 
 },
 {
- "date":  -1462,
+ "date": new Date(1965,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  92.43 
 },
 {
- "date":  -1431,
+ "date": new Date(1966,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  92.88 
 },
 {
- "date":  -1403,
+ "date": new Date(1966,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  91.22 
 },
 {
- "date":  -1372,
+ "date": new Date(1966,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.23 
 },
 {
- "date":  -1343,
+ "date": new Date(1966,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  91.06 
 },
 {
- "date":  -1311,
+ "date": new Date(1966,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  86.13 
 },
 {
- "date":  -1281,
+ "date": new Date(1966,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  84.74 
 },
 {
- "date":  -1252,
+ "date": new Date(1966,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value":   83.6 
 },
 {
- "date":  -1219,
+ "date": new Date(1966,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   77.1 
 },
 {
- "date":  -1189,
+ "date": new Date(1966,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  76.56 
 },
 {
- "date":  -1158,
+ "date": new Date(1966,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   80.2 
 },
 {
- "date":  -1128,
+ "date": new Date(1966,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  80.45 
 },
 {
- "date":  -1098,
+ "date": new Date(1966,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  80.33 
 },
 {
- "date":  -1066,
+ "date": new Date(1967,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  86.61 
 },
 {
- "date":  -1038,
+ "date": new Date(1967,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  86.78 
 },
 {
- "date":  -1007,
+ "date": new Date(1967,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   90.2 
 },
 {
- "date":   -979,
+ "date": new Date(1967,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  94.01 
 },
 {
- "date":   -946,
+ "date": new Date(1967,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.08 
 },
 {
- "date":   -916,
+ "date": new Date(1967,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  90.64 
 },
 {
- "date":   -885,
+ "date": new Date(1967,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  94.75 
 },
 {
- "date":   -854,
+ "date": new Date(1967,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  93.64 
 },
 {
- "date":   -825,
+ "date": new Date(1967,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.71 
 },
 {
- "date":   -793,
+ "date": new Date(1967,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   93.9 
 },
 {
- "date":   -763,
+ "date": new Date(1967,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":     94 
 },
 {
- "date":   -734,
+ "date": new Date(1967,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.47 
 },
 {
- "date":   -701,
+ "date": new Date(1968,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  92.24 
 },
 {
- "date":   -672,
+ "date": new Date(1968,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.36 
 },
 {
- "date":   -643,
+ "date": new Date(1968,2,29),
 "indexname": "SP500",
 "metric": "price",
 "value":   90.2 
 },
 {
- "date":   -611,
+ "date": new Date(1968,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  97.59 
 },
 {
- "date":   -580,
+ "date": new Date(1968,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  98.68 
 },
 {
- "date":   -552,
+ "date": new Date(1968,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  99.58 
 },
 {
- "date":   -520,
+ "date": new Date(1968,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  97.74 
 },
 {
- "date":   -489,
+ "date": new Date(1968,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  98.86 
 },
 {
- "date":   -458,
+ "date": new Date(1968,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.67 
 },
 {
- "date":   -427,
+ "date": new Date(1968,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.41 
 },
 {
- "date":   -398,
+ "date": new Date(1968,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 108.37 
 },
 {
- "date":   -366,
+ "date": new Date(1968,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.86 
 },
 {
- "date":   -335,
+ "date": new Date(1969,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.01 
 },
 {
- "date":   -307,
+ "date": new Date(1969,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  98.13 
 },
 {
- "date":   -279,
+ "date": new Date(1969,2,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 101.51 
 },
 {
- "date":   -246,
+ "date": new Date(1969,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.69 
 },
 {
- "date":   -217,
+ "date": new Date(1969,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.46 
 },
 {
- "date":   -185,
+ "date": new Date(1969,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  97.71 
 },
 {
- "date":   -154,
+ "date": new Date(1969,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  91.83 
 },
 {
- "date":   -125,
+ "date": new Date(1969,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  95.51 
 },
 {
- "date":    -93,
+ "date": new Date(1969,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  93.12 
 },
 {
- "date":    -62,
+ "date": new Date(1969,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  97.24 
 },
 {
- "date":    -34,
+ "date": new Date(1969,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  93.81 
 },
 {
- "date":     -1,
+ "date": new Date(1969,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  92.06 
 },
 {
- "date":     29,
+ "date": new Date(1970,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  85.02 
 },
 {
- "date":     57,
+ "date": new Date(1970,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value":   89.5 
 },
 {
- "date":     89,
+ "date": new Date(1970,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.63 
 },
 {
- "date":    119,
+ "date": new Date(1970,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  81.52 
 },
 {
- "date":    148,
+ "date": new Date(1970,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  76.55 
 },
 {
- "date":    180,
+ "date": new Date(1970,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  72.72 
 },
 {
- "date":    211,
+ "date": new Date(1970,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  78.05 
 },
 {
- "date":    242,
+ "date": new Date(1970,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  81.52 
 },
 {
- "date":    272,
+ "date": new Date(1970,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  84.21 
 },
 {
- "date":    302,
+ "date": new Date(1970,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  83.25 
 },
 {
- "date":    333,
+ "date": new Date(1970,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   87.2 
 },
 {
- "date":    364,
+ "date": new Date(1970,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  92.15 
 },
 {
- "date":    393,
+ "date": new Date(1971,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  95.88 
 },
 {
- "date":    421,
+ "date": new Date(1971,1,26),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.75 
 },
 {
- "date":    454,
+ "date": new Date(1971,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 100.31 
 },
 {
- "date":    484,
+ "date": new Date(1971,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.95 
 },
 {
- "date":    512,
+ "date": new Date(1971,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  99.63 
 },
 {
- "date":    545,
+ "date": new Date(1971,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   99.7 
 },
 {
- "date":    575,
+ "date": new Date(1971,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  95.58 
 },
 {
- "date":    607,
+ "date": new Date(1971,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  99.03 
 },
 {
- "date":    637,
+ "date": new Date(1971,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  98.34 
 },
 {
- "date":    666,
+ "date": new Date(1971,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  94.23 
 },
 {
- "date":    698,
+ "date": new Date(1971,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  93.99 
 },
 {
- "date":    729,
+ "date": new Date(1971,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.09 
 },
 {
- "date":    760,
+ "date": new Date(1972,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.94 
 },
 {
- "date":    789,
+ "date": new Date(1972,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 106.57 
 },
 {
- "date":    819,
+ "date": new Date(1972,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  107.2 
 },
 {
- "date":    848,
+ "date": new Date(1972,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 107.67 
 },
 {
- "date":    881,
+ "date": new Date(1972,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 109.53 
 },
 {
- "date":    911,
+ "date": new Date(1972,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 107.14 
 },
 {
- "date":    942,
+ "date": new Date(1972,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 107.39 
 },
 {
- "date":    973,
+ "date": new Date(1972,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 111.09 
 },
 {
- "date":   1002,
+ "date": new Date(1972,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 110.55 
 },
 {
- "date":   1034,
+ "date": new Date(1972,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 111.58 
 },
 {
- "date":   1064,
+ "date": new Date(1972,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 116.67 
 },
 {
- "date":   1093,
+ "date": new Date(1972,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 118.05 
 },
 {
- "date":   1126,
+ "date": new Date(1973,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 116.03 
 },
 {
- "date":   1154,
+ "date": new Date(1973,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 111.68 
 },
 {
- "date":   1184,
+ "date": new Date(1973,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 111.52 
 },
 {
- "date":   1215,
+ "date": new Date(1973,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 106.97 
 },
 {
- "date":   1246,
+ "date": new Date(1973,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 104.95 
 },
 {
- "date":   1275,
+ "date": new Date(1973,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 104.26 
 },
 {
- "date":   1307,
+ "date": new Date(1973,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 108.22 
 },
 {
- "date":   1338,
+ "date": new Date(1973,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 104.25 
 },
 {
- "date":   1366,
+ "date": new Date(1973,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 108.43 
 },
 {
- "date":   1399,
+ "date": new Date(1973,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 108.29 
 },
 {
- "date":   1429,
+ "date": new Date(1973,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  95.96 
 },
 {
- "date":   1460,
+ "date": new Date(1973,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  97.55 
 },
 {
- "date":   1491,
+ "date": new Date(1974,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.57 
 },
 {
- "date":   1519,
+ "date": new Date(1974,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.22 
 },
 {
- "date":   1548,
+ "date": new Date(1974,2,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  93.98 
 },
 {
- "date":   1580,
+ "date": new Date(1974,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  90.31 
 },
 {
- "date":   1611,
+ "date": new Date(1974,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  87.28 
 },
 {
- "date":   1639,
+ "date": new Date(1974,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value":     86 
 },
 {
- "date":   1672,
+ "date": new Date(1974,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  79.31 
 },
 {
- "date":   1702,
+ "date": new Date(1974,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  72.15 
 },
 {
- "date":   1733,
+ "date": new Date(1974,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  63.54 
 },
 {
- "date":   1764,
+ "date": new Date(1974,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   73.9 
 },
 {
- "date":   1793,
+ "date": new Date(1974,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  69.97 
 },
 {
- "date":   1825,
+ "date": new Date(1974,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  68.56 
 },
 {
- "date":   1856,
+ "date": new Date(1975,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  76.98 
 },
 {
- "date":   1884,
+ "date": new Date(1975,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  81.59 
 },
 {
- "date":   1915,
+ "date": new Date(1975,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  83.36 
 },
 {
- "date":   1945,
+ "date": new Date(1975,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   87.3 
 },
 {
- "date":   1975,
+ "date": new Date(1975,4,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  91.15 
 },
 {
- "date":   2006,
+ "date": new Date(1975,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  95.19 
 },
 {
- "date":   2037,
+ "date": new Date(1975,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  88.75 
 },
 {
- "date":   2066,
+ "date": new Date(1975,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  86.88 
 },
 {
- "date":   2098,
+ "date": new Date(1975,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  83.87 
 },
 {
- "date":   2129,
+ "date": new Date(1975,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.04 
 },
 {
- "date":   2157,
+ "date": new Date(1975,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  91.24 
 },
 {
- "date":   2190,
+ "date": new Date(1975,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  90.19 
 },
 {
- "date":   2220,
+ "date": new Date(1976,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 100.86 
 },
 {
- "date":   2248,
+ "date": new Date(1976,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value":  99.71 
 },
 {
- "date":   2281,
+ "date": new Date(1976,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.77 
 },
 {
- "date":   2311,
+ "date": new Date(1976,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 101.64 
 },
 {
- "date":   2339,
+ "date": new Date(1976,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 100.18 
 },
 {
- "date":   2372,
+ "date": new Date(1976,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 104.28 
 },
 {
- "date":   2402,
+ "date": new Date(1976,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.44 
 },
 {
- "date":   2434,
+ "date": new Date(1976,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.91 
 },
 {
- "date":   2464,
+ "date": new Date(1976,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 105.24 
 },
 {
- "date":   2493,
+ "date": new Date(1976,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  102.9 
 },
 {
- "date":   2525,
+ "date": new Date(1976,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  102.1 
 },
 {
- "date":   2556,
+ "date": new Date(1976,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 107.46 
 },
 {
- "date":   2587,
+ "date": new Date(1977,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.03 
 },
 {
- "date":   2615,
+ "date": new Date(1977,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  99.82 
 },
 {
- "date":   2646,
+ "date": new Date(1977,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  98.42 
 },
 {
- "date":   2675,
+ "date": new Date(1977,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  98.44 
 },
 {
- "date":   2707,
+ "date": new Date(1977,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.12 
 },
 {
- "date":   2737,
+ "date": new Date(1977,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 100.48 
 },
 {
- "date":   2766,
+ "date": new Date(1977,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  98.85 
 },
 {
- "date":   2799,
+ "date": new Date(1977,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.77 
 },
 {
- "date":   2829,
+ "date": new Date(1977,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.53 
 },
 {
- "date":   2860,
+ "date": new Date(1977,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  92.34 
 },
 {
- "date":   2890,
+ "date": new Date(1977,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  94.83 
 },
 {
- "date":   2920,
+ "date": new Date(1977,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   95.1 
 },
 {
- "date":   2952,
+ "date": new Date(1978,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.25 
 },
 {
- "date":   2980,
+ "date": new Date(1978,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  87.04 
 },
 {
- "date":   3011,
+ "date": new Date(1978,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  89.21 
 },
 {
- "date":   3039,
+ "date": new Date(1978,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.83 
 },
 {
- "date":   3072,
+ "date": new Date(1978,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  97.29 
 },
 {
- "date":   3102,
+ "date": new Date(1978,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  95.53 
 },
 {
- "date":   3133,
+ "date": new Date(1978,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 100.68 
 },
 {
- "date":   3164,
+ "date": new Date(1978,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.29 
 },
 {
- "date":   3193,
+ "date": new Date(1978,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.54 
 },
 {
- "date":   3225,
+ "date": new Date(1978,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  93.15 
 },
 {
- "date":   3255,
+ "date": new Date(1978,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   94.7 
 },
 {
- "date":   3284,
+ "date": new Date(1978,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.11 
 },
 {
- "date":   3317,
+ "date": new Date(1979,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  99.93 
 },
 {
- "date":   3345,
+ "date": new Date(1979,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  96.28 
 },
 {
- "date":   3375,
+ "date": new Date(1979,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 101.59 
 },
 {
- "date":   3406,
+ "date": new Date(1979,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 101.76 
 },
 {
- "date":   3437,
+ "date": new Date(1979,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  99.08 
 },
 {
- "date":   3466,
+ "date": new Date(1979,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.91 
 },
 {
- "date":   3498,
+ "date": new Date(1979,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 103.81 
 },
 {
- "date":   3529,
+ "date": new Date(1979,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 109.32 
 },
 {
- "date":   3557,
+ "date": new Date(1979,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 109.32 
 },
 {
- "date":   3590,
+ "date": new Date(1979,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 101.82 
 },
 {
- "date":   3620,
+ "date": new Date(1979,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 106.16 
 },
 {
- "date":   3651,
+ "date": new Date(1979,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 107.94 
 },
 {
- "date":   3682,
+ "date": new Date(1980,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 114.16 
 },
 {
- "date":   3711,
+ "date": new Date(1980,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 113.66 
 },
 {
- "date":   3742,
+ "date": new Date(1980,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 102.09 
 },
 {
- "date":   3772,
+ "date": new Date(1980,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 106.29 
 },
 {
- "date":   3802,
+ "date": new Date(1980,4,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 111.24 
 },
 {
- "date":   3833,
+ "date": new Date(1980,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 114.24 
 },
 {
- "date":   3864,
+ "date": new Date(1980,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 121.67 
 },
 {
- "date":   3893,
+ "date": new Date(1980,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 122.38 
 },
 {
- "date":   3925,
+ "date": new Date(1980,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 125.46 
 },
 {
- "date":   3956,
+ "date": new Date(1980,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 127.47 
 },
 {
- "date":   3984,
+ "date": new Date(1980,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 140.52 
 },
 {
- "date":   4017,
+ "date": new Date(1980,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 135.76 
 },
 {
- "date":   4047,
+ "date": new Date(1981,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 129.55 
 },
 {
- "date":   4075,
+ "date": new Date(1981,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value": 131.27 
 },
 {
- "date":   4107,
+ "date": new Date(1981,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":    136 
 },
 {
- "date":   4137,
+ "date": new Date(1981,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 132.81 
 },
 {
- "date":   4166,
+ "date": new Date(1981,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 132.59 
 },
 {
- "date":   4198,
+ "date": new Date(1981,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 131.21 
 },
 {
- "date":   4229,
+ "date": new Date(1981,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 130.92 
 },
 {
- "date":   4260,
+ "date": new Date(1981,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 122.79 
 },
 {
- "date":   4290,
+ "date": new Date(1981,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 116.18 
 },
 {
- "date":   4320,
+ "date": new Date(1981,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 121.89 
 },
 {
- "date":   4351,
+ "date": new Date(1981,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 126.35 
 },
 {
- "date":   4382,
+ "date": new Date(1981,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 122.55 
 },
 {
- "date":   4411,
+ "date": new Date(1982,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  120.4 
 },
 {
- "date":   4439,
+ "date": new Date(1982,1,26),
 "indexname": "SP500",
 "metric": "price",
 "value": 113.11 
 },
 {
- "date":   4472,
+ "date": new Date(1982,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 111.96 
 },
 {
- "date":   4502,
+ "date": new Date(1982,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 116.44 
 },
 {
- "date":   4530,
+ "date": new Date(1982,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 111.88 
 },
 {
- "date":   4563,
+ "date": new Date(1982,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 109.61 
 },
 {
- "date":   4593,
+ "date": new Date(1982,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 107.09 
 },
 {
- "date":   4625,
+ "date": new Date(1982,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 119.51 
 },
 {
- "date":   4655,
+ "date": new Date(1982,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 120.42 
 },
 {
- "date":   4684,
+ "date": new Date(1982,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 133.71 
 },
 {
- "date":   4716,
+ "date": new Date(1982,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 138.54 
 },
 {
- "date":   4747,
+ "date": new Date(1982,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 140.64 
 },
 {
- "date":   4778,
+ "date": new Date(1983,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  145.3 
 },
 {
- "date":   4806,
+ "date": new Date(1983,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 148.06 
 },
 {
- "date":   4837,
+ "date": new Date(1983,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 152.96 
 },
 {
- "date":   4866,
+ "date": new Date(1983,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 164.42 
 },
 {
- "date":   4898,
+ "date": new Date(1983,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 162.39 
 },
 {
- "date":   4928,
+ "date": new Date(1983,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 168.11 
 },
 {
- "date":   4957,
+ "date": new Date(1983,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 162.56 
 },
 {
- "date":   4990,
+ "date": new Date(1983,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  164.4 
 },
 {
- "date":   5020,
+ "date": new Date(1983,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 166.07 
 },
 {
- "date":   5051,
+ "date": new Date(1983,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 163.55 
 },
 {
- "date":   5081,
+ "date": new Date(1983,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  166.4 
 },
 {
- "date":   5111,
+ "date": new Date(1983,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 164.93 
 },
 {
- "date":   5143,
+ "date": new Date(1984,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 163.41 
 },
 {
- "date":   5172,
+ "date": new Date(1984,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 157.06 
 },
 {
- "date":   5202,
+ "date": new Date(1984,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 159.18 
 },
 {
- "date":   5233,
+ "date": new Date(1984,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 160.05 
 },
 {
- "date":   5264,
+ "date": new Date(1984,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 150.55 
 },
 {
- "date":   5293,
+ "date": new Date(1984,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 153.18 
 },
 {
- "date":   5325,
+ "date": new Date(1984,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 150.66 
 },
 {
- "date":   5356,
+ "date": new Date(1984,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 166.68 
 },
 {
- "date":   5384,
+ "date": new Date(1984,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  166.1 
 },
 {
- "date":   5417,
+ "date": new Date(1984,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 166.09 
 },
 {
- "date":   5447,
+ "date": new Date(1984,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 163.58 
 },
 {
- "date":   5478,
+ "date": new Date(1984,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 167.24 
 },
 {
- "date":   5509,
+ "date": new Date(1985,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 179.63 
 },
 {
- "date":   5537,
+ "date": new Date(1985,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 181.18 
 },
 {
- "date":   5566,
+ "date": new Date(1985,2,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 180.66 
 },
 {
- "date":   5598,
+ "date": new Date(1985,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 179.83 
 },
 {
- "date":   5629,
+ "date": new Date(1985,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 189.55 
 },
 {
- "date":   5657,
+ "date": new Date(1985,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 191.85 
 },
 {
- "date":   5690,
+ "date": new Date(1985,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 190.92 
 },
 {
- "date":   5720,
+ "date": new Date(1985,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 188.63 
 },
 {
- "date":   5751,
+ "date": new Date(1985,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 182.08 
 },
 {
- "date":   5782,
+ "date": new Date(1985,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 189.82 
 },
 {
- "date":   5811,
+ "date": new Date(1985,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 202.17 
 },
 {
- "date":   5843,
+ "date": new Date(1985,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 211.28 
 },
 {
- "date":   5874,
+ "date": new Date(1986,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 211.78 
 },
 {
- "date":   5902,
+ "date": new Date(1986,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 226.92 
 },
 {
- "date":   5933,
+ "date": new Date(1986,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  238.9 
 },
 {
- "date":   5963,
+ "date": new Date(1986,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 235.52 
 },
 {
- "date":   5993,
+ "date": new Date(1986,4,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 247.35 
 },
 {
- "date":   6024,
+ "date": new Date(1986,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 250.84 
 },
 {
- "date":   6055,
+ "date": new Date(1986,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 236.12 
 },
 {
- "date":   6084,
+ "date": new Date(1986,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 252.93 
 },
 {
- "date":   6116,
+ "date": new Date(1986,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 231.32 
 },
 {
- "date":   6147,
+ "date": new Date(1986,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 243.98 
 },
 {
- "date":   6175,
+ "date": new Date(1986,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 249.22 
 },
 {
- "date":   6208,
+ "date": new Date(1986,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 242.17 
 },
 {
- "date":   6238,
+ "date": new Date(1987,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 274.08 
 },
 {
- "date":   6266,
+ "date": new Date(1987,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value":  284.2 
 },
 {
- "date":   6298,
+ "date": new Date(1987,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  291.7 
 },
 {
- "date":   6328,
+ "date": new Date(1987,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 288.36 
 },
 {
- "date":   6357,
+ "date": new Date(1987,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  290.1 
 },
 {
- "date":   6389,
+ "date": new Date(1987,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":    304 
 },
 {
- "date":   6420,
+ "date": new Date(1987,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 318.66 
 },
 {
- "date":   6451,
+ "date": new Date(1987,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  329.8 
 },
 {
- "date":   6481,
+ "date": new Date(1987,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 321.83 
 },
 {
- "date":   6511,
+ "date": new Date(1987,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 251.79 
 },
 {
- "date":   6542,
+ "date": new Date(1987,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  230.3 
 },
 {
- "date":   6573,
+ "date": new Date(1987,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 247.08 
 },
 {
- "date":   6602,
+ "date": new Date(1988,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 257.07 
 },
 {
- "date":   6633,
+ "date": new Date(1988,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 267.82 
 },
 {
- "date":   6664,
+ "date": new Date(1988,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 258.89 
 },
 {
- "date":   6693,
+ "date": new Date(1988,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 261.33 
 },
 {
- "date":   6725,
+ "date": new Date(1988,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 262.16 
 },
 {
- "date":   6755,
+ "date": new Date(1988,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  273.5 
 },
 {
- "date":   6784,
+ "date": new Date(1988,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 272.02 
 },
 {
- "date":   6817,
+ "date": new Date(1988,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 261.52 
 },
 {
- "date":   6847,
+ "date": new Date(1988,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 271.91 
 },
 {
- "date":   6878,
+ "date": new Date(1988,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 278.97 
 },
 {
- "date":   6908,
+ "date": new Date(1988,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  273.7 
 },
 {
- "date":   6938,
+ "date": new Date(1988,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 277.72 
 },
 {
- "date":   6970,
+ "date": new Date(1989,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 297.47 
 },
 {
- "date":   6998,
+ "date": new Date(1989,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 288.86 
 },
 {
- "date":   7029,
+ "date": new Date(1989,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 294.87 
 },
 {
- "date":   7057,
+ "date": new Date(1989,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 309.64 
 },
 {
- "date":   7090,
+ "date": new Date(1989,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 320.52 
 },
 {
- "date":   7120,
+ "date": new Date(1989,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 317.98 
 },
 {
- "date":   7151,
+ "date": new Date(1989,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 346.08 
 },
 {
- "date":   7182,
+ "date": new Date(1989,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 351.45 
 },
 {
- "date":   7211,
+ "date": new Date(1989,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 349.15 
 },
 {
- "date":   7243,
+ "date": new Date(1989,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 340.36 
 },
 {
- "date":   7273,
+ "date": new Date(1989,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 345.99 
 },
 {
- "date":   7302,
+ "date": new Date(1989,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  353.4 
 },
 {
- "date":   7335,
+ "date": new Date(1990,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 329.08 
 },
 {
- "date":   7363,
+ "date": new Date(1990,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 331.89 
 },
 {
- "date":   7393,
+ "date": new Date(1990,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 339.94 
 },
 {
- "date":   7424,
+ "date": new Date(1990,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  330.8 
 },
 {
- "date":   7455,
+ "date": new Date(1990,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 361.23 
 },
 {
- "date":   7484,
+ "date": new Date(1990,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 358.02 
 },
 {
- "date":   7516,
+ "date": new Date(1990,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 356.15 
 },
 {
- "date":   7547,
+ "date": new Date(1990,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 322.56 
 },
 {
- "date":   7575,
+ "date": new Date(1990,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 306.05 
 },
 {
- "date":   7608,
+ "date": new Date(1990,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":    304 
 },
 {
- "date":   7638,
+ "date": new Date(1990,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 322.22 
 },
 {
- "date":   7669,
+ "date": new Date(1990,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 330.22 
 },
 {
- "date":   7700,
+ "date": new Date(1991,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 343.93 
 },
 {
- "date":   7728,
+ "date": new Date(1991,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 367.07 
 },
 {
- "date":   7756,
+ "date": new Date(1991,2,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 375.22 
 },
 {
- "date":   7789,
+ "date": new Date(1991,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 375.35 
 },
 {
- "date":   7820,
+ "date": new Date(1991,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 389.83 
 },
 {
- "date":   7848,
+ "date": new Date(1991,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 371.16 
 },
 {
- "date":   7881,
+ "date": new Date(1991,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 387.81 
 },
 {
- "date":   7911,
+ "date": new Date(1991,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 395.43 
 },
 {
- "date":   7942,
+ "date": new Date(1991,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 387.86 
 },
 {
- "date":   7973,
+ "date": new Date(1991,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 392.46 
 },
 {
- "date":   8002,
+ "date": new Date(1991,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 375.22 
 },
 {
- "date":   8034,
+ "date": new Date(1991,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 417.09 
 },
 {
- "date":   8065,
+ "date": new Date(1992,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 408.79 
 },
 {
- "date":   8093,
+ "date": new Date(1992,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  412.7 
 },
 {
- "date":   8125,
+ "date": new Date(1992,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 403.69 
 },
 {
- "date":   8155,
+ "date": new Date(1992,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 414.95 
 },
 {
- "date":   8184,
+ "date": new Date(1992,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 415.35 
 },
 {
- "date":   8216,
+ "date": new Date(1992,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 408.14 
 },
 {
- "date":   8247,
+ "date": new Date(1992,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 424.21 
 },
 {
- "date":   8278,
+ "date": new Date(1992,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 414.03 
 },
 {
- "date":   8308,
+ "date": new Date(1992,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  417.8 
 },
 {
- "date":   8338,
+ "date": new Date(1992,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 418.68 
 },
 {
- "date":   8369,
+ "date": new Date(1992,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 431.35 
 },
 {
- "date":   8400,
+ "date": new Date(1992,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 435.71 
 },
 {
- "date":   8429,
+ "date": new Date(1993,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 438.78 
 },
 {
- "date":   8457,
+ "date": new Date(1993,1,26),
 "indexname": "SP500",
 "metric": "price",
 "value": 443.38 
 },
 {
- "date":   8490,
+ "date": new Date(1993,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 451.67 
 },
 {
- "date":   8520,
+ "date": new Date(1993,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 440.19 
 },
 {
- "date":   8548,
+ "date": new Date(1993,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 450.19 
 },
 {
- "date":   8581,
+ "date": new Date(1993,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 450.53 
 },
 {
- "date":   8611,
+ "date": new Date(1993,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 448.13 
 },
 {
- "date":   8643,
+ "date": new Date(1993,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 463.56 
 },
 {
- "date":   8673,
+ "date": new Date(1993,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 458.93 
 },
 {
- "date":   8702,
+ "date": new Date(1993,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 467.83 
 },
 {
- "date":   8734,
+ "date": new Date(1993,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 461.79 
 },
 {
- "date":   8765,
+ "date": new Date(1993,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 466.45 
 },
 {
- "date":   8796,
+ "date": new Date(1994,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 481.61 
 },
 {
- "date":   8824,
+ "date": new Date(1994,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 467.14 
 },
 {
- "date":   8855,
+ "date": new Date(1994,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 445.77 
 },
 {
- "date":   8884,
+ "date": new Date(1994,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 450.91 
 },
 {
- "date":   8916,
+ "date": new Date(1994,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  456.5 
 },
 {
- "date":   8946,
+ "date": new Date(1994,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 444.27 
 },
 {
- "date":   8975,
+ "date": new Date(1994,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 458.26 
 },
 {
- "date":   9008,
+ "date": new Date(1994,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 475.49 
 },
 {
- "date":   9038,
+ "date": new Date(1994,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 462.69 
 },
 {
- "date":   9069,
+ "date": new Date(1994,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 472.35 
 },
 {
- "date":   9099,
+ "date": new Date(1994,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 453.69 
 },
 {
- "date":   9129,
+ "date": new Date(1994,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 459.27 
 },
 {
- "date":   9161,
+ "date": new Date(1995,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 470.42 
 },
 {
- "date":   9189,
+ "date": new Date(1995,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 487.39 
 },
 {
- "date":   9220,
+ "date": new Date(1995,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 500.71 
 },
 {
- "date":   9248,
+ "date": new Date(1995,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 514.71 
 },
 {
- "date":   9281,
+ "date": new Date(1995,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  533.4 
 },
 {
- "date":   9311,
+ "date": new Date(1995,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 544.75 
 },
 {
- "date":   9342,
+ "date": new Date(1995,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 562.06 
 },
 {
- "date":   9373,
+ "date": new Date(1995,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 561.88 
 },
 {
- "date":   9402,
+ "date": new Date(1995,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 584.41 
 },
 {
- "date":   9434,
+ "date": new Date(1995,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  581.5 
 },
 {
- "date":   9464,
+ "date": new Date(1995,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 605.37 
 },
 {
- "date":   9493,
+ "date": new Date(1995,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 615.93 
 },
 {
- "date":   9526,
+ "date": new Date(1996,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 636.02 
 },
 {
- "date":   9555,
+ "date": new Date(1996,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 640.43 
 },
 {
- "date":   9584,
+ "date": new Date(1996,2,29),
 "indexname": "SP500",
 "metric": "price",
 "value":  645.5 
 },
 {
- "date":   9616,
+ "date": new Date(1996,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 654.17 
 },
 {
- "date":   9647,
+ "date": new Date(1996,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 669.12 
 },
 {
- "date":   9675,
+ "date": new Date(1996,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 670.63 
 },
 {
- "date":   9708,
+ "date": new Date(1996,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 639.95 
 },
 {
- "date":   9738,
+ "date": new Date(1996,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 651.99 
 },
 {
- "date":   9769,
+ "date": new Date(1996,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 687.31 
 },
 {
- "date":   9800,
+ "date": new Date(1996,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 705.27 
 },
 {
- "date":   9829,
+ "date": new Date(1996,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 757.02 
 },
 {
- "date":   9861,
+ "date": new Date(1996,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 740.74 
 },
 {
- "date":   9892,
+ "date": new Date(1997,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 786.16 
 },
 {
- "date":   9920,
+ "date": new Date(1997,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 790.82 
 },
 {
- "date":   9951,
+ "date": new Date(1997,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 757.12 
 },
 {
- "date":   9981,
+ "date": new Date(1997,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 801.34 
 },
 {
- "date":  10011,
+ "date": new Date(1997,4,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 848.28 
 },
 {
- "date":  10042,
+ "date": new Date(1997,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 885.14 
 },
 {
- "date":  10073,
+ "date": new Date(1997,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 954.29 
 },
 {
- "date":  10102,
+ "date": new Date(1997,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 899.47 
 },
 {
- "date":  10134,
+ "date": new Date(1997,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 947.28 
 },
 {
- "date":  10165,
+ "date": new Date(1997,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 914.62 
 },
 {
- "date":  10193,
+ "date": new Date(1997,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value":  955.4 
 },
 {
- "date":  10226,
+ "date": new Date(1997,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 970.43 
 },
 {
- "date":  10256,
+ "date": new Date(1998,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 980.28 
 },
 {
- "date":  10284,
+ "date": new Date(1998,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value": 1049.3 
 },
 {
- "date":  10316,
+ "date": new Date(1998,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1101.8 
 },
 {
- "date":  10346,
+ "date": new Date(1998,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1111.8 
 },
 {
- "date":  10375,
+ "date": new Date(1998,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1090.8 
 },
 {
- "date":  10407,
+ "date": new Date(1998,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1133.8 
 },
 {
- "date":  10438,
+ "date": new Date(1998,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1120.7 
 },
 {
- "date":  10469,
+ "date": new Date(1998,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 957.28 
 },
 {
- "date":  10499,
+ "date": new Date(1998,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   1017 
 },
 {
- "date":  10529,
+ "date": new Date(1998,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1098.7 
 },
 {
- "date":  10560,
+ "date": new Date(1998,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1163.6 
 },
 {
- "date":  10591,
+ "date": new Date(1998,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1229.2 
 },
 {
- "date":  10620,
+ "date": new Date(1999,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1279.6 
 },
 {
- "date":  10648,
+ "date": new Date(1999,1,26),
 "indexname": "SP500",
 "metric": "price",
 "value": 1238.3 
 },
 {
- "date":  10681,
+ "date": new Date(1999,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1286.4 
 },
 {
- "date":  10711,
+ "date": new Date(1999,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1335.2 
 },
 {
- "date":  10739,
+ "date": new Date(1999,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1301.8 
 },
 {
- "date":  10772,
+ "date": new Date(1999,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1372.7 
 },
 {
- "date":  10802,
+ "date": new Date(1999,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1328.7 
 },
 {
- "date":  10834,
+ "date": new Date(1999,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1320.4 
 },
 {
- "date":  10864,
+ "date": new Date(1999,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1282.7 
 },
 {
- "date":  10893,
+ "date": new Date(1999,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1362.9 
 },
 {
- "date":  10925,
+ "date": new Date(1999,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1388.9 
 },
 {
- "date":  10956,
+ "date": new Date(1999,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1469.2 
 },
 {
- "date":  10987,
+ "date": new Date(2000,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1394.5 
 },
 {
- "date":  11016,
+ "date": new Date(2000,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1366.4 
 },
 {
- "date":  11047,
+ "date": new Date(2000,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1498.6 
 },
 {
- "date":  11075,
+ "date": new Date(2000,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1452.4 
 },
 {
- "date":  11108,
+ "date": new Date(2000,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1420.6 
 },
 {
- "date":  11138,
+ "date": new Date(2000,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1454.6 
 },
 {
- "date":  11169,
+ "date": new Date(2000,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1430.8 
 },
 {
- "date":  11200,
+ "date": new Date(2000,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1517.7 
 },
 {
- "date":  11229,
+ "date": new Date(2000,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1436.5 
 },
 {
- "date":  11261,
+ "date": new Date(2000,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1429.4 
 },
 {
- "date":  11291,
+ "date": new Date(2000,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   1315 
 },
 {
- "date":  11320,
+ "date": new Date(2000,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1320.3 
 },
 {
- "date":  11353,
+ "date": new Date(2001,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   1366 
 },
 {
- "date":  11381,
+ "date": new Date(2001,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1239.9 
 },
 {
- "date":  11411,
+ "date": new Date(2001,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1160.3 
 },
 {
- "date":  11442,
+ "date": new Date(2001,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1249.5 
 },
 {
- "date":  11473,
+ "date": new Date(2001,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1255.8 
 },
 {
- "date":  11502,
+ "date": new Date(2001,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1224.4 
 },
 {
- "date":  11534,
+ "date": new Date(2001,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1211.2 
 },
 {
- "date":  11565,
+ "date": new Date(2001,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1133.6 
 },
 {
- "date":  11593,
+ "date": new Date(2001,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1040.9 
 },
 {
- "date":  11626,
+ "date": new Date(2001,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1059.8 
 },
 {
- "date":  11656,
+ "date": new Date(2001,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1139.5 
 },
 {
- "date":  11687,
+ "date": new Date(2001,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1148.1 
 },
 {
- "date":  11718,
+ "date": new Date(2002,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1130.2 
 },
 {
- "date":  11746,
+ "date": new Date(2002,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1106.7 
 },
 {
- "date":  11774,
+ "date": new Date(2002,2,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1147.4 
 },
 {
- "date":  11807,
+ "date": new Date(2002,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1076.9 
 },
 {
- "date":  11838,
+ "date": new Date(2002,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1067.1 
 },
 {
- "date":  11866,
+ "date": new Date(2002,5,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 989.81 
 },
 {
- "date":  11899,
+ "date": new Date(2002,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 911.62 
 },
 {
- "date":  11929,
+ "date": new Date(2002,7,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 916.07 
 },
 {
- "date":  11960,
+ "date": new Date(2002,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 815.28 
 },
 {
- "date":  11991,
+ "date": new Date(2002,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 885.76 
 },
 {
- "date":  12020,
+ "date": new Date(2002,10,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 936.31 
 },
 {
- "date":  12052,
+ "date": new Date(2002,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 879.82 
 },
 {
- "date":  12083,
+ "date": new Date(2003,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value":  855.7 
 },
 {
- "date":  12111,
+ "date": new Date(2003,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 841.15 
 },
 {
- "date":  12142,
+ "date": new Date(2003,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 848.18 
 },
 {
- "date":  12172,
+ "date": new Date(2003,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 916.92 
 },
 {
- "date":  12202,
+ "date": new Date(2003,4,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 963.59 
 },
 {
- "date":  12233,
+ "date": new Date(2003,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":  974.5 
 },
 {
- "date":  12264,
+ "date": new Date(2003,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 990.31 
 },
 {
- "date":  12293,
+ "date": new Date(2003,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value":   1008 
 },
 {
- "date":  12325,
+ "date": new Date(2003,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 995.97 
 },
 {
- "date":  12356,
+ "date": new Date(2003,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1050.7 
 },
 {
- "date":  12384,
+ "date": new Date(2003,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1058.2 
 },
 {
- "date":  12417,
+ "date": new Date(2003,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1111.9 
 },
 {
- "date":  12447,
+ "date": new Date(2004,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1131.1 
 },
 {
- "date":  12475,
+ "date": new Date(2004,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value": 1144.9 
 },
 {
- "date":  12508,
+ "date": new Date(2004,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1126.2 
 },
 {
- "date":  12538,
+ "date": new Date(2004,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1107.3 
 },
 {
- "date":  12566,
+ "date": new Date(2004,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1120.7 
 },
 {
- "date":  12599,
+ "date": new Date(2004,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1140.8 
 },
 {
- "date":  12629,
+ "date": new Date(2004,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1101.7 
 },
 {
- "date":  12661,
+ "date": new Date(2004,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1104.2 
 },
 {
- "date":  12691,
+ "date": new Date(2004,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1114.6 
 },
 {
- "date":  12720,
+ "date": new Date(2004,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1130.2 
 },
 {
- "date":  12752,
+ "date": new Date(2004,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1173.8 
 },
 {
- "date":  12783,
+ "date": new Date(2004,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1211.9 
 },
 {
- "date":  12814,
+ "date": new Date(2005,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1181.3 
 },
 {
- "date":  12842,
+ "date": new Date(2005,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1203.6 
 },
 {
- "date":  12873,
+ "date": new Date(2005,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1180.6 
 },
 {
- "date":  12902,
+ "date": new Date(2005,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1156.8 
 },
 {
- "date":  12934,
+ "date": new Date(2005,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1191.5 
 },
 {
- "date":  12964,
+ "date": new Date(2005,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1191.3 
 },
 {
- "date":  12993,
+ "date": new Date(2005,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1234.2 
 },
 {
- "date":  13026,
+ "date": new Date(2005,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1220.3 
 },
 {
- "date":  13056,
+ "date": new Date(2005,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1228.8 
 },
 {
- "date":  13087,
+ "date": new Date(2005,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   1207 
 },
 {
- "date":  13117,
+ "date": new Date(2005,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1249.5 
 },
 {
- "date":  13147,
+ "date": new Date(2005,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1248.3 
 },
 {
- "date":  13179,
+ "date": new Date(2006,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1280.1 
 },
 {
- "date":  13207,
+ "date": new Date(2006,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1280.7 
 },
 {
- "date":  13238,
+ "date": new Date(2006,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1294.8 
 },
 {
- "date":  13266,
+ "date": new Date(2006,3,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1310.6 
 },
 {
- "date":  13299,
+ "date": new Date(2006,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1270.1 
 },
 {
- "date":  13329,
+ "date": new Date(2006,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1270.2 
 },
 {
- "date":  13360,
+ "date": new Date(2006,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1276.7 
 },
 {
- "date":  13391,
+ "date": new Date(2006,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1303.8 
 },
 {
- "date":  13420,
+ "date": new Date(2006,8,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1335.8 
 },
 {
- "date":  13452,
+ "date": new Date(2006,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1377.9 
 },
 {
- "date":  13482,
+ "date": new Date(2006,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1400.6 
 },
 {
- "date":  13511,
+ "date": new Date(2006,11,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1418.3 
 },
 {
- "date":  13544,
+ "date": new Date(2007,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1438.2 
 },
 {
- "date":  13572,
+ "date": new Date(2007,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1406.8 
 },
 {
- "date":  13602,
+ "date": new Date(2007,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1420.9 
 },
 {
- "date":  13633,
+ "date": new Date(2007,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1482.4 
 },
 {
- "date":  13664,
+ "date": new Date(2007,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1530.6 
 },
 {
- "date":  13693,
+ "date": new Date(2007,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1503.3 
 },
 {
- "date":  13725,
+ "date": new Date(2007,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1455.3 
 },
 {
- "date":  13756,
+ "date": new Date(2007,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value":   1474 
 },
 {
- "date":  13784,
+ "date": new Date(2007,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1526.8 
 },
 {
- "date":  13817,
+ "date": new Date(2007,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1549.4 
 },
 {
- "date":  13847,
+ "date": new Date(2007,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1481.1 
 },
 {
- "date":  13878,
+ "date": new Date(2007,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1468.4 
 },
 {
- "date":  13909,
+ "date": new Date(2008,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1378.5 
 },
 {
- "date":  13938,
+ "date": new Date(2008,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1330.6 
 },
 {
- "date":  13969,
+ "date": new Date(2008,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1322.7 
 },
 {
- "date":  13999,
+ "date": new Date(2008,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1385.6 
 },
 {
- "date":  14029,
+ "date": new Date(2008,4,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1400.4 
 },
 {
- "date":  14060,
+ "date": new Date(2008,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   1280 
 },
 {
- "date":  14091,
+ "date": new Date(2008,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1267.4 
 },
 {
- "date":  14120,
+ "date": new Date(2008,7,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1282.8 
 },
 {
- "date":  14152,
+ "date": new Date(2008,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1166.4 
 },
 {
- "date":  14183,
+ "date": new Date(2008,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 968.75 
 },
 {
- "date":  14211,
+ "date": new Date(2008,10,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 896.24 
 },
 {
- "date":  14244,
+ "date": new Date(2008,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 903.25 
 },
 {
- "date":  14274,
+ "date": new Date(2009,0,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 825.88 
 },
 {
- "date":  14302,
+ "date": new Date(2009,1,27),
 "indexname": "SP500",
 "metric": "price",
 "value": 735.09 
 },
 {
- "date":  14334,
+ "date": new Date(2009,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 797.87 
 },
 {
- "date":  14364,
+ "date": new Date(2009,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 872.81 
 },
 {
- "date":  14393,
+ "date": new Date(2009,4,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 919.14 
 },
 {
- "date":  14425,
+ "date": new Date(2009,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 919.32 
 },
 {
- "date":  14456,
+ "date": new Date(2009,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 987.48 
 },
 {
- "date":  14487,
+ "date": new Date(2009,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1020.6 
 },
 {
- "date":  14517,
+ "date": new Date(2009,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1057.1 
 },
 {
- "date":  14547,
+ "date": new Date(2009,9,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1036.2 
 },
 {
- "date":  14578,
+ "date": new Date(2009,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1095.6 
 },
 {
- "date":  14609,
+ "date": new Date(2009,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1115.1 
 },
 {
- "date":  14638,
+ "date": new Date(2010,0,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1073.9 
 },
 {
- "date":  14666,
+ "date": new Date(2010,1,26),
 "indexname": "SP500",
 "metric": "price",
 "value": 1104.5 
 },
 {
- "date":  14699,
+ "date": new Date(2010,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1169.4 
 },
 {
- "date":  14729,
+ "date": new Date(2010,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1186.7 
 },
 {
- "date":  14757,
+ "date": new Date(2010,4,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1089.4 
 },
 {
- "date":  14790,
+ "date": new Date(2010,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1030.7 
 },
 {
- "date":  14820,
+ "date": new Date(2010,6,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1101.6 
 },
 {
- "date":  14852,
+ "date": new Date(2010,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1049.3 
 },
 {
- "date":  14882,
+ "date": new Date(2010,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1141.2 
 },
 {
- "date":  14911,
+ "date": new Date(2010,9,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1183.3 
 },
 {
- "date":  14943,
+ "date": new Date(2010,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1180.5 
 },
 {
- "date":  14974,
+ "date": new Date(2010,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1257.6 
 },
 {
- "date":  15005,
+ "date": new Date(2011,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1286.1 
 },
 {
- "date":  15033,
+ "date": new Date(2011,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1327.2 
 },
 {
- "date":  15064,
+ "date": new Date(2011,2,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1325.8 
 },
 {
- "date":  15093,
+ "date": new Date(2011,3,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1363.6 
 },
 {
- "date":  15125,
+ "date": new Date(2011,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1345.2 
 },
 {
- "date":  15155,
+ "date": new Date(2011,5,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1320.6 
 },
 {
- "date":  15184,
+ "date": new Date(2011,6,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1292.3 
 },
 {
- "date":  15217,
+ "date": new Date(2011,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1218.9 
 },
 {
- "date":  15247,
+ "date": new Date(2011,8,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1131.4 
 },
 {
- "date":  15278,
+ "date": new Date(2011,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1253.3 
 },
 {
- "date":  15308,
+ "date": new Date(2011,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value":   1247 
 },
 {
- "date":  15338,
+ "date": new Date(2011,11,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1257.6 
 },
 {
- "date":  15370,
+ "date": new Date(2012,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1312.4 
 },
 {
- "date":  15399,
+ "date": new Date(2012,1,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1365.7 
 },
 {
- "date":  15429,
+ "date": new Date(2012,2,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1408.5 
 },
 {
- "date":  15460,
+ "date": new Date(2012,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1397.9 
 },
 {
- "date":  15491,
+ "date": new Date(2012,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1310.3 
 },
 {
- "date":  15520,
+ "date": new Date(2012,5,29),
 "indexname": "SP500",
 "metric": "price",
 "value": 1362.2 
 },
 {
- "date":  15552,
+ "date": new Date(2012,6,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1379.3 
 },
 {
- "date":  15583,
+ "date": new Date(2012,7,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1406.6 
 },
 {
- "date":  15611,
+ "date": new Date(2012,8,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1440.7 
 },
 {
- "date":  15644,
+ "date": new Date(2012,9,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1412.2 
 },
 {
- "date":  15674,
+ "date": new Date(2012,10,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1416.2 
 },
 {
- "date":  15705,
+ "date": new Date(2012,11,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1426.2 
 },
 {
- "date":  15736,
+ "date": new Date(2013,0,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1498.1 
 },
 {
- "date":  15764,
+ "date": new Date(2013,1,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1514.7 
 },
 {
- "date":  15792,
+ "date": new Date(2013,2,28),
 "indexname": "SP500",
 "metric": "price",
 "value": 1569.2 
 },
 {
- "date":  15825,
+ "date": new Date(2013,3,30),
 "indexname": "SP500",
 "metric": "price",
 "value": 1597.6 
 },
 {
- "date":  15856,
+ "date": new Date(2013,4,31),
 "indexname": "SP500",
 "metric": "price",
 "value": 1630.7 
 },
 {
- "date":  15874,
+ "date": new Date(2013,5,20),
 "indexname": "SP500",
 "metric": "price",
-"value": 1651.8 
+"value": 1588.2 
 } 
 ]
   
@@ -7233,8 +10068,8 @@ m1$print(&quot;chart2&quot;)
 "sp500":        1630.74 
 },
 {
- "date": "2013-06-18",
-"sp500":        1651.81 
+ "date": "2013-06-20",
+"sp500":        1588.19 
 } 
 ],
 "pointSize":              0,
@@ -9988,8 +12823,8 @@ r1$print(&quot;chart3&quot;)
 "y":        1630.74 
 },
 {
- "x":     1371513600,
-"y":        1651.81 
+ "x":     1371686400,
+"y":        1588.19 
 } 
 ],
 "name": "sp500",
@@ -12025,8 +14860,8 @@ r1$print(&quot;chart3&quot;)
 "1369958400": [
      1369958400 
 ],
-"1371513600": [
-     1371513600 
+"1371686400": [
+     1371686400 
 ] 
 },
 "color":  palette.color()  
@@ -14833,8 +17668,8 @@ h1$print(&quot;chart5&quot;)
 1630.7 
 ],
 [
- 1.3715e+12,
-1651.8 
+ 1.3717e+12,
+1588.2 
 ] 
 ],
 "type": "line",

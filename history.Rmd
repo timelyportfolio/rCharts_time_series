@@ -47,6 +47,9 @@ First, to build a plot, we need data. Let's see how easy it is to get a time ser
 require(latticeExtra)
 require(ggplot2)
 require(reshape2)
+suppressPackageStartupMessages(
+  require(googleVis)
+)
 require(quantmod)
 require(PerformanceAnalytics)
 require(xtsExtra)
@@ -125,7 +128,9 @@ events <- data.frame(
     c("quantmod/TTR","2007-10-07"),
     c("xts","2008-02-17"),
     c("timeSeries","2009-05-17"),
+    c("googleVis","2010-11-30"),
     c("xtsExtra","2012-05-30"),
+    c("zoo/ggplot2","2012-10-14"),
     c("rCharts","2013-04-10")
   ),
   stringsAsFactors = FALSE
@@ -315,7 +320,7 @@ xts::plot.xts(
 - - -
 
 ---
-### [`timeSerie` `plot`](https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&view=log) 2009-05-17
+### [`timeSeries` `plot`](https://r-forge.r-project.org/scm/viewvc.php/pkg/timeSeries/R/methods-plot.R?root=rmetrics&view=log) 2009-05-17
 The `timeSeries` `plot()` method is basically a port of R's `plot.ts()`.  It does not significantly add any plotting functionality, but I include it for completeness and since the [Rmetrics team](https://www.rmetrics.org) offers robust financial analysis through its many R packages that depend on the `timeSeries` object.
 
 ```{r}
@@ -324,6 +329,26 @@ timeSeries::plot(
   timeSeries(sp500.monthly),
   main = "S&P 500 (timeseries::plot)"
 )
+```
+
+- - -
+
+---
+### [`googleVis`](http://cran.r-project.org/src/contrib/Archive/googleVis/) 2010-11-30 and [source](https://code.google.com/p/google-motion-charts-with-r/)
+`googleVis` adds accessible interactivity to charts using [Google Charts](https://developers.google.com/chart/interactive/docs/index).  There are a variety of chart types along with very nice animation/storyboard options.
+
+```{r}
+g1 <- gvisLineChart(
+  data = sp500.df,
+  xvar = "date",
+  yvar = "sp500",
+  options = list(
+    title = "S&P 500 (googleVis::gvisLineChart)",
+    height = 400,
+    width = 600
+  )
+)
+print(g1,"chart")
 ```
 
 - - -
@@ -371,6 +396,17 @@ title(
   cex.main = 1.25,
   line = -2
 )
+```
+
+- - -
+
+---
+### `zoo` meets `ggplot2` with [`autoplot.zoo()`](https://r-forge.r-project.org/scm/viewvc.php/pkg/zoo/R/ggplot2.zoo.R?view=markup&revision=939&root=zoo) 2012-10-14
+Similar to `zoo` meets `lattice` above, `autoplot.zoo()` makes plotting `zoo` with `ggplot2` much easier.  As the codes shows below, `xts` can also use `autoplot.zoo()` with no explicit transformation.
+
+```{r}
+autoplot.zoo(sp500.monthly) + 
+  ggtitle("S&P 500 (zoo::autoplot.zoo)")
 ```
 
 - - -
