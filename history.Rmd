@@ -348,7 +348,7 @@ g1 <- gvisLineChart(
     width = 600
   )
 )
-print(g1,"chart")
+plot(g1)
 ```
 
 - - -
